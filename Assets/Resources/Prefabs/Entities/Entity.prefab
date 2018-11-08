@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1267819898531212
 GameObject:
   m_ObjectHideFlags: 1
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4611888428342720}
-  - component: {fileID: 114148678172263074}
+  - component: {fileID: 114271040882534420}
   m_Layer: 0
   m_Name: Entity
   m_TagString: Untagged
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 33529393702286972}
   - component: {fileID: 23898870439091300}
   m_Layer: 0
-  m_Name: TestCube
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1819193946262114
 GameObject:
   m_ObjectHideFlags: 1
@@ -107,7 +107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1850792068545980
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +362,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114148678172263074
+--- !u!114 &114271040882534420
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -373,5 +373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0789e9a264811f4fb8a6dda9c1f31bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliders: []
-  colliderRoot: {fileID: 0}
+  colliders:
+  - {fileID: 1267819898531212}
+  - {fileID: 1034161482127800}
+  - {fileID: 1819193946262114}
+  - {fileID: 1718661858737782}
+  colliderRoot: {fileID: 1850792068545980}

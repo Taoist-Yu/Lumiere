@@ -8,9 +8,7 @@ public class Entity : GameBehaviour {
 	protected enum ScatteringMode
 	{
 		diffuse,            //漫反射，吸收光
-		refreaction,        //折射，改变光的方向（如棱镜）
 		transmission,       //透射，光的方向不变直接穿过
-		specular            //镜面反射
 	}
 	protected ScatteringMode scatteringMode = ScatteringMode.diffuse;		//默认为漫反射
 
@@ -22,19 +20,23 @@ public class Entity : GameBehaviour {
 	protected override void GameBehavierInit()
 	{
 		base.GameBehavierInit();
-		colliderRoot = GameObject.Find("Colliders");
+		colliderRoot = transform.Find("Colliders").gameObject;
 		colliders = new GameObject[4];
-		colliders[0] = GameObject.Find("Colliders/SouthCollider");
-		colliders[1] = GameObject.Find("Colliders/EastCollider");
-		colliders[2] = GameObject.Find("Colliders/NorthCollider");
-		colliders[3] = GameObject.Find("Colliders/WestCollider");
-		for (int i = 1; i < 4; i++)
-			colliders[i].SetActive(false);
+		colliders[0] = transform.Find("Colliders/SouthCollider").gameObject;
+		colliders[1] = transform.Find("Colliders/EastCollider").gameObject;
+		colliders[2] = transform.Find("Colliders/NorthCollider").gameObject;
+		colliders[3] = transform.Find("Colliders/WestCollider").gameObject;
 	}
 
 	private void Awake()
 	{
 		GameBehavierInit();
+	}
+
+	private void Start()
+	{
+		for (int i = 1; i < 4; i++)
+			colliders[i].SetActive(false);
 	}
 
 	protected override void OnLevelRotateBegin()
