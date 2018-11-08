@@ -36,13 +36,55 @@ class GetInput
 		}
 	}
 
+	//人物攀爬
+	//攀爬开始
+	public static bool ClimbStart
+	{
+		get
+		{
+			return
+				Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow);
+		}
+	}
+
+	//攀爬方向控制
+	public static bool ClimbUpward
+	{
+		get
+		{
+			return
+				Input.GetKeyDown(KeyCode.UpArrow);
+		}
+	}
+
+	//攀爬中止
+	public static bool ClimbPause
+	{
+		get
+		{
+			return
+				Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow);
+		}
+	}
+
 	//跳跃
-	public static bool Jump
+	//跳跃开始
+	public static bool JumpStart
 	{
 		get
 		{
 			return
 				Input.GetButtonDown("Jump");
+		}
+	}
+
+	//跳跃中
+	public static bool JumpLast
+	{
+		get
+		{
+			return
+				Input.GetButton("Jump");
 		}
 	}
 
