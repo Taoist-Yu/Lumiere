@@ -10,7 +10,6 @@ GameObject:
   - component: {fileID: 482644}
   - component: {fileID: 3398452}
   - component: {fileID: 2331872}
-  - component: {fileID: 114225620669437774}
   m_Layer: 0
   m_Name: GreenPlain01
   m_TagString: Untagged
@@ -84,16 +83,3 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152508}
   m_IsPrefabAsset: 1
---- !u!114 &114225620669437774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0789e9a264811f4fb8a6dda9c1f31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliders: []
-  colliderRoot: {fileID: 0}

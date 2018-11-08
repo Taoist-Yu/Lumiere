@@ -5,12 +5,12 @@ using UnityEngine;
 public class Entity : GameBehaviour {
 
 	/*物体是如何响应射线光的，折射，反射等*/
-	protected enum ScatteringMode
+	public enum ScatteringMode
 	{
 		diffuse,            //漫反射，吸收光
 		transmission,       //透射，光的方向不变直接穿过
 	}
-	protected ScatteringMode scatteringMode = ScatteringMode.diffuse;		//默认为漫反射
+	public ScatteringMode scatteringMode = ScatteringMode.diffuse;      //默认为漫反射
 
 	//四面碰撞体数组
 	public GameObject[] colliders;
@@ -52,6 +52,7 @@ public class Entity : GameBehaviour {
 	{
 		base.OnLevelRotateEnd();
 		colliders[levelController.perspective].SetActive(true);
+		Debug.Log(1);
 		colliderRoot.transform.SetPositionAndRotation(
 			colliderRoot.transform.position,
 			Quaternion.Euler(0, 0, 0)
