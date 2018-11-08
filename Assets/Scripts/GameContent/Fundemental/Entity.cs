@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : GameBehavier {
+public class Entity : GameBehaviour {
 
 	//四面碰撞体数组
 	public GameObject[] colliders;
@@ -20,6 +20,10 @@ public class Entity : GameBehavier {
 		colliders[3] = GameObject.Find("Colliders/WestCollider");
 		for (int i = 1; i < 4; i++)
 			colliders[i].SetActive(false);
+
+		//实体的受光模式默认为吸收（漫反射）
+		scatteringMode = ScatteringMode.diffuse;
+
 	}
 
 	private void Awake()
