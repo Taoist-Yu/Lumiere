@@ -13,16 +13,19 @@ public class ProtagonistController : GameBehaviour
 	[SerializeField]
 	float lowJumpMuti = 2f;//轻按下降加速
 	Rigidbody2D proRd;//刚体组件
-	public Animator anim;//动画状态机
+	Animator anim;//动画状态机
 	int isJumping = 0;//跳跃动作状态标识，0为接触地面，1为已经起跳（按下过一次跳跃键），大于等于2表示已经按下不止一次跳跃键
 	bool getToWall = false;
-	Vector3 realGravity;
 	bool onTheGround = true;//状态改变由地面来实现
 
+	private void Awake()
+	{
+		GameBehavierInit();
+		anim = gameObject.GetComponent<Animator>();
+	}
 
 	void Start () {
 		proRd = this.GetComponent<Rigidbody2D>();//获取刚体
-		realGravity = Physics.gravity;
 	}
 	
 	void Update () {
@@ -64,7 +67,7 @@ public class ProtagonistController : GameBehaviour
 			{
 				transform.localScale = new Vector3(1, 1, 1);
 			}
-			proRd.velocity = new Vector3(h, proRd.velocity.y / speed / 3, v) * speed * 3;
+			proRd.velocity = new Vector3(h, proRd.velocity.y / speed / 3,v) * speed * 3;
 		}
 		else
 		{
@@ -77,9 +80,8 @@ public class ProtagonistController : GameBehaviour
 	{
 		if (GetInput.JumpStart && isJumping <= 1)
 		{
-			//全局重力更改，待修改
-			Physics.gravity = realGravity;
-			proRd.velocity = Vector3.up * speed * 30;
+			proRd.gravityScale = 1;
+			proRd.velocity = Vector3.up * speed * 40;
 			if (isJumping == 0)
 			{
 				anim.SetBool("IsJumping", true);
@@ -110,22 +112,33 @@ public class ProtagonistController : GameBehaviour
 			anim.SetBool("IsClimbing", true);
 			if (GetInput.ClimbUpward)
 			{
-				Physics.gravity = new Vector3(0, 0, 0);
+				proRd.gravityScale = 0;
 				//proRd.AddForce(-1*Physics.gravity);
 				proRd.velocity = new Vector3(0, speed * 3, 0);
 			}
 			else
 			{
 				//proRd.AddForce(Physics.gravity);
-				Physics.gravity = new Vector3(0, 0, 0);
+				proRd.gravityScale = 0;
 				proRd.velocity = new Vector3(0, -speed * 3, 0);
 			}
 		}
 		if (GetInput.ClimbPause)
 		{
-			//Physics.gravity = realGravity;
 			anim.SetBool("IsClimbing", false);
 			proRd.velocity = new Vector3(0, 0, 0);
 		}
+	}
+
+	protected override void OnLevelRotateBegin()
+	{
+		base.OnLevelRotateBegin();
+		proRd.gravityScale = 0;
+	}
+
+	protected override void OnLevelRotateEnd()
+	{
+		base.OnLevelRotateEnd();
+		proRd.gravityScale = 0;
 	}
 }

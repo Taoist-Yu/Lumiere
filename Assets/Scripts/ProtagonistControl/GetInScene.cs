@@ -5,7 +5,7 @@ using UnityEngine;
 public class GetInScene : GameBehaviour
 {
 	//int getInScenceTime = 0;
-	public static bool inScence = false;
+	public static bool inScence = true;
 	public float speed = 2f;
 	[SerializeField]
 	float targetPositionX = 0;
