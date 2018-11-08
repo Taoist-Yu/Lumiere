@@ -6,37 +6,35 @@ public class RayLuncher : Entity {
 
 	protected Ray2D ray;
 	protected RaycastHit2D[] hitArray;
-	GameObject barrel;
+	protected GameObject barrel;
 
 	[Header("发射管最大旋转角度")]
 	public float angleRange = 90;
 	[Header("发射管初始角度")]
 	public float initialAngle = 0;
-
-	protected override void GameBehavierInit()
-	{
-		base.GameBehavierInit();
-		foreach(GameObject colliderObjert in colliders)
-		{
-			
-		}
-	}
+	public float angle;
 
 	private void Awake()
 	{
 		GameBehavierInit();
 		ray = new Ray2D();
-		barrel = GameObject.Find("Barrel");
+		barrel = transform.Find("Barrel").gameObject;
 	}
 
 	// Use this for initialization
 	void Start () {
 		scatteringMode = ScatteringMode.diffuse;
+		angle = initialAngle;
+		barrel.transform.rotation = Quaternion.Euler(0, 0, initialAngle);
+		if(barrel == null)
+		{
+			Debug.Log(1);
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		barrel.transform.rotation = Quaternion.Euler(0, 0, angle);
 	}
 
 	//生成一个Ray并发射

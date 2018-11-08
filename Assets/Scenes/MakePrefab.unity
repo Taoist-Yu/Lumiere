@@ -207,6 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623174480}
+  - component: {fileID: 623174481}
   m_Layer: 0
   m_Name: RayLuncher
   m_TagString: Untagged
@@ -229,6 +230,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &623174481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 623174479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5dc4a56d6d0954497df7ac103eeb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  colliderRoot: {fileID: 0}
+  angleRange: 0
+  initialAngle: 0
+  angle: 0
 --- !u!1 &684145868
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +339,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 693436029}
-  - component: {fileID: 693436030}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -344,21 +360,6 @@ Transform:
   m_Father: {fileID: 623174480}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &693436030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 693436028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5dc4a56d6d0954497df7ac103eeb79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliders: []
-  colliderRoot: {fileID: 0}
-  angleRange: 90
-  initialAngle: 0
 --- !u!1 &924569826
 GameObject:
   m_ObjectHideFlags: 0
