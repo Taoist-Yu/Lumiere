@@ -139,6 +139,6 @@ public class ProtagonistController : GameBehaviour
 	protected override void OnLevelRotateEnd()
 	{
 		base.OnLevelRotateEnd();
-		proRd.gravityScale = 0;
+		proRd.gravityScale = 1;
 	}
 }
