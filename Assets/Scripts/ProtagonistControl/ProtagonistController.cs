@@ -85,11 +85,13 @@ public class ProtagonistController : GameBehaviour
 			if (isJumping == 0)
 			{
 				anim.SetBool("IsJumping", true);
+				gameObject.GetComponent<BoxCollider2D>().enabled = false;
 			}
 			isJumping += 1;//避免多段跳
 		}
 		if (proRd.velocity.y < 0)
 		{
+			gameObject.GetComponent<BoxCollider2D>().enabled = true;
 			proRd.velocity += Vector2.up * Physics.gravity.y * (fallJumpMuti - 1) * Time.deltaTime;
 		}
 		else if (proRd.velocity.y > 0 && !GetInput.JumpLast)
