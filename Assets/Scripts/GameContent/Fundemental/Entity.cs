@@ -28,6 +28,11 @@ public class Entity : GameBehaviour {
 		colliders[3] = transform.Find("Colliders/WestCollider").gameObject;
 	}
 
+	protected void EntityUpdate()
+	{
+
+	}
+
 	private void Awake()
 	{
 		GameBehavierInit();
