@@ -26,8 +26,4 @@ public class GameBehaviour : MonoBehaviour {
 	protected virtual void OnLevelRotateEnd()
 	{ }
 
-	/*由光线类调用，不是事件函数*/
-	public virtual void OnLighting()
-	{ }
-
 }

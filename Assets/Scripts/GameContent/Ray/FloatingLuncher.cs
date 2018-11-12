@@ -19,11 +19,11 @@ public class FloatingLuncher : MonoBehaviour {
 	public float xRotateRange = 500;
 	public float zRotateRande = 500;
 
-	protected Transform Model;
+	protected Transform modelTransform;
 
 	private void Awake()
 	{
-		Model = transform.Find("Model");
+		modelTransform = transform.Find("Model");
 	}
 
 	// Use this for initialization
@@ -33,12 +33,12 @@ public class FloatingLuncher : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Model.localPosition = new Vector3(
-						Model.position.x,
+		modelTransform.localPosition = new Vector3(
+						modelTransform.localPosition.x,
 						offset * Mathf.Sin(Time.time * floatingSpeed),
-						Model.position.z
+						modelTransform.localPosition.z
 					);
-		Model.localRotation = Quaternion.Euler(
+		modelTransform.localRotation = Quaternion.Euler(
 						new Vector3(
 								Mathf.Sin(Time.time * xRotateSpeed) * xRotateRange,
 								Mathf.Sin((Time.time + 1.57f) * yRotateSpeed) * yRotateRange,

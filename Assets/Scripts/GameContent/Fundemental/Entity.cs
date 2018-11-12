@@ -64,4 +64,11 @@ public class Entity : GameBehaviour {
 		);
 	}
 
+	/*由光线类调用，不是事件函数
+	 * point: 光的入射点，世界坐标下
+	 * dirction: 光源方向，指向光源
+	 */
+	public virtual void OnLighting(Vector3 point, Vector3 dirction)
+	{ }
+
 }
