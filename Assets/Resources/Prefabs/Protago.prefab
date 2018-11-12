@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 198234030722475978}
   - component: {fileID: 199556010304706792}
   - component: {fileID: 114056808075920092}
+  - component: {fileID: 114564466084620842}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -42,7 +43,7 @@ GameObject:
   - component: {fileID: 114056086562437882}
   - component: {fileID: 50501711281564314}
   - component: {fileID: 61522802414701684}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Protago
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,13 +56,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1299267452021576}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.24800003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4927819937898170}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4927819937898170
 Transform:
   m_ObjectHideFlags: 1
@@ -69,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1777963688043752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.532, z: 0}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4123342839063492}
@@ -108,7 +109,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.112528, y: 0.3331231}
+  m_Offset: {x: -0.08562082, y: -0.9509114}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -119,7 +120,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.197774, y: 3.239302}
+  m_Size: {x: 0.34613144, y: 0.67123294}
   m_EdgeRadius: 0
 --- !u!95 &95544459610762686
 Animator:
@@ -150,10 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c8d53b43ded44eaffc7f697f1cb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.4
   fallJumpMuti: 2.5
   lowJumpMuti: 2
-  anim: {fileID: 0}
 --- !u!114 &114056808075920092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,6 +165,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5bcb233b1ee09d428ffa47a4ebf52ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114564466084620842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1299267452021576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad3dc06aa7fc264ab0d04936ae9d826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 40
 --- !u!198 &198234030722475978
 ParticleSystem:
   m_ObjectHideFlags: 1

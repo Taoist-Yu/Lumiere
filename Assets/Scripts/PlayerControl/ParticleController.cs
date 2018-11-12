@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleController : GameBehaviour
 {
 	float t_time = 0;
-	int numOfParticle = 1;
+	public  static int numOfParticle = 1;
 	ParticleSystem ps;
 	// Use this for initialization
 	void Start () {
