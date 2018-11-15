@@ -18,6 +18,8 @@ public class PlayerController : GameBehaviour
 	bool getToWall = false;
 	bool onTheGround = true;//状态改变由地面来实现
 
+	OperateInterface operateInterface;			//获取场景可交互物体的操作接口
+
 	private void Awake()
 	{
 		GameBehavierInit();
@@ -38,6 +40,7 @@ public class PlayerController : GameBehaviour
 			{
 				PlayerClimb();
 			}
+			PlayerOperate();
 		}
 	}
 
@@ -65,7 +68,6 @@ public class PlayerController : GameBehaviour
 			{
 				transform.rotation = Quaternion.Euler(0, 0, 0);
 			}
-			Debug.Log(playerRd.velocity.y);
 			if (playerRd.velocity.y > 0.3|| playerRd.velocity.y < -0.3)
 			{
 				playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 8, v) * speed * 8;
@@ -137,6 +139,20 @@ public class PlayerController : GameBehaviour
 			playerRd.velocity = new Vector3(0, 0, 0);
 		}
 	}
+	
+	//操作物体
+	void PlayerOperate()
+	{
+		if(GetInput.Operate && operateInterface != null)
+		{
+			if(ParticleController.numOfParticle >= operateInterface.LightNeed )
+			{
+				operateInterface.Operate(ParticleController.numOfParticle);
+				ParticleController.numOfParticle -= operateInterface.LightExpend;
+			}
+		}
+	}
+
 
 	protected override void OnLevelRotateBegin()
 	{
@@ -149,4 +165,27 @@ public class PlayerController : GameBehaviour
 		base.OnLevelRotateEnd();
 		playerRd.gravityScale = 1;
 	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		Debug.Log(collision.tag);
+		switch(collision.tag)
+		{
+			case "OperatedInterface":
+				Debug.Log(2);
+				operateInterface = collision.transform.parent.parent.GetComponent<OperateInterface>();
+				break;
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		switch (collision.tag)
+		{
+			case "OperatedInterface":
+				operateInterface = null;
+				break;
+		}
+	}
+
 }

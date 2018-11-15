@@ -87,7 +87,15 @@ class GetInput
 				Input.GetButton("Jump");
 		}
 	}
-
+	//操作物体
+	public static bool Operate
+	{
+		get
+		{
+			return
+				Input.GetKeyDown(KeyCode.F);
+		}
+	}
 
 }
 
