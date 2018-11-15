@@ -27,7 +27,7 @@ public class ParticleController : GameBehaviour
 			lightQuantity += 1;
 			ChangeParticleColor();
 			var num = ps.main;
-			num.maxParticles += 1;
+			num.maxParticles = numOfParticle;
 			ps.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
 			ps.Play();
 			t_time = 0;
