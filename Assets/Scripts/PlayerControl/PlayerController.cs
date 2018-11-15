@@ -148,7 +148,7 @@ public class PlayerController : GameBehaviour
 			if(ParticleController.numOfParticle >= operateInterface.LightNeed )
 			{
 				operateInterface.Operate(ParticleController.numOfParticle);
-				ParticleController.numOfParticle -= operateInterface.LightExpend;
+				//ParticleController.numOfParticle -= operateInterface.LightExpend;
 			}
 		}
 	}
