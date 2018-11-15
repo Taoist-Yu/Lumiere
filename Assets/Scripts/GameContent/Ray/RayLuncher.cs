@@ -11,7 +11,8 @@ public class RayLuncher : Entity {
 	protected MeshRenderer modelMeshRenderer;
 
 	protected bool isEmitting = true;		//是否正在发射光线 
-	protected Color color = Color.gray;	//当前发射器的颜色,默认为灰（代表空）
+	protected Color color = Color.gray;     //当前发射器的颜色,默认为灰（代表空）
+	protected int lightQuantity = 0;		//当前光量
 
 	[Header("发射管最大旋转角度")]
 	public float angleRange = 90;

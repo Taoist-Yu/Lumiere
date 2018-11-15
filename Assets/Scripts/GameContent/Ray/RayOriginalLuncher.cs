@@ -42,15 +42,18 @@ public class RayOriginalLuncher : RayLuncher {
 		isEmitting = false;
 	}
 
-	public void ChangeEmitStatus(Color color)
+	//返回值玩家的光量增量
+	public int ChangeEmitStatus(Color color)
 	{
 		if(isEmitting == true)
 		{
 			EndEmit();
+			return lightQuantity;
 		}
 		else
 		{
 			BeginEmit(color);
+			return 0;
 		}
 	}
 

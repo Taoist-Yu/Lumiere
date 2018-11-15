@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleController : GameBehaviour
 {
 	float t_time = 0;
-	public  static int numOfParticle = 1;
+	public static int lightQuantity = 1;
 	ParticleSystem ps;
 	// Use this for initialization
 	void Start () {
@@ -24,7 +24,7 @@ public class ParticleController : GameBehaviour
 		//G键控制粒子数量，待更改
 		if (Input.GetKeyDown(KeyCode.G))
 		{
-			numOfParticle += 1;
+			lightQuantity += 1;
 			ChangeParticleColor();
 			var num = ps.main;
 			num.maxParticles += 1;
@@ -52,7 +52,7 @@ public class ParticleController : GameBehaviour
 		//grad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.blue, 0.0f), new GradientColorKey(Color.red, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
 		var col = ps.colorOverLifetime;
 		col.color = Color.blue;
-		int i = numOfParticle % 6;
+		int i = lightQuantity % 6;
 		switch (i)
 		{
 			case 2:
