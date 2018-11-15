@@ -199,6 +199,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 23934291567281202, guid: df3d44410f8c56e4fae8c83ae9277073,
+        type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23934291567281202, guid: df3d44410f8c56e4fae8c83ae9277073,
+        type: 2}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23934291567281202, guid: df3d44410f8c56e4fae8c83ae9277073,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a24d30d3f56981546a66ea64b8117a5f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df3d44410f8c56e4fae8c83ae9277073, type: 2}
   m_IsPrefabAsset: 0
@@ -286,6 +301,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1194735114656964, guid: cdc37c131121b4840ae4226935af28c6, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23407175517930076, guid: cdc37c131121b4840ae4226935af28c6,
+        type: 2}
+      propertyPath: m_DynamicOccludee
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -546,15 +566,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4123682051434180, guid: cdc37c131121b4840ae4226935af28c6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.7
       objectReference: {fileID: 0}
     - target: {fileID: 4123682051434180, guid: cdc37c131121b4840ae4226935af28c6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.93
       objectReference: {fileID: 0}
     - target: {fileID: 4123682051434180, guid: cdc37c131121b4840ae4226935af28c6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4123682051434180, guid: cdc37c131121b4840ae4226935af28c6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -586,7 +606,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1291227215944114, guid: cdc37c131121b4840ae4226935af28c6, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc37c131121b4840ae4226935af28c6, type: 2}
