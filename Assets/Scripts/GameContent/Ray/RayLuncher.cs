@@ -8,7 +8,10 @@ public class RayLuncher : Entity {
 	protected RaycastHit2D[] hitArray;
 	protected LineRenderer lineRenderer;
 
-	protected bool isEmitting = true;	//是否正在发射光线 
+	protected MeshRenderer modelMeshRenderer;
+
+	protected bool isEmitting = true;		//是否正在发射光线 
+	protected Color color = Color.gray;	//当前发射器的颜色,默认为灰（代表空）
 
 	[Header("发射管最大旋转角度")]
 	public float angleRange = 90;
@@ -25,6 +28,7 @@ public class RayLuncher : Entity {
 		GameBehavierInit();
 		ray = new Ray2D();
 		lineRenderer = GetComponent<LineRenderer>();
+		modelMeshRenderer = transform.Find("Model").GetComponent<MeshRenderer>();
 	}
 
 	protected virtual void RayLuncherStart()
@@ -41,9 +45,11 @@ public class RayLuncher : Entity {
 	{
 		//重置线渲染器
 		lineRenderer.positionCount = 0;
+		//更新发射器颜色
+		modelMeshRenderer.material.color = color;
+		//发射光线
 		if (isEmitting)
 			EmitRay();
-
 	}
 
 	private void Awake()
@@ -59,16 +65,20 @@ public class RayLuncher : Entity {
 	// Update is called once per frame
 	void Update () {
 		RayLuncherUpdate();
+		
 	}
 
 	//生成一个Ray并发射
 	protected void EmitRay()
 	{
 		bool flag = false;  //是否检测到挡光实体
-
+		//设置射线检测
 		ray.direction = Quaternion.AngleAxis(angle, Vector3.forward) * transform.up;
 		ray.origin = (Vector2)transform.position + offset * ray.direction;
+		//设置LineRenderer
 		lineRenderer.positionCount = 2;
+		lineRenderer.startColor = color;
+		lineRenderer.endColor = color;
 
 		hitArray = Physics2D.RaycastAll(ray.origin, ray.direction);
 
@@ -83,7 +93,7 @@ public class RayLuncher : Entity {
 			if(other != null)
 			{
 				//激活目标的受光函数
-				other.OnLighting(hitArray[i].point, -ray.direction);
+				other.OnLighting(hitArray[i].point, -ray.direction, color);
 				//如果目标挡光(具有漫反射属性)，截断射线
 				if(other.scatteringMode == ScatteringMode.diffuse)
 				{
