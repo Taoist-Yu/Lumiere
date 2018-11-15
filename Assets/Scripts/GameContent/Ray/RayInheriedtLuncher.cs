@@ -9,6 +9,13 @@ public class RayInheriedtLuncher : RayLuncher {
 		base.RayLuncherAwake();
 	}
 
+	protected override void RayLuncherUpdate()
+	{
+		base.RayLuncherUpdate();
+		isEmitting = false;
+		color = Color.gray;
+	}
+
 	private void Awake()
 	{
 		RayLuncherAwake();
@@ -22,8 +29,6 @@ public class RayInheriedtLuncher : RayLuncher {
 	// Update is called once per frame
 	void Update () {
 		RayLuncherUpdate();
-		isEmitting = false;
-		color = Color.gray;
 	}
 
 	public override void OnLighting(Vector3 point, Vector3 dirction, Color color)
