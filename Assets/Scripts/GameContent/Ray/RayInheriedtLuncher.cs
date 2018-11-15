@@ -13,7 +13,7 @@ public class RayInheriedtLuncher : RayLuncher {
 	{
 		base.RayLuncherUpdate();
 		isEmitting = false;
-		color = Color.gray;
+		light = null;
 	}
 
 	private void Awake()
@@ -31,10 +31,10 @@ public class RayInheriedtLuncher : RayLuncher {
 		RayLuncherUpdate();
 	}
 
-	public override void OnLighting(Vector3 point, Vector3 dirction, Color color)
+	public override void OnLighting(Vector3 point, Vector3 dirction, Light light)
 	{
-		base.OnLighting(point, dirction, color);
-		this.color = color;
+		base.OnLighting(point, dirction, light);
+		this.light = light;
 		isEmitting = true;
 	}
 

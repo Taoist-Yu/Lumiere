@@ -145,14 +145,14 @@ public class PlayerController : GameBehaviour
 	{
 		if(GetInput.Operate && operateInterface != null)
 		{
-			if(ParticleController.lightQuantity >= operateInterface.LightNeed )
+			if(PlayerParticleController.lightQuantity >= operateInterface.lightNeed )
 			{
-				operateInterface.Operate(ParticleController.lightQuantity);
-				ParticleController.lightQuantity -= operateInterface.LightExpend;
+				operateInterface.Operate(PlayerParticleController.lightQuantity);
+				PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+				PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
 			}
 		}
 	}
-
 
 	protected override void OnLevelRotateBegin()
 	{

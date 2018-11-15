@@ -30,30 +30,32 @@ public class RayOriginalLuncher : RayLuncher {
 		RayLuncherUpdate();
 	}
 
-	private void BeginEmit(Color color)
+	private int BeginEmit(Light light)
 	{
-		this.color = color;
+		int delta = ((int)light.lightColor + 5 * (light.lightLevel - 1));
+		this.light = light;
 		isEmitting = true;
+		return -delta;
 	}
 
-	private void EndEmit()
+	private int EndEmit()
 	{
-		color = Color.gray;
+		int delta = ((int)light.lightColor + 5 * (light.lightLevel - 1));
+		light = null;
 		isEmitting = false;
+		return delta;
 	}
 
-	//返回值玩家的光量增量
-	public int ChangeEmitStatus(Color color)
+	//返回光的增量
+	public int ChangeEmitStatus(Light light)
 	{
 		if(isEmitting == true)
 		{
-			EndEmit();
-			return lightQuantity;
+			return EndEmit();
 		}
 		else
 		{
-			BeginEmit(color);
-			return 0;
+			return BeginEmit(light);
 		}
 	}
 

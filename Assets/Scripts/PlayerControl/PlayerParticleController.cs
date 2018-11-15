@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleController : GameBehaviour
+public class PlayerParticleController : GameBehaviour
 {
-	float t_time = 0;
+	static float t_time = 0;
 	public static int lightQuantity = 1;
-	ParticleSystem ps;
+	static ParticleSystem ps;
 	// Use this for initialization
 	void Start () {
 		ps = GetComponent<ParticleSystem>();
@@ -25,55 +25,48 @@ public class ParticleController : GameBehaviour
 		if (Input.GetKeyDown(KeyCode.G))
 		{
 			lightQuantity += 1;
-			ChangeParticleColor();
-			var num = ps.main;
-			num.maxParticles = numOfParticle;
-			ps.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
-			ps.Play();
-			t_time = 0;
+			UpdateParticle(lightQuantity);
 		}
-		/*if (Input.GetAxis("Horizontal") > 0)
-		{
-			transform.localScale = new Vector3(-1, 1, 1);
-		}
-		else
-		{
-			transform.localScale = new Vector3(1, 1, 1);
-		}*/
+
 		t_time += Time.deltaTime;
 	}
 
-	//变色
-	void ChangeParticleColor()
+	//n为粒子改变量
+	public static void UpdateParticle(int n)
 	{
 
-
+		lightQuantity = n;
 		//Gradient grad = new Gradient();
 		//grad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.blue, 0.0f), new GradientColorKey(Color.red, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+
+		//变色
 		var col = ps.colorOverLifetime;
-		col.color = Color.blue;
-		int i = lightQuantity % 6;
-		switch (i)
+		switch (lightQuantity % 5)
 		{
-			case 2:
+			case 1:
 				col.color = new Color(85f / 255f, 233f / 255f, 255f / 255f);
 				break;
-			case 3:
+			case 2:
 				col.color = new Color(166f / 255f, 255f / 255f, 165f / 255f);
 				break;
-			case 4:
+			case 3:
 				col.color = new Color(255f / 255f, 204f / 255f, 149f / 255f);
 				break;
-			case 5:
+			case 4:
 				col.color = new Color(255f / 255f, 133f / 255f, 132f / 255f);
 				break;
 			case 0:
 				col.color = Color.white;
 				break;
-			case 1:
-				col.color = new Color(109f / 255f, 109f / 255f, 109f / 255f);
-				break;
 			default: break;
 		}
+
+		//粒子操作
+		var num = ps.main;
+		num.maxParticles = lightQuantity;
+		ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+		ps.Play();
+		t_time = 0;
 	}
+
 }

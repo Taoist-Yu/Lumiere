@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class OperateInterface : MonoBehaviour {
 
-	public int LightNeed;       //需要的光源数量
-	public int LightExpend;		//对光源的消耗
+	public int lightNeed;       //需要的光源数量
+	public int deltaLightQuantity;		//光量增量
 
-	public virtual void Operate(int numOfLight)
+	public virtual void Operate(int lightQuantity)
 	{
 
 	}
