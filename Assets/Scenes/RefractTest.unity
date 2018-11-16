@@ -605,7 +605,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.8687057
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1001,7 +1001,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517178760}
-  - component: {fileID: 1517178763}
   - component: {fileID: 1517178762}
   - component: {fileID: 1517178761}
   - component: {fileID: 1517178764}
@@ -1095,7 +1094,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.33333397
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1141,24 +1140,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &1517178763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1517178759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ebbda1eb7e6d1948afd1405a14e0482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scatteringMode: 0
-  colliders: []
-  colliderRoot: {fileID: 0}
-  angleRange: 90
-  initialAngle: 0
-  offset: 0
-  angle: -15.99
 --- !u!114 &1517178764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1316,6 +1297,10 @@ GameObject:
   - component: {fileID: 1816003057}
   - component: {fileID: 1816003059}
   - component: {fileID: 1816003058}
+  - component: {fileID: 1816003063}
+  - component: {fileID: 1816003062}
+  - component: {fileID: 1816003061}
+  - component: {fileID: 1816003060}
   m_Layer: 0
   m_Name: SouthCollider
   m_TagString: Untagged
@@ -1371,6 +1356,74 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.10317469, y: 4.117155}
   - {x: 0.61812997, y: 3.5658607}
+--- !u!68 &1816003060
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1816003056}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.99513793, y: 3.5684998}
+  - {x: -0.10247731, y: 4.1149683}
+--- !u!68 &1816003061
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1816003056}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.9956262, y: 3.566364}
+  - {x: -0.826688, y: 2.669734}
+--- !u!68 &1816003062
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1816003056}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.788668, y: 2.6749718}
+  - {x: 0.6185224, y: 3.5607543}
+--- !u!68 &1816003063
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1816003056}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.10566639, y: 2.1186693}
+  - {x: 0.7865992, y: 2.6732433}
 --- !u!1 &1962840424
 GameObject:
   m_ObjectHideFlags: 0

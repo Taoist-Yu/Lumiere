@@ -11,6 +11,7 @@ public class EntityWithRefract : RefractLight
 	{
 		RayLuncherAwake();
 		defaultMatOfLight = this.GetComponent<LineRenderer>().material;
+		isEmitting = true;
 		Debug.Log(defaultMatOfLight);
 	}
 
@@ -24,6 +25,7 @@ public class EntityWithRefract : RefractLight
 		RayLuncherUpdate();
 	}
 
+	/*折射相关*/
 
 	//重写该方法使其支持折射
 	protected override void RayLuncherUpdate()
@@ -37,10 +39,12 @@ public class EntityWithRefract : RefractLight
 			Destroy(obj);
 		}
 		if (isEmitting)
+		{
 			EmitRayWithRefracting();
+		}
 	}
 
-
+	//支持折射的emit
 	protected void EmitRayWithRefracting()
 	{
 		bool flag = false;  //是否检测到挡光实体
@@ -68,29 +72,12 @@ public class EntityWithRefract : RefractLight
 				{
 					lineRenderer.SetPosition(0, ray.origin);
 					lineRenderer.SetPosition(1, hitArray[i].point + ray.direction * 0.1f);
-					//计算折射
+					//测试色散
 					Vector3[] lightDispertion = Refract(ray.direction, hitArray[i].normal, Color.white);
-					if (lightDispertion.Length == 4)//色散发生
+					lightOfDis.lightColor = Light.LightColor.blue;
+					if (lightDispertion.Length == 4)	//色散发生
 					{
-						Debug.Log("ok");
-						for (int j = 0; j < 4; j++)
-						{
-							GameObject tempLight = new GameObject("Empty");
-							tempLight.tag = "TempLight";
-							LineRenderer tempDispertion = tempLight.AddComponent<LineRenderer>();
-							tempDispertion.material = new Material(Shader.Find("UI/Default"));
-							//tempDispertion.material = new Material(defaultMatOfLight);
-							//tempDispertion.startColor = colorOflightDispertion[j];
-							//tempDispertion.endColor = colorOflightDispertion[j];
-							tempDispertion.positionCount = 2;
-							tempDispertion.startWidth = 0.1f;
-							tempDispertion.endWidth = tempDispertion.startWidth + 0.2f;
-							tempDispertion.material.color = colorOflightDispertion[j];
-							//Debug.Log(colorOflightDispertion[j]);
-							Vector3 startPos = new Vector3(hitArray[i].point.x, hitArray[i].point.y + 0.15f, 0) - new Vector3(0, 0.1f * j, 0);
-							tempDispertion.SetPosition(0, startPos);
-							tempDispertion.SetPosition(1, startPos + lightDispertion[j] * 10);
-						}
+						lightDispertionCal(i, lightDispertion);
 					}
 					flag = true;
 					break;
@@ -103,13 +90,5 @@ public class EntityWithRefract : RefractLight
 			lineRenderer.SetPosition(0, ray.origin);
 			lineRenderer.SetPosition(1, ray.origin + 20 * ray.direction);
 		}
-
-
-	}
-
-	//绘制色散光线
-	void DrawLightDispertion(RaycastHit2D hitPoint, Vector3[] lightDispertion)
-	{
-		
 	}
 }
