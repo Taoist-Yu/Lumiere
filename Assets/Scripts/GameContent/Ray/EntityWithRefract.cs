@@ -5,12 +5,14 @@ using UnityEngine;
 public class EntityWithRefract : RefractLight
 {
 	Material defaultMatOfLight;
+	Transform particlePrismTrans;
 
 	/*普通操作*/
 	private void Awake()
 	{
 		RayLuncherAwake();
 		defaultMatOfLight = this.GetComponent<LineRenderer>().material;
+		particlePrismTrans = GameObject.Find("ParticleAroundPrism").transform;
 		isEmitting = true;
 		Debug.Log(defaultMatOfLight);
 	}
@@ -80,6 +82,9 @@ public class EntityWithRefract : RefractLight
 						lightDispertionCal(i, lightDispertion);
 					}
 					flag = true;
+					ParticlePrism.playingParticle = true;
+					particlePrismTrans.gameObject.SendMessage("reEmitParticle", Color.white);
+					//ParticlePrismTest.reEmitParticle(Color.white);
 					break;
 				}
 			}
@@ -89,6 +94,10 @@ public class EntityWithRefract : RefractLight
 		{
 			lineRenderer.SetPosition(0, ray.origin);
 			lineRenderer.SetPosition(1, ray.origin + 20 * ray.direction);
+			ParticlePrism.playingParticle = false;
+			//ParticlePrismTest.reEmitParticle(Color.grey);
+			particlePrismTrans.gameObject.SendMessage("reEmitParticle",Color.grey);
+			//Debug.Log(ParticlePrismTest.colorOfParticle);
 		}
 	}
 }

@@ -73,7 +73,7 @@ public class RefractLight : RayLuncher
 			{
 				RaycastHit2D dispertionRayHit = hitArray[i];
 				int numOftotalReflecting = 0;
-				DrawLightDispertion(hitArray[i], lightDispertion[j], lightOfDis.Color);
+				//DrawLightDispertion(hitArray[i], lightDispertion[j], lightOfDis.Color);
 				do
 				{
 					dispertionRayHit = Physics2D.Raycast(dispertionRayHit.point + new Vector2(lightDispertion[j].x, lightDispertion[j].y) * 0.01f, lightDispertion[j]);
