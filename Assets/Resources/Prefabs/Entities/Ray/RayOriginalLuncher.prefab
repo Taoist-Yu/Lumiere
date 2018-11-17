@@ -55,8 +55,8 @@ GameObject:
   - component: {fileID: 4935268138589848}
   - component: {fileID: 120973651253984174}
   - component: {fileID: 114929743966328346}
-  - component: {fileID: 114034890969000824}
-  - component: {fileID: 114698681378183626}
+  - component: {fileID: 114383954802755748}
+  - component: {fileID: 114950655891719486}
   m_Layer: 0
   m_Name: LunchCore
   m_TagString: Untagged
@@ -427,25 +427,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &114034890969000824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1315088671296774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad8977c94679ae74285c49031ad3fdb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scatteringMode: 0
-  colliders: []
-  colliderRoot: {fileID: 0}
-  angleRange: 90
-  initialAngle: 0
-  offset: 0
-  angle: 0
---- !u!114 &114698681378183626
+--- !u!114 &114383954802755748
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -456,8 +438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ab1ce6fa76a634193fa56f49d7ff1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightNeed: 0
-  LightExpend: 0
+  lightNeed: 0
+  deltaLightQuantity: 0
 --- !u!114 &114929743966328346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -477,6 +459,25 @@ MonoBehaviour:
   yRotateRange: 500
   xRotateRange: 500
   zRotateRande: 500
+--- !u!114 &114950655891719486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1315088671296774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8977c94679ae74285c49031ad3fdb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatteringMode: 0
+  colliders: []
+  colliderRoot: {fileID: 0}
+  angleRange: 90
+  initialAngle: 0
+  offset: 0
+  angle: 0
+  angleSpeed: 100
 --- !u!120 &120973651253984174
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -492,7 +493,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d1c4ce9737347034397c88ecef36d44d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

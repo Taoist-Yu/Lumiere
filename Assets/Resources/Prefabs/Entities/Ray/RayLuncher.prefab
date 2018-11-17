@@ -51,9 +51,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4975168465898696}
-  - component: {fileID: 114512149603579556}
   - component: {fileID: 120313236624266716}
   - component: {fileID: 114694644947880182}
+  - component: {fileID: 114722588516277102}
+  - component: {fileID: 114713911422336160}
   m_Layer: 0
   m_Name: LunchCore
   m_TagString: Untagged
@@ -426,24 +427,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &114512149603579556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1144336863065168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5dc4a56d6d0954497df7ac103eeb79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scatteringMode: 0
-  colliders: []
-  colliderRoot: {fileID: 0}
-  angleRange: 90
-  initialAngle: 0
-  offset: 0.5
-  angle: 0
 --- !u!114 &114694644947880182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -463,6 +446,38 @@ MonoBehaviour:
   yRotateRange: 500
   xRotateRange: 500
   zRotateRande: 500
+--- !u!114 &114713911422336160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1144336863065168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5dc4a56d6d0954497df7ac103eeb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatteringMode: 0
+  colliders: []
+  colliderRoot: {fileID: 0}
+  angleRange: 90
+  initialAngle: 0
+  offset: 0
+  angle: 0
+  angleSpeed: 100
+--- !u!114 &114722588516277102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1144336863065168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255e7359cc1bd5e4ca244cb5b3e7b470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightNeed: 0
+  deltaLightQuantity: 0
 --- !u!120 &120313236624266716
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -478,7 +493,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d1c4ce9737347034397c88ecef36d44d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

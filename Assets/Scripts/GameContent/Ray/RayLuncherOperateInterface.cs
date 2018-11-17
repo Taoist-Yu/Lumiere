@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class RayLuncherOperateInterface : OperateInterface {
 
-	RayOriginalLuncher luncher;
+	private RayLuncher luncher;
 
 	private void Awake()
 	{
-		luncher = GetComponent<RayOriginalLuncher>();
+		luncher = GetComponent<RayLuncher>();
 	}
 
-	public override void Operate(int lightQuantity)
+	public override void Operating(int lightQuantity)
 	{
-		base.Operate(lightQuantity);
-		Light light = Light.GetLight(lightQuantity);
-		deltaLightQuantity = luncher.ChangeEmitStatus(light);
+		base.Operating(lightQuantity);
+		luncher.angle += luncher.angleSpeed * Time.deltaTime;
+		Debug.Log(1);
+	}
+
+	private void Update()
+	{
+		
 	}
 
 }

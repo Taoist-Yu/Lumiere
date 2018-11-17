@@ -41,6 +41,7 @@ public class PlayerController : GameBehaviour
 				PlayerClimb();
 			}
 			PlayerOperate();
+			PlayerOperating();
 		}
 	}
 
@@ -154,6 +155,20 @@ public class PlayerController : GameBehaviour
 		}
 	}
 
+	//持续操作物体
+	void PlayerOperating()
+	{
+		if(GetInput.Operating && operateInterface != null)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operating(PlayerParticleController.lightQuantity);
+				PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+				PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+			}
+		}
+	}
+
 	protected override void OnLevelRotateBegin()
 	{
 		base.OnLevelRotateBegin();
@@ -168,11 +183,9 @@ public class PlayerController : GameBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Debug.Log(collision.tag);
 		switch(collision.tag)
 		{
 			case "OperatedInterface":
-				Debug.Log(2);
 				operateInterface = collision.transform.parent.parent.GetComponent<OperateInterface>();
 				break;
 		}

@@ -97,5 +97,15 @@ class GetInput
 		}
 	}
 
+	//持续操作物体
+	public static bool Operating
+	{
+		get
+		{
+			return
+				Input.GetKey(KeyCode.V);
+		}
+	}
+
 }
 

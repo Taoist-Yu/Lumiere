@@ -47,15 +47,15 @@ public class Entity : GameBehaviour {
 	protected override void OnLevelRotateBegin()
 	{
 		base.OnLevelRotateBegin();
-		foreach(GameObject collider in colliders)
-		{
-			collider.SetActive(false);
-		}
 	}
 
 	protected override void OnLevelRotateEnd()
 	{
 		base.OnLevelRotateEnd();
+		foreach (GameObject collider in colliders)
+		{
+			collider.SetActive(false);
+		}
 		colliders[levelController.perspective].SetActive(true);
 		Debug.Log(1);
 		colliderRoot.transform.SetPositionAndRotation(

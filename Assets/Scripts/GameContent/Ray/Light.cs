@@ -46,8 +46,6 @@ public class Light
 	
 	public static Light GetLight(int LightQuantity)
 	{
-		if (LightQuantity == 0)
-			return null;
 		Light light = new Light();
 		switch (LightQuantity % 5)
 		{
@@ -67,8 +65,10 @@ public class Light
 				light.lightColor = LightColor.red;
 				break;
 		}
-		light.lightLevel = LightQuantity / 5 + 1;
-
+		light.lightLevel = (LightQuantity - 1) / 5 + 1;
+		if (LightQuantity == 0)
+			light.lightLevel = 0;
 		return light;
 	}
+
 }

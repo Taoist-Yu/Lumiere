@@ -21,6 +21,7 @@ public class RayLuncher : Entity {
 	public float offset = 0;
 	[Header("")]
 	public float angle;
+	public float angleSpeed = 100;
 
 	/*定义生命周期虚函数*/
 	protected virtual void RayLuncherAwake()
@@ -29,6 +30,12 @@ public class RayLuncher : Entity {
 		ray = new Ray2D();
 		lineRenderer = GetComponent<LineRenderer>();
 		modelMeshRenderer = transform.Find("Model").GetComponent<MeshRenderer>();
+
+		//将碰撞属性设置为触发器
+		foreach(GameObject collider in colliders)
+		{
+			collider.GetComponent<Collider2D>().isTrigger = true;
+		}
 	}
 
 	protected virtual void RayLuncherStart()
@@ -54,10 +61,20 @@ public class RayLuncher : Entity {
 		{
 			modelMeshRenderer.material.color = light.Color;
 		}
-		
 		//发射光线
 		if (isEmitting)
 			EmitRay();
+		//控制角度范围
+		if(angle > initialAngle + angleRange)
+		{
+			angle = initialAngle + angleRange;
+			angleSpeed *= -1;
+		}
+		else if(angle < initialAngle - angleRange)
+		{
+			angle = initialAngle - angleRange;
+			angleSpeed *= -1;
+		}
 	}
 
 	private void Awake()

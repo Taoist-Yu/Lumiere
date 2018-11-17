@@ -40,6 +40,8 @@ public class RayOriginalLuncher : RayLuncher {
 
 	private int EndEmit()
 	{
+		if (light == null)
+			return 0;
 		int delta = ((int)light.lightColor + 5 * (light.lightLevel - 1));
 		light = null;
 		isEmitting = false;
@@ -49,7 +51,7 @@ public class RayOriginalLuncher : RayLuncher {
 	//返回光的增量
 	public int ChangeEmitStatus(Light light)
 	{
-		if(isEmitting == true)
+		if(isEmitting == true || light.lightLevel == 0)
 		{
 			return EndEmit();
 		}

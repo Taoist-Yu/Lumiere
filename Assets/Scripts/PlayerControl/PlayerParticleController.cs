@@ -12,6 +12,7 @@ public class PlayerParticleController : GameBehaviour
 		ps = GetComponent<ParticleSystem>();
 		var col = ps.colorOverLifetime;
 		col.enabled = true;
+		UpdateParticle(lightQuantity);
 	}
 	
 	// Update is called once per frame

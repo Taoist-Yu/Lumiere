@@ -101,7 +101,8 @@ GameObject:
   - component: {fileID: 4762967238744026}
   - component: {fileID: 120886769570084614}
   - component: {fileID: 114027170293725902}
-  - component: {fileID: 114760033591412700}
+  - component: {fileID: 114909187130219254}
+  - component: {fileID: 114752593988345272}
   m_Layer: 0
   m_Name: LunchCore
   m_TagString: Untagged
@@ -445,7 +446,7 @@ MonoBehaviour:
   yRotateRange: 500
   xRotateRange: 500
   zRotateRande: 500
---- !u!114 &114760033591412700
+--- !u!114 &114752593988345272
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -463,6 +464,20 @@ MonoBehaviour:
   initialAngle: 0
   offset: 0
   angle: 0
+  angleSpeed: 100
+--- !u!114 &114909187130219254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1562772197984034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255e7359cc1bd5e4ca244cb5b3e7b470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightNeed: 0
+  deltaLightQuantity: 0
 --- !u!120 &120886769570084614
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -478,7 +493,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d1c4ce9737347034397c88ecef36d44d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
