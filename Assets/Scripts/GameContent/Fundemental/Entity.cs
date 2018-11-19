@@ -57,7 +57,6 @@ public class Entity : GameBehaviour {
 			collider.SetActive(false);
 		}
 		colliders[levelController.perspective].SetActive(true);
-		Debug.Log(1);
 		colliderRoot.transform.SetPositionAndRotation(
 			colliderRoot.transform.position,
 			Quaternion.Euler(0, 0, 0)
