@@ -67,7 +67,7 @@ public class Entity : GameBehaviour {
 	 * point: 光的入射点，世界坐标下
 	 * dirction: 光源方向，指向光源
 	 */
-	public virtual void OnLighting(RaycastHit2D hit, Vector3 dirction, RayLight light)
+	public virtual void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
 	{ }
 
 }
