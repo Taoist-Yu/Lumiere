@@ -32,7 +32,7 @@ public class TempLightRay : RayLuncher {
 	public void ResetRay(Vector2 rayDirection, Vector3 rayOrign, RayLight color)
 	{
 		ray.direction = rayDirection;
-		ray.origin = rayOrign;
+		ray.origin = rayOrign+0.01f*new Vector3(rayDirection.x, rayDirection.y,0);
 		rayColor = color;
 		EmitRay();
 	}
@@ -41,7 +41,6 @@ public class TempLightRay : RayLuncher {
 	protected override void EmitRay()
 	{
 		bool flag = false;  //是否检测到挡光实体
-							//设置射线检测
 
 		hitArray = Physics2D.RaycastAll(ray.origin, ray.direction);
 		lineRenderer = this.GetComponent<LineRenderer>();
@@ -61,7 +60,7 @@ public class TempLightRay : RayLuncher {
 				//如果目标挡光(具有漫反射属性)，截断射线
 				if (other.scatteringMode == ScatteringMode.diffuse)
 				{
-					lineRenderer.SetPosition(0, ray.origin);
+					//lineRenderer.SetPosition(0, ray.origin);
 					lineRenderer.SetPosition(1, hitArray[i].point);
 					flag = true;
 					break;

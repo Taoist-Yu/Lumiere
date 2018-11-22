@@ -72,7 +72,7 @@ public class RefractLight : Entity
 		Vector3 startPos = new Vector3(hitPoint.point.x, hitPoint.point.y, 0);
 		tempDispertion.SetPosition(0, startPos);
 		tempDispertion.SetPosition(1, startPos + lightDispertion * 30);
-		//tempLightRay.ResetRay(lightDispertion, startPos, light);
+		tempLightRay.ResetRay(lightDispertion, startPos, light);
 	}
 
 	//色散和折射实现函数
