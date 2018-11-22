@@ -10,8 +10,8 @@ public class RayLuncher : Entity {
 
 	protected MeshRenderer modelMeshRenderer;
 
-	protected bool isEmitting;       //是否正在发射光线 
-	protected new Light light;					//当前发射器里的光 
+	protected bool isEmitting;					//是否正在发射光线 
+	protected new RayLight light;					//当前发射器里的光 
 
 	[Header("发射管最大旋转角度")]
 	public float angleRange = 90;
@@ -46,6 +46,8 @@ public class RayLuncher : Entity {
 		//LineRenderer设置
 		lineRenderer.positionCount = 2;
 
+		//初始化isEmmiting
+		isEmitting = false;
 	}
 
 	protected virtual void RayLuncherUpdate()
@@ -93,7 +95,7 @@ public class RayLuncher : Entity {
 	}
 
 	//生成一个Ray并发射
-	protected void EmitRay()
+	protected virtual void EmitRay()
 	{
 		bool flag = false;  //是否检测到挡光实体
 		//设置射线检测
@@ -117,7 +119,7 @@ public class RayLuncher : Entity {
 			if(other != null)
 			{
 				//激活目标的受光函数
-				other.OnLighting(hitArray[i].point, -ray.direction, light);
+				other.OnLighting(hitArray[i], -ray.direction, light);
 				//如果目标挡光(具有漫反射属性)，截断射线
 				if(other.scatteringMode == ScatteringMode.diffuse)
 				{

@@ -31,9 +31,9 @@ public class RayInheriedtLuncher : RayLuncher {
 		RayLuncherUpdate();
 	}
 
-	public override void OnLighting(Vector3 point, Vector3 dirction, Light light)
+	public override void OnLighting(RaycastHit2D hit, Vector3 dirction, RayLight light)
 	{
-		base.OnLighting(point, dirction, light);
+		base.OnLighting(hit, dirction, light);
 		this.light = light;
 		isEmitting = true;
 	}

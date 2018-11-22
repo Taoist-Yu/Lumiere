@@ -15,7 +15,6 @@ public class RayLuncherOperateInterface : OperateInterface {
 	{
 		base.Operating(lightQuantity);
 		luncher.angle += luncher.angleSpeed * Time.deltaTime;
-		Debug.Log(1);
 	}
 
 	private void Update()

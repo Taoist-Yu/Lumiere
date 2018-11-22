@@ -68,7 +68,7 @@ public class EntityWithRefract : RefractLight
 			if (other != null)
 			{
 				//激活目标的受光函数
-				other.OnLighting(hitArray[i].point, -ray.direction, light);
+				other.OnLighting(hitArray[i], -ray.direction, light);
 				//如果目标挡光(具有漫反射属性)，截断射线
 				if (other.scatteringMode == ScatteringMode.diffuse)
 				{
@@ -76,7 +76,7 @@ public class EntityWithRefract : RefractLight
 					lineRenderer.SetPosition(1, hitArray[i].point + ray.direction * 0.1f);
 					//测试色散
 					Vector3[] lightDispertion = Refract(ray.direction, hitArray[i].normal, Color.white);
-					lightOfDis.lightColor = Light.LightColor.blue;
+					lightOfDis.lightColor = RayLight.LightColor.blue;
 					if (lightDispertion.Length == 4)	//色散发生
 					{
 						lightDispertionCal(i, lightDispertion);

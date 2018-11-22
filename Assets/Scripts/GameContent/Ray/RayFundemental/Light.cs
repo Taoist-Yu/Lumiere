@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class Light
+public class RayLight
 {
 	public enum LightColor
 	{
@@ -44,9 +44,9 @@ public class Light
 		}
 	}
 	
-	public static Light GetLight(int LightQuantity)
+	public static RayLight GetLight(int LightQuantity)
 	{
-		Light light = new Light();
+		RayLight light = new RayLight();
 		switch (LightQuantity % 5)
 		{
 			case 0:

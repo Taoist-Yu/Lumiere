@@ -8,7 +8,7 @@ public class RefractLight : RayLuncher
 
 	public static bool totalReflecting = false;  //是否发生全反射
 	bool inGlass = false; //是否在玻璃内
-	public Light lightOfDis = new Light(); //色散画线颜色
+	public RayLight lightOfDis = new RayLight(); //色散画线颜色
 
 	//根据现实物理来计算反射光
 	public Vector3 Refract(Vector3 inDirection, Vector3 inNormal, float c = 1.5f)

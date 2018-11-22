@@ -14,7 +14,7 @@ public class RayOriginalLuncherOperateInterface : OperateInterface {
 	public override void Operate(int lightQuantity)
 	{
 		base.Operate(lightQuantity);
-		Light light = Light.GetLight(lightQuantity);
+		RayLight light = RayLight.GetLight(lightQuantity);
 		deltaLightQuantity = luncher.ChangeEmitStatus(light);
 	}
 
