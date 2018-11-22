@@ -72,11 +72,11 @@ Category {
 				float partZ = i.projPos.z;
 				float fade = saturate (_InvFade * (sceneZ-partZ));
 				
-				i.color.a = ( tex2D(_MainTex, i.texcoord).r +  tex2D(_MainTex, i.texcoord).g +  tex2D(_MainTex, i.texcoord).b)/3;
-				i.color.rgb = i.color.rgb/2 + tex2D(_MainTex, i.texcoord).rgb/2;
+				i.color.a = 2.0f*( tex2D(_MainTex, i.texcoord).r +  tex2D(_MainTex, i.texcoord).g +  tex2D(_MainTex, i.texcoord).b)/3;
+
 				#endif
 				
-				return 2.0f * i.color * _TintColor * tex2D(_MainTex, i.texcoord);
+				return 1.5f * i.color * _TintColor * tex2D(_MainTex, i.texcoord);
 			}
 			ENDCG 
 		}
