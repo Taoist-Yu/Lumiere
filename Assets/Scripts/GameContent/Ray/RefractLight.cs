@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RefractLight : RayLuncher
+public class RefractLight : Entity
 {
-	/*该类只存放折射和色散相关函数,继承发射器功能*/
+	/*该类只存放折射和色散相关函数*/
 
 	public static bool totalReflecting = false;  //是否发生全反射
 	bool inGlass = false; //是否在玻璃内
 	public Light lightOfDis = new Light(); //色散画线颜色
+	public GameObject lightAfter;
 
 	//根据现实物理来计算反射光
 	public Vector3 Refract(Vector3 inDirection, Vector3 inNormal, float c = 1.5f)
@@ -56,54 +57,83 @@ public class RefractLight : RayLuncher
 		}
 	}
 
-	//计算并绘制色散
-	public void lightDispertionCal(int i, Vector3[] lightDispertion)
-	{
-		if (inGlass)
-		{
-			for (int j = 0; j < 4; j++)
-			{
-				DrawLightDispertion(hitArray[i], lightDispertion[j], lightOfDis.Color);
-				lightOfDis.lightColor++;
-			}
-		}
-		else
-		{
-			for (int j = 0; j < 4; j++)
-			{
-				RaycastHit2D dispertionRayHit = hitArray[i];
-				int numOftotalReflecting = 0;
-				//DrawLightDispertion(hitArray[i], lightDispertion[j], lightOfDis.Color);
-				do
-				{
-					dispertionRayHit = Physics2D.Raycast(dispertionRayHit.point + new Vector2(lightDispertion[j].x, lightDispertion[j].y) * 0.01f, lightDispertion[j]);
-					lightDispertion[j] = Refract(lightDispertion[j], dispertionRayHit.normal, 1 / Mathf.Sqrt(2));
-					numOftotalReflecting++;
-				} while (totalReflecting && numOftotalReflecting < 5);
-				if (numOftotalReflecting < 5)
-				{
-					DrawLightDispertion(dispertionRayHit, lightDispertion[j], lightOfDis.Color);
-				}
-				lightOfDis.lightColor++;
-			}
-		}
-	}
-
 	//绘制色散光线
-	public void DrawLightDispertion(RaycastHit2D hitPoint, Vector3 lightDispertion,Color color)
+	public void DrawLightDispertion(RaycastHit2D hitPoint, Vector3 lightDispertion,Light light)
 	{
-		GameObject tempLight = new GameObject("Empty");
-		tempLight.tag = "TempLight";
+		//GameObject tempLight = new GameObject("Empty");
+		//tempLight.AddComponent<Entity>();
+		GameObject tempLight = Instantiate(lightAfter);
+		tempLight.transform.parent = this.transform;
 		LineRenderer tempDispertion = tempLight.AddComponent<LineRenderer>();
-		tempDispertion.material = new Material(Shader.Find("UI/Default"));
+		tempDispertion.material = new Material(Shader.Find("LineLight"));
 		tempDispertion.positionCount = 2;
-		tempDispertion.startWidth = 0.1f;
+		tempDispertion.startWidth = 0.3f;
 		tempDispertion.endWidth = tempDispertion.startWidth + 0.2f;
-		tempDispertion.material.color = color;
+		tempDispertion.startColor = light.Color;
+		tempDispertion.endColor = light.Color;
 		Vector3 startPos = new Vector3(hitPoint.point.x, hitPoint.point.y, 0);
 		tempDispertion.SetPosition(0, startPos);
 		tempDispertion.SetPosition(1, startPos + lightDispertion * 30);
 	}
+
+	//色散和折射实现函数
+	public void LightReflection(RaycastHit2D hitPoint,Light colorOfLightIn,Vector3 directionOfLight)
+	{
+		Vector3[] lightDispertion = Refract(directionOfLight, hitPoint.normal, colorOfLightIn.Color);
+		lightOfDis.lightColor = Light.LightColor.blue;
+		if (lightDispertion.Length == 4)    //色散发生
+		{
+			Debug.Log("3");
+			if (inGlass)
+			{
+				for (int j = 0; j < 4; j++)
+				{
+					DrawLightDispertion(hitPoint, lightDispertion[j], lightOfDis);
+					lightOfDis.lightColor++;
+				}
+			}
+			else
+			{
+				for (int j = 0; j < 4; j++)
+				{
+					RaycastHit2D dispertionRayHit = hitPoint;
+					int numOftotalReflecting = 0;
+					do
+					{
+						dispertionRayHit = Physics2D.Raycast(dispertionRayHit.point + new Vector2(lightDispertion[j].x, lightDispertion[j].y) * 0.01f, lightDispertion[j]);
+						lightDispertion[j] = Refract(lightDispertion[j], dispertionRayHit.normal, 1 / Mathf.Sqrt(2));
+						numOftotalReflecting++;
+					} while (totalReflecting && numOftotalReflecting < 5);
+					if (numOftotalReflecting < 5)
+					{
+						DrawLightDispertion(dispertionRayHit, lightDispertion[j], lightOfDis);
+					}
+					lightOfDis.lightColor++;
+				}
+			}
+		}
+		else
+		{
+			if (inGlass)
+			{
+				DrawLightDispertion(hitPoint, lightDispertion[0], colorOfLightIn);
+			}
+			else
+			{
+				RaycastHit2D dispertionRayHit = hitPoint;
+				int numOftotalReflecting = 0;
+				do
+				{
+					dispertionRayHit = Physics2D.Raycast(dispertionRayHit.point + new Vector2(lightDispertion[0].x, lightDispertion[0].y) * 0.01f, lightDispertion[0]);
+					lightDispertion[0] = Refract(lightDispertion[0], dispertionRayHit.normal, Mathf.Sqrt(2));
+					numOftotalReflecting++;
+				} while (totalReflecting && numOftotalReflecting < 5);
+				DrawLightDispertion(dispertionRayHit, lightDispertion[0], lightOfDis);
+			}
+		}
+	}
+
+
 
 
 	/*色散

@@ -117,7 +117,8 @@ public class RayLuncher : Entity {
 			if(other != null)
 			{
 				//激活目标的受光函数
-				other.OnLighting(hitArray[i].point, -ray.direction, light);
+				other.OnLighting(hitArray[i], ray.direction, light);
+				Debug.Log("Y");
 				//如果目标挡光(具有漫反射属性)，截断射线
 				if(other.scatteringMode == ScatteringMode.diffuse)
 				{
@@ -134,7 +135,6 @@ public class RayLuncher : Entity {
 			lineRenderer.SetPosition(0, ray.origin);
 			lineRenderer.SetPosition(1, ray.origin + 20*ray.direction);
 		}
-
 	}
 
 }
