@@ -38,7 +38,7 @@ public class EntityWithRefract : RefractLight
 		}
 	}
 
-	public override void OnLighting(RaycastHit2D hit, Vector3 direction, Light light)
+	public override void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
 	{
 		LightReflection(hit, light, direction);
 		particlePrism.changePlayState(true);

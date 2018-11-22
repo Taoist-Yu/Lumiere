@@ -8,7 +8,7 @@ public class RefractLight : Entity
 
 	public static bool totalReflecting = false;  //是否发生全反射
 	bool inGlass = false; //是否在玻璃内
-	public Light lightOfDis = new Light(); //色散画线颜色
+	public RayLight lightOfDis = new RayLight(); //色散画线颜色
 	public GameObject lightAfter;
 
 	//根据现实物理来计算反射光
@@ -58,29 +58,29 @@ public class RefractLight : Entity
 	}
 
 	//绘制色散光线
-	public void DrawLightDispertion(RaycastHit2D hitPoint, Vector3 lightDispertion,Light light)
+	public void DrawLightDispertion(RaycastHit2D hitPoint, Vector3 lightDispertion, RayLight light)
 	{
 		//GameObject tempLight = new GameObject("Empty");
-		//tempLight.AddComponent<Entity>();
 		GameObject tempLight = Instantiate(lightAfter);
+		TempLightRay tempLightRay = tempLight.AddComponent<TempLightRay>();
 		tempLight.transform.parent = this.transform;
-		LineRenderer tempDispertion = tempLight.AddComponent<LineRenderer>();
-		tempDispertion.material = new Material(Shader.Find("LineLight"));
+		LineRenderer tempDispertion = tempLight.GetComponent<LineRenderer>();
 		tempDispertion.positionCount = 2;
-		tempDispertion.startWidth = 0.3f;
-		tempDispertion.endWidth = tempDispertion.startWidth + 0.2f;
+		tempDispertion.startWidth = 0.15f;
+		tempDispertion.endWidth = tempDispertion.startWidth + 0.15f;
 		tempDispertion.startColor = light.Color;
 		tempDispertion.endColor = light.Color;
 		Vector3 startPos = new Vector3(hitPoint.point.x, hitPoint.point.y, 0);
 		tempDispertion.SetPosition(0, startPos);
 		tempDispertion.SetPosition(1, startPos + lightDispertion * 30);
+		tempLightRay.ResetRay(lightDispertion, hitPoint.point, light);
 	}
 
 	//色散和折射实现函数
-	public void LightReflection(RaycastHit2D hitPoint,Light colorOfLightIn,Vector3 directionOfLight)
+	public void LightReflection(RaycastHit2D hitPoint, RayLight colorOfLightIn,Vector3 directionOfLight)
 	{
 		Vector3[] lightDispertion = Refract(directionOfLight, hitPoint.normal, colorOfLightIn.Color);
-		lightOfDis.lightColor = Light.LightColor.blue;
+		lightOfDis.lightColor = RayLight.LightColor.blue;
 		if (lightDispertion.Length == 4)    //色散发生
 		{
 			Debug.Log("3");
