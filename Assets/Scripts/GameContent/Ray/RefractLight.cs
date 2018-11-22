@@ -60,11 +60,11 @@ public class RefractLight : Entity
 	//绘制色散光线
 	public void DrawLightDispertion(RaycastHit2D hitPoint, Vector3 lightDispertion, RayLight light)
 	{
-		//GameObject tempLight = new GameObject("Empty");
 		GameObject tempLight = Instantiate(lightAfter);
 		TempLightRay tempLightRay = tempLight.AddComponent<TempLightRay>();
 		tempLight.transform.parent = this.transform;
-		LineRenderer tempDispertion = tempLight.GetComponent<LineRenderer>();
+		LineRenderer tempDispertion = tempLight.AddComponent<LineRenderer>();
+		tempDispertion.material = new Material(Shader.Find("LineLight"));
 		tempDispertion.positionCount = 2;
 		tempDispertion.startWidth = 0.15f;
 		tempDispertion.endWidth = tempDispertion.startWidth + 0.15f;
@@ -73,7 +73,7 @@ public class RefractLight : Entity
 		Vector3 startPos = new Vector3(hitPoint.point.x, hitPoint.point.y, 0);
 		tempDispertion.SetPosition(0, startPos);
 		tempDispertion.SetPosition(1, startPos + lightDispertion * 30);
-		tempLightRay.ResetRay(lightDispertion, hitPoint.point, light);
+		//tempLightRay.ResetRay(lightDispertion, startPos, light);
 	}
 
 	//色散和折射实现函数
@@ -83,7 +83,6 @@ public class RefractLight : Entity
 		lightOfDis.lightColor = RayLight.LightColor.blue;
 		if (lightDispertion.Length == 4)    //色散发生
 		{
-			Debug.Log("3");
 			if (inGlass)
 			{
 				for (int j = 0; j < 4; j++)
@@ -107,6 +106,7 @@ public class RefractLight : Entity
 					if (numOftotalReflecting < 5)
 					{
 						DrawLightDispertion(dispertionRayHit, lightDispertion[j], lightOfDis);
+						Debug.Log("3");
 					}
 					lightOfDis.lightColor++;
 				}
@@ -128,7 +128,10 @@ public class RefractLight : Entity
 					lightDispertion[0] = Refract(lightDispertion[0], dispertionRayHit.normal, Mathf.Sqrt(2));
 					numOftotalReflecting++;
 				} while (totalReflecting && numOftotalReflecting < 5);
-				DrawLightDispertion(dispertionRayHit, lightDispertion[0], lightOfDis);
+				if (numOftotalReflecting <= 5)
+				{
+					DrawLightDispertion(dispertionRayHit, lightDispertion[0], colorOfLightIn);
+				}
 			}
 		}
 	}

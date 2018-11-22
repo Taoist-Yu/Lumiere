@@ -61,8 +61,8 @@ public class TempLightRay : RayLuncher {
 				//如果目标挡光(具有漫反射属性)，截断射线
 				if (other.scatteringMode == ScatteringMode.diffuse)
 				{
-					//lineRenderer.SetPosition(0, ray.origin);
-					//lineRenderer.SetPosition(1, hitArray[i].point);
+					lineRenderer.SetPosition(0, ray.origin);
+					lineRenderer.SetPosition(1, hitArray[i].point);
 					flag = true;
 					break;
 				}
@@ -71,8 +71,8 @@ public class TempLightRay : RayLuncher {
 
 		if (flag == false)
 		{
-			lineRenderer.SetPosition(0, ray.origin);
-			lineRenderer.SetPosition(1, ray.origin + 20 * ray.direction);
+			//lineRenderer.SetPosition(0, ray.origin);
+			//lineRenderer.SetPosition(1, ray.origin + 20 * ray.direction);
 		}
 
 	}

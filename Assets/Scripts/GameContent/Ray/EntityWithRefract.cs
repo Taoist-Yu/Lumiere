@@ -22,8 +22,8 @@ public class EntityWithRefract : RefractLight
 		DestoryTempLight();
 		if (IsOnLight)
 		{
-			particlePrism.changePlayState(false);
 			particlePrism.reEmitParticle(Color.grey);
+			particlePrism.changePlayState(false);
 		}
 		IsOnLight = false;
 	}
@@ -41,8 +41,8 @@ public class EntityWithRefract : RefractLight
 	public override void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
 	{
 		LightReflection(hit, light, direction);
-		particlePrism.changePlayState(true);
 		particlePrism.reEmitParticle(light.Color);
+		particlePrism.changePlayState(true);
 		IsOnLight = true;
 	}
 }
