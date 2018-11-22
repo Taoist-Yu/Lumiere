@@ -10,6 +10,10 @@ public class EntityWithRefract : RefractLight
 	RefractLight prismRefract;
 	bool IsOnLight = false;
 
+	RaycastHit2D hitIt;
+	Vector3 directionIt;
+	RayLight lightIt;
+
 
 	private void Awake()
 	{
@@ -20,10 +24,16 @@ public class EntityWithRefract : RefractLight
 	private void Update()
 	{
 		DestoryTempLight();
-		if (IsOnLight)
+		if (!IsOnLight)
 		{
 			particlePrism.reEmitParticle(Color.grey);
 			particlePrism.changePlayState(false);
+		}
+		else
+		{
+			LightReflection(hitIt, lightIt, directionIt);
+			particlePrism.reEmitParticle(lightIt.Color);
+			particlePrism.changePlayState(true);
 		}
 		IsOnLight = false;
 	}
@@ -40,9 +50,9 @@ public class EntityWithRefract : RefractLight
 
 	public override void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
 	{
-		LightReflection(hit, light, direction);
-		particlePrism.reEmitParticle(light.Color);
-		particlePrism.changePlayState(true);
+		hitIt = hit;
+		directionIt = direction;
+		lightIt = light;
 		IsOnLight = true;
 	}
 }

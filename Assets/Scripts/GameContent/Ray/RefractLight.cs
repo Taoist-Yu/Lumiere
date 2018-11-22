@@ -60,14 +60,13 @@ public class RefractLight : Entity
 	//绘制色散光线
 	public void DrawLightDispertion(RaycastHit2D hitPoint, Vector3 lightDispertion, RayLight light)
 	{
-		GameObject tempLight = Instantiate(lightAfter);
+		GameObject tempLight = Instantiate(lightAfter, this.transform);
 		TempLightRay tempLightRay = tempLight.AddComponent<TempLightRay>();
-		tempLight.transform.parent = this.transform;
-		LineRenderer tempDispertion = tempLight.AddComponent<LineRenderer>();
-		tempDispertion.material = new Material(Shader.Find("LineLight"));
+		LineRenderer tempDispertion = tempLight.GetComponent<LineRenderer>();
+		//tempDispertion.material = new Material(Shader.Find("LineLight"));
 		tempDispertion.positionCount = 2;
-		tempDispertion.startWidth = 0.15f;
-		tempDispertion.endWidth = tempDispertion.startWidth + 0.15f;
+		tempDispertion.startWidth = 0.5f;
+		tempDispertion.endWidth = tempDispertion.startWidth;
 		tempDispertion.startColor = light.Color;
 		tempDispertion.endColor = light.Color;
 		Vector3 startPos = new Vector3(hitPoint.point.x, hitPoint.point.y, 0);

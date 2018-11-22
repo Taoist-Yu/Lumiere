@@ -173,7 +173,6 @@ public class PlayerController : GameBehaviour
 	{
 		if (GetInput.Operating && operateInterface != null)
 		{
-			Debug.Log(2);
 			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
 			{
 				operateInterface.Operating(PlayerParticleController.lightQuantity);
