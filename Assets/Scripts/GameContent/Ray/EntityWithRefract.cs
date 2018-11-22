@@ -31,7 +31,7 @@ public class EntityWithRefract : RefractLight
 		}
 		else
 		{
-			LightReflection(hitIt, lightIt, directionIt);
+			LightRefraction(hitIt, lightIt, directionIt);
 			particlePrism.reEmitParticle(lightIt.Color);
 			particlePrism.changePlayState(true);
 		}

@@ -76,7 +76,7 @@ public class RefractLight : Entity
 	}
 
 	//色散和折射实现函数
-	public void LightReflection(RaycastHit2D hitPoint, RayLight colorOfLightIn,Vector3 directionOfLight)
+	public void LightRefraction(RaycastHit2D hitPoint, RayLight colorOfLightIn,Vector3 directionOfLight)
 	{
 		Vector3[] lightDispertion = Refract(directionOfLight, hitPoint.normal, colorOfLightIn.Color);
 		lightOfDis.lightColor = RayLight.LightColor.blue;
