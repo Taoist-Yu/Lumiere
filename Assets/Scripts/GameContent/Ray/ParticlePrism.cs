@@ -11,7 +11,7 @@ public class ParticlePrism : MonoBehaviour {
 	public bool clockwise = false;   // 顺时针|逆时针
 	public float speed = 5f;        // 速度
 	public float pingPong = 0.02f;  // 游离范围
-	public static bool playingParticle = false;  //粒子效果开启|关闭
+	bool playingParticle = false;  //粒子效果开启|关闭
 
 	private ParticleSystem particleSys;  // 粒子系统
 	private ParticleSystem.Particle[] particleArr;  // 粒子数组
@@ -83,7 +83,7 @@ public class ParticlePrism : MonoBehaviour {
 		particleSys.SetParticles(particleArr, particleArr.Length);
 	}
 
-	void reEmitParticle(Color colorOfParticle)
+	public void reEmitParticle(Color colorOfParticle)
 	{
 		for (int i = 0; i < count; i++)
 		{
@@ -92,6 +92,11 @@ public class ParticlePrism : MonoBehaviour {
 		particleSys.Clear();
 		particleSys.Emit(count);
 		particleSys.SetParticles(particleArr, particleArr.Length);
+	}
+
+	public void changePlayState(bool playing)
+	{
+		playingParticle = playing;
 	}
 }
 
