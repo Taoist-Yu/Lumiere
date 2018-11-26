@@ -183,8 +183,11 @@ public class PlayerController : GameBehaviour
 			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
 			{
 				operateInterface.Operate(PlayerParticleController.lightQuantity);
-				PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
-				PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				if(operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
 			}
 		}
 	}
@@ -197,8 +200,11 @@ public class PlayerController : GameBehaviour
 			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
 			{
 				operateInterface.Operating(PlayerParticleController.lightQuantity);
-				PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
-				PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
 			}
 		}
 	}
