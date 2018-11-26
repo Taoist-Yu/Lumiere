@@ -124,7 +124,6 @@ public class PlayerController : GameBehaviour
 		}
 		if (IsFalling())
 		{
-			Debug.Log(1);
 			isJumping = 0;
 			anim.SetBool("IsJumping", false);
 			//留个bug，要是有人能精准掌握按下跳跃键的时间能实现多段跳（还需要欧气加成），目前没想到怎么解决
@@ -142,7 +141,6 @@ public class PlayerController : GameBehaviour
 		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 1.5f);
 		foreach(RaycastHit2D hit in hits)
 		{
-			Debug.Log(hit.transform.tag);
 			if (hit.transform.tag != "Player")
 				return true;
 		}

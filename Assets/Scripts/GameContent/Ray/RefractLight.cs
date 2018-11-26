@@ -105,7 +105,6 @@ public class RefractLight : Entity
 					if (numOftotalReflecting < 5)
 					{
 						DrawLightDispertion(dispertionRayHit, lightDispertion[j], lightOfDis);
-						Debug.Log("3");
 					}
 					lightOfDis.lightColor++;
 				}
