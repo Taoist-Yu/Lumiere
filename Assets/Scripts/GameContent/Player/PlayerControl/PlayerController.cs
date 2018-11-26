@@ -19,9 +19,9 @@ public class PlayerController : GameBehaviour
 	bool onTheGround = true; //状态改变由地面来实现
 	bool isRotating = false; //场景是否在旋转
 
-	Collision2D lastCollision;					//上一个发生碰撞的物体
+	Collision2D lastCollision;                  //上一个发生碰撞的物体
 
-	GameObject playerRenderer;					//玩家渲染器实例
+	GameObject playerRenderer;                  //玩家渲染器实例
 	OperateInterface operateInterface;          //获取场景可交互物体的操作接口
 
 	private void Awake()
@@ -39,7 +39,8 @@ public class PlayerController : GameBehaviour
 		playerRenderer.transform.localPosition = new Vector3(0, 0, -100);   //保持人物在屏幕前方
 	}
 
-	void Update() {
+	void Update()
+	{
 		if (GetInScene.inScence)
 		{
 			if (onTheGround)
@@ -71,7 +72,8 @@ public class PlayerController : GameBehaviour
 	{
 		if (GetInput.HorizonMove != 0)
 		{
-			anim.SetBool("IsWalking", true);
+			if(Mathf.Abs(playerRd.velocity.y) < 0.3f)
+				anim.SetBool("IsWalking", true);
 			float h = GetInput.HorizonMove;
 			float v = Input.GetAxis("Vertical");
 			if (h > 0)
@@ -120,12 +122,31 @@ public class PlayerController : GameBehaviour
 		{
 			playerRd.velocity += Vector2.up * Physics.gravity.y * (lowJumpMuti - 1) * Time.deltaTime;
 		}
-		if (playerRd.velocity.y == 0 && isJumping != 0)
+		if (IsFalling())
 		{
+			Debug.Log(1);
 			isJumping = 0;
 			anim.SetBool("IsJumping", false);
 			//留个bug，要是有人能精准掌握按下跳跃键的时间能实现多段跳（还需要欧气加成），目前没想到怎么解决
 		}
+	}
+	//判断是否落地
+	bool IsFalling()
+	{
+		if (playerRd.velocity.y > 0.3f)
+			return false;
+		if (playerRd.velocity.y < -0.3f)
+			return false;
+		if (isJumping == 0)
+			return false;
+		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 1.5f);
+		foreach(RaycastHit2D hit in hits)
+		{
+			Debug.Log(hit.transform.tag);
+			if (hit.transform.tag != "Player")
+				return true;
+		}
+		return false;
 	}
 
 	//攀爬
@@ -189,7 +210,7 @@ public class PlayerController : GameBehaviour
 			return;
 
 		transform.rotation = Quaternion.Euler(0, 0, 0);     //防止人物随场景旋转
-		playerRenderer.transform.localPosition = new Vector3(0, 0, -100);	//保持人物在屏幕前方
+		playerRenderer.transform.localPosition = new Vector3(0, 0, -100);   //保持人物在屏幕前方
 
 	}
 
@@ -229,7 +250,7 @@ public class PlayerController : GameBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		switch(collision.tag)
+		switch (collision.tag)
 		{
 			case "OperatedInterface":
 				operateInterface = collision.transform.parent.parent.GetComponent<OperateInterface>();

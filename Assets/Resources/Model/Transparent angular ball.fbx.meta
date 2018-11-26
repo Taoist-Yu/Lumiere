@@ -1,22 +1,14 @@
 fileFormatVersion: 2
-guid: 6f6115a9affd72b4f92832b103e28c64
+guid: 9213581c2ce5bfc4581f25cd19448476
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Camera
-    100002: Lamp
-    100004: //RootNode
-    100006: "\u68F1\u89D2\u7403"
-    400000: Camera
-    400002: Lamp
-    400004: //RootNode
-    400006: "\u68F1\u89D2\u7403"
-    2000000: Camera
-    2100000: "\u900F\u660E"
-    2300000: "\u68F1\u89D2\u7403"
-    3300000: "\u68F1\u89D2\u7403"
-    4300000: "\u68F1\u89D2\u7403"
-    10800000: Lamp
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Material.001
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Icosphere
   externalObjects: {}
   materials:
     importMaterials: 1
