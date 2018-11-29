@@ -21,7 +21,7 @@ public class TempLightRay : RayLuncher {
 
 	protected override void RayLuncherStart()
 	{
-		scatteringMode = ScatteringMode.diffuse;
+		scatteringMode = ScatteringMode.transmission;
 	}
 
 	protected override void RayLuncherUpdate()
@@ -37,7 +37,6 @@ public class TempLightRay : RayLuncher {
 		EmitRay();
 	}
 
-
 	protected override void EmitRay()
 	{
 		bool flag = false;  //是否检测到挡光实体
@@ -52,7 +51,6 @@ public class TempLightRay : RayLuncher {
 				continue;
 			//获得目标下的Entity脚本
 			Entity other = hitArray[i].transform.parent.parent.GetComponent<Entity>();
-
 			if (other != null)
 			{
 				//激活目标的受光函数

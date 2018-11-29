@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticlePrism : MonoBehaviour {
+public class ParticlePrism : GameBehaviour
+{
 
 	int count = 4;       // 粒子数量
 	float size = 0.3f;      // 粒子大小
@@ -18,7 +19,14 @@ public class ParticlePrism : MonoBehaviour {
 	private CirclePosition[] circle; // 极坐标数组
 
 	// Use this for initialization
-	void Start() {
+
+	private void Awake()
+	{
+		GameBehavierInit();
+	}
+
+	void Start()
+	{
 		particleArr = new ParticleSystem.Particle[count];
 		circle = new CirclePosition[count];
 
@@ -52,7 +60,16 @@ public class ParticlePrism : MonoBehaviour {
 				// 保证angle在0~360度
 				circle[i].angle = (360.0f + circle[i].angle) % 360.0f;
 				float theta = circle[i].angle / 180 * Mathf.PI;
-				particleArr[i].position = new Vector3(circle[i].radius * Mathf.Cos(theta), 0f, circle[i].radius * Mathf.Sin(theta));
+				if (levelController.perspective == 0 || levelController.perspective == 2)
+				{
+					particleArr[i].position = new Vector3(circle[i].radius * Mathf.Cos(theta), particleArr[i].position.y, circle[i].radius * Mathf.Sin(theta));
+				}
+				else
+				{
+					particleArr[i].position = new Vector3(particleArr[i].position.x, circle[i].radius * Mathf.Cos(theta), circle[i].radius * Mathf.Sin(theta));
+				}
+
+					
 			}
 			particleSys.SetParticles(particleArr, particleArr.Length);
 		}
@@ -76,8 +93,7 @@ public class ParticlePrism : MonoBehaviour {
 			float time = Random.Range(0.0f, 360.0f);
 
 			circle[i] = new CirclePosition(radius, angle, time);
-
-			particleArr[i].position = new Vector3(circle[i].radius * Mathf.Cos(theta), i * 1f, circle[i].radius * Mathf.Sin(theta));
+			particleArr[i].position = new Vector3(circle[i].radius * Mathf.Cos(theta), particleArr[i].position.y, circle[i].radius * Mathf.Sin(theta));
 		}
 
 		particleSys.SetParticles(particleArr, particleArr.Length);
@@ -98,8 +114,15 @@ public class ParticlePrism : MonoBehaviour {
 	{
 		playingParticle = playing;
 	}
-}
 
+	protected override void OnLevelRotateEnd()
+	{
+		if(levelController.perspective==1|| levelController.perspective == 3)
+		{
+			Debug.Log(levelController.perspective);
+		}
+	}
+}
 
 public class CirclePosition
 {

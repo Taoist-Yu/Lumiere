@@ -27,6 +27,7 @@ public class PlayerController : GameBehaviour
 	private void Awake()
 	{
 		GameBehavierInit();
+
 		playerRd = this.GetComponent<Rigidbody2D>();//获取刚体
 
 		playerRenderer = transform.Find("PlayerRenderer").gameObject;
