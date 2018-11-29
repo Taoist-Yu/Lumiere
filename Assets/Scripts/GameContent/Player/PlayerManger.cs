@@ -12,6 +12,7 @@ public class PlayerManger : MonoBehaviour {
 	bool isCameraMoving;                             //是否在相机动画（该动画不通过动画组件）
 	Vector3 startPos;
 	Vector3 endPos;
+	float cameraSpeed; 
 
 	private void Awake()
 	{
@@ -42,26 +43,40 @@ public class PlayerManger : MonoBehaviour {
 	void Respawn()
 	{
 		player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-		playerController.enabled = false;
-		startPos = playerCamera.transform.position;
-		endPos = playerStart.transform.position + 3 * Vector3.up;
-		startPos.z = -200;
-		endPos.z = -200;
-		isCameraMoving= true;
+		MoveCameraBegin(playerCamera.transform.position, playerStart.transform.position + 3 * Vector3.up);
 		player.transform.SetPositionAndRotation(
 			playerStart.transform.position,
 			Quaternion.Euler(0, 0, 0)
 		);
 	}
 
+	void MoveCameraBegin(Vector3 startPos,Vector3 endPos)
+	{
+		playerController.enabled = false;
+
+		startPos.z = -200;
+		endPos.z = -200;
+		this.startPos = startPos;
+		this.endPos = endPos;
+
+		cameraSpeed = 2.0f;
+		isCameraMoving = true;
+	}
+
+	void MoveCameraEnd()
+	{
+		isCameraMoving = false;
+		playerController.enabled = true;
+	}
+
 	void MoveCamera()
 	{
-		startPos = Vector3.Lerp(startPos, endPos, 2*Time.deltaTime);
-		if (Vector3.Distance(startPos, endPos) < 0.1f)
+		cameraSpeed += (10.0f - cameraSpeed) * Time.deltaTime;
+		startPos = Vector3.Lerp(startPos, endPos, cameraSpeed*Time.deltaTime);
+		if (Vector3.Distance(startPos, endPos) < 0.01f)
 		{
 			startPos = endPos;
-			isCameraMoving = false;
-			playerController.enabled = true;
+			MoveCameraEnd();
 		}
 
 		playerCamera.transform.position = startPos;

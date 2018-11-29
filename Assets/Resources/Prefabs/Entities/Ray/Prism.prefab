@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4948299026732502}
   - component: {fileID: 114050315513809400}
   m_Layer: 0
-  m_Name: RefractEntity
+  m_Name: Prism
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
