@@ -177,12 +177,38 @@ public class PlayerController : GameBehaviour
 	//操作物体
 	void PlayerOperate()
 	{
-		if (GetInput.Operate && operateInterface != null)
+		if (operateInterface == null)
+			return;
+		if (GetInput.Operate0)
 		{
 			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
 			{
-				operateInterface.Operate(PlayerParticleController.lightQuantity);
+				operateInterface.Operate0(PlayerParticleController.lightQuantity);
 				if(operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
+			}
+		}
+		if (GetInput.Operate1)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operate1(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
+			}
+		}
+		if (GetInput.Operate2)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operate2(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
 				{
 					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
 					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
@@ -194,11 +220,37 @@ public class PlayerController : GameBehaviour
 	//持续操作物体
 	void PlayerOperating()
 	{
-		if (GetInput.Operating && operateInterface != null)
+		if (operateInterface == null)
+			return;
+		if (GetInput.Operating0)
 		{
 			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
 			{
-				operateInterface.Operating(PlayerParticleController.lightQuantity);
+				operateInterface.Operating0(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
+			}
+		}
+		if (GetInput.Operating1)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operating1(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
+			}
+		}
+		if (GetInput.Operating2)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operating2(PlayerParticleController.lightQuantity);
 				if (operateInterface.deltaLightQuantity != 0)
 				{
 					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;

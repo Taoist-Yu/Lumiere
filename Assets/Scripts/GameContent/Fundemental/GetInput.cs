@@ -12,7 +12,7 @@ class GetInput
 		get
 		{
 			return
-				Input.GetKeyDown(KeyCode.Q);
+				Input.GetKeyDown(KeyCode.A);
 		}
 	}
 
@@ -22,7 +22,7 @@ class GetInput
 		get
 		{
 			return
-				Input.GetKeyDown(KeyCode.E);
+				Input.GetKeyDown(KeyCode.D);
 		}
 	}
 
@@ -87,8 +87,8 @@ class GetInput
 				Input.GetButton("Jump");
 		}
 	}
-	//操作物体
-	public static bool Operate
+	//操作物体0
+	public static bool Operate0
 	{
 		get
 		{
@@ -97,15 +97,54 @@ class GetInput
 		}
 	}
 
-	//持续操作物体
-	public static bool Operating
+	//操作物体0
+	public static bool Operate1
 	{
 		get
 		{
 			return
-				Input.GetKey(KeyCode.V);
+				Input.GetKeyDown(KeyCode.Q);
 		}
 	}
 
+	//操作物体0
+	public static bool Operate2
+	{
+		get
+		{
+			return
+				Input.GetKeyDown(KeyCode.E);
+		}
+	}
+
+	//持续操作物体0
+	public static bool Operating0
+	{
+		get
+		{
+			return
+				Input.GetKey(KeyCode.F);
+		}
+	}
+
+	//持续操作物体1
+	public static bool Operating1
+	{
+		get
+		{
+			return
+				Input.GetKey(KeyCode.Q);
+		}
+	}
+
+	//持续操作物体2
+	public static bool Operating2
+	{
+		get
+		{
+			return
+				Input.GetKey(KeyCode.E);
+		}
+	}
 }
 

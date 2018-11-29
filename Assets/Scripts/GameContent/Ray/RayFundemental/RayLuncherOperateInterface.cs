@@ -11,10 +11,16 @@ public class RayLuncherOperateInterface : OperateInterface {
 		luncher = GetComponent<RayLuncher>();
 	}
 
-	public override void Operating(int lightQuantity)
+	public override void Operating1(int lightQuantity)
 	{
-		base.Operating(lightQuantity);
+		base.Operating1(lightQuantity);
 		luncher.angle += luncher.angleSpeed * Time.deltaTime;
+	}
+
+	public override void Operating2(int lightQuantity)
+	{
+		base.Operating2(lightQuantity);
+		luncher.angle -= luncher.angleSpeed * Time.deltaTime;
 	}
 
 	private void Update()

@@ -12,12 +12,32 @@ public class OperateInterface : MonoBehaviour {
 		
 	}
 
-	public virtual void Operate(int lightQuantity)
+	public virtual void Operate0(int lightQuantity)
 	{
 		deltaLightQuantity = 0;
 	}
 
-	public virtual void Operating(int lightQuantity)
+	public virtual void Operate1(int lightQuantity)
+	{
+		deltaLightQuantity = 0;
+	}
+
+	public virtual void Operate2(int lightQuantity)
+	{
+		deltaLightQuantity = 0;
+	}
+
+	public virtual void Operating0(int lightQuantity)
+	{
+		deltaLightQuantity = 0;
+	}
+
+	public virtual void Operating1(int lightQuantity)
+	{
+		deltaLightQuantity = 0;
+	}
+
+	public virtual void Operating2(int lightQuantity)
 	{
 		deltaLightQuantity = 0;
 	}

@@ -55,7 +55,7 @@ public class RayLuncher : Entity {
 		//重置线渲染器
 		lineRenderer.positionCount = 0;
 		//更新发射器颜色
-		if(light == null)
+		if (light == null)
 		{
 			modelMeshRenderer.material.color = Color.gray;
 		}
@@ -66,8 +66,8 @@ public class RayLuncher : Entity {
 		//发射光线
 		if (isEmitting)
 			EmitRay();
-		//控制角度范围
-		if(angle > initialAngle + angleRange)
+		//控制角度范围,不确定该功能需不需要
+		/*if(angle > initialAngle + angleRange)
 		{
 			angle = initialAngle + angleRange;
 			angleSpeed *= -1;
@@ -76,7 +76,7 @@ public class RayLuncher : Entity {
 		{
 			angle = initialAngle - angleRange;
 			angleSpeed *= -1;
-		}
+		}*/
 	}
 
 	private void Awake()

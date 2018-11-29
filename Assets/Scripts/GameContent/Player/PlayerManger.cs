@@ -29,7 +29,7 @@ public class PlayerManger : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		transform.SetPositionAndRotation(new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+//		transform.SetPositionAndRotation(new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
 		if(player.transform.position.y < -20.0f)
 		{
 			Respawn();
