@@ -26,4 +26,11 @@ public class GameBehaviour : MonoBehaviour {
 	protected virtual void OnLevelRotateEnd()
 	{ }
 
+	private void OnDestroy()
+	{
+		Debug.Log("Destory");
+		levelController.LevelRotateBeginEvent -= OnLevelRotateBegin;
+		levelController.LevelRotateEndEvent -= OnLevelRotateEnd;
+	}
+
 }

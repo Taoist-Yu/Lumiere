@@ -74,10 +74,4 @@ public class TempLightRay : RayLuncher {
 
 	}
 
-	private void OnDestroy()
-	{
-		levelController.LevelRotateBeginEvent -= OnLevelRotateBegin;
-		levelController.LevelRotateEndEvent -= OnLevelRotateEnd;
-	}
-
 }
