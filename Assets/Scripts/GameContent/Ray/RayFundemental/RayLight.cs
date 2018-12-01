@@ -17,6 +17,14 @@ public class RayLight
 	public LightColor lightColor;
 	public int lightLevel;
 
+	public int LightQuantity
+	{
+		get
+		{
+			return (int)lightColor + 5 * lightLevel;
+		}
+	}
+
 	public Color Color
 	{
 		get
