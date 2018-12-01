@@ -6,7 +6,7 @@ public class PlayerController : GameBehaviour
 {
 	[SerializeField]
 	[Range(0.1f, 1f)]
-	float speed = 0.2f;
+	float speed = 1.0f;
 	[SerializeField]
 	[Header("下降加速")]
 	float fallJumpMuti = 2.5f;//长按下降加速
@@ -32,7 +32,7 @@ public class PlayerController : GameBehaviour
 
 		playerRenderer = transform.Find("PlayerRenderer").gameObject;
 		anim = playerRenderer.GetComponent<Animator>();
-		anim.speed = 1.5f;
+		anim.speed = 3.0f;
 	}
 
 	private void Start()
@@ -106,7 +106,7 @@ public class PlayerController : GameBehaviour
 		if (GetInput.JumpStart && isJumping <= 1)
 		{
 			playerRd.gravityScale = 1;
-			playerRd.velocity = Vector3.up * speed * 40 / 2;
+			playerRd.velocity = Vector3.up * speed * 40 / 4;
 			if (isJumping == 0)
 			{
 				anim.SetBool("IsJumping", true);
