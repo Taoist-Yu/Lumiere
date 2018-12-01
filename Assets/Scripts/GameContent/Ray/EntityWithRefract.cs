@@ -17,8 +17,8 @@ public class EntityWithRefract : RefractLight
 
 	private void Awake()
 	{
-		particlePrism = this.GetComponentInChildren<ParticlePrism>();
 		GameBehavierInit();
+		particlePrism = this.GetComponentInChildren<ParticlePrism>();
 	}
 
 	private void Update()

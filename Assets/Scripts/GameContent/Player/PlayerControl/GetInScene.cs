@@ -13,6 +13,12 @@ public class GetInScene : GameBehaviour
 	float targetPositionY = 3;
 	[SerializeField]
 	float targetPositionZ = -15;
+
+	private void Awake()
+	{
+		GameBehavierInit();
+	}
+
 	// Use this for initialization
 	void Start () {
 	}

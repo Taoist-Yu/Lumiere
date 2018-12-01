@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class test : MonoBehaviour {
+public class GameAwake : MonoBehaviour {
 
 	private void Awake()
 	{

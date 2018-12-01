@@ -10,7 +10,7 @@ public class RayLuncher : Entity {
 
 	protected MeshRenderer modelMeshRenderer;
 
-	protected bool isEmitting;					//是否正在发射光线 
+	protected bool isEmitting;						//是否正在发射光线 
 	protected new RayLight light;					//当前发射器里的光 
 
 	[Header("发射管最大旋转角度")]

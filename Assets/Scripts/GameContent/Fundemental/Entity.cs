@@ -10,6 +10,7 @@ public class Entity : GameBehaviour {
 		diffuse,            //漫反射，吸收光
 		transmission,       //透射，光的方向不变直接穿过
 	}
+	[Header("受光模式")]
 	public ScatteringMode scatteringMode = ScatteringMode.diffuse;      //默认为漫反射
 
 	//四面碰撞体数组

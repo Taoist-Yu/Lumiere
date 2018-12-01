@@ -10,6 +10,11 @@ public class RefractLight : Entity
 	bool inGlass = false; //是否在玻璃内
 	public GameObject lightAfter;
 
+	private void Awake()
+	{
+		GameBehavierInit();	
+	}
+
 	//根据现实物理来计算反射光
 	public Vector3 Refract(Vector3 inDirection, Vector3 inNormal, float c = 1.5f)
 	{

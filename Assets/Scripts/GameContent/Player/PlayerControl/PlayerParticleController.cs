@@ -7,6 +7,12 @@ public class PlayerParticleController : GameBehaviour
 	static float t_time = 0;
 	public static int lightQuantity = 1;
 	static ParticleSystem ps;
+
+	private void Awake()
+	{
+		GameBehavierInit();
+	}
+
 	// Use this for initialization
 	void Start () {
 		ps = GetComponent<ParticleSystem>();

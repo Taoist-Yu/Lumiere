@@ -78,5 +78,13 @@ public class RayLight
 			light.lightLevel = 0;
 		return light;
 	}
+	
+	public static RayLight GetLight(LightColor color,int level)
+	{
+		RayLight light = new RayLight();
+		light.lightColor = color;
+		light.lightLevel = level;
+		return light;
+	}
 
 }

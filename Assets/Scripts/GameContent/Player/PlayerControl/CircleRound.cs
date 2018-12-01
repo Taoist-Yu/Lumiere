@@ -6,6 +6,11 @@ public class CircleRound : GameBehaviour {
 	[SerializeField]
 	float speed = 40f;
 
+	private void Awake()
+	{
+		GameBehavierInit();
+	}
+
 	// Use this for initialization
 	void Start () {
 	}

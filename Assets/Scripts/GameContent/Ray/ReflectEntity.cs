@@ -6,7 +6,6 @@ public class ReflectEntity : RayLuncher {
 
 	[Header("反射器的颜色属性")]
 	public Color color = Color.yellow;		//RayLuncher中颜色是由light决定，该类中重写了此规则
-	
 
 	protected override void RayLuncherUpdate()
 	{
