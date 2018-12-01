@@ -29,11 +29,6 @@ public class Entity : GameBehaviour {
 		colliders[3] = transform.Find("Colliders/WestCollider").gameObject;
 	}
 
-	protected void EntityUpdate()
-	{
-
-	}
-
 	private void Awake()
 	{
 		GameBehavierInit();
@@ -41,8 +36,7 @@ public class Entity : GameBehaviour {
 
 	private void Start()
 	{
-		for (int i = 1; i < 4; i++)
-			colliders[i].SetActive(false);
+
 	}
 
 	protected override void OnLevelRotateBegin()

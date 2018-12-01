@@ -309,7 +309,7 @@ Transform:
   m_GameObject: {fileID: 1446210640039412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4955051973463942}
   - {fileID: 4498175027290340}
@@ -652,7 +652,7 @@ MonoBehaviour:
   initialAngle: 0
   offset: 0
   angle: 0
-  angleSpeed: 100
+  angleSpeed: 30
 --- !u!120 &120973651253984174
 LineRenderer:
   m_ObjectHideFlags: 1

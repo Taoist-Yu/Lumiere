@@ -291,7 +291,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360838227078246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.04, y: 9.25, z: 0}
+  m_LocalPosition: {x: 10.8, y: 1.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4895567235515496}
@@ -397,8 +397,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1959163059793946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49, y: -1.64, z: 3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.7, y: 4.73, z: 3}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4034317147264690}
   - {fileID: 4427867730566928}
@@ -452,7 +452,7 @@ Transform:
   m_GameObject: {fileID: 1440209029832910}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4109652299287624}
   - {fileID: 4514147676012030}
@@ -731,9 +731,9 @@ MonoBehaviour:
   scatteringMode: 0
   colliders: []
   colliderRoot: {fileID: 0}
-  lightColorNeed: 0
-  lightLevelNeed: 0
-  isLightNeed: 0
-  speed: 10
-  upperLimit: 3
+  lightColorNeed: 3
+  lightLevelNeed: 2
+  isLightNeed: 1
+  speed: 2
+  upperLimit: 5
   direction: {x: 0, y: 1}

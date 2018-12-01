@@ -639,7 +639,7 @@ MonoBehaviour:
   initialAngle: 0
   offset: 0
   angle: 0
-  angleSpeed: 100
+  angleSpeed: 30
 --- !u!114 &114909187130219254
 MonoBehaviour:
   m_ObjectHideFlags: 1
