@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4192646500228194}
   - component: {fileID: 33727463256713966}
   - component: {fileID: 23707995824565190}
-  - component: {fileID: 135473896981381796}
+  - component: {fileID: 114108852234162962}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -324,6 +324,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114108852234162962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908605505441104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b128a2095709d4ca59a37329085fa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114396267420470540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,15 +366,3 @@ MonoBehaviour:
   - {fileID: 1987736601375468}
   - {fileID: 1068532076572022}
   colliderRoot: {fileID: 1642218090362952}
---- !u!135 &135473896981381796
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1908605505441104}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

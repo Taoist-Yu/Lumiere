@@ -2,32 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReflectEntity : RayLuncher {
+public class ReflectEntity : Entity {
 
-	[Header("反射器的颜色属性")]
-	public Color color = Color.yellow;		//RayLuncher中颜色是由light决定，该类中重写了此规则
+	[Header("反射器模型的颜色属性")]
+	public Color color = Color.yellow;
 
-	protected override void RayLuncherUpdate()
+	//反射器模型的引用
+	protected MeshRenderer modelMeshRenderer;
+
+	//用于clone反射光的原型
+	public GameObject linePrototype;		
+
+	//反射光结构体
+	private struct ReflectLight
 	{
-		base.RayLuncherUpdate();
-		isEmitting = false;
-		light = null;
-		modelMeshRenderer.material.color = color;       //在base中颜色被修改，这里将颜色重设
+		public RayLight light;
+		public Ray ray;
+		public GameObject line;
 	}
+	private List<ReflectLight> reflectLights;
 
 	private void Awake()
 	{
-		RayLuncherAwake();
+		GameBehavierInit();
+		reflectLights = new List<ReflectLight>();
+		modelMeshRenderer = transform.Find("Model").GetComponent<MeshRenderer>();
+		modelMeshRenderer.material.color = color;
 	}
 
 	// Use this for initialization
 	void Start () {
-		RayLuncherStart();
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		RayLuncherUpdate();
+
+		foreach (ReflectLight reflectLight in reflectLights)
+		{
+			EmitRay(reflectLight.light, reflectLight.ray, reflectLight.line.GetComponent<LineRenderer>());
+			reflectLight.line.GetComponent<ReflectRay>().isUsed = true;
+		}
+
+		//重置光线
+		foreach (ReflectLight reflect in reflectLights)
+		{
+//			Destroy(reflect.line,0.01f);
+		}
+		reflectLights = new List<ReflectLight>();
 	}
 
 	public override void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
@@ -37,26 +59,39 @@ public class ReflectEntity : RayLuncher {
 		//将向量坐标归一化
 		direction = direction.normalized;
 
-		//计算反射光
-		ray.origin = hit.point;
-		ray.direction = Vector2.Reflect(-direction, hit.normal);
-		this.light = light;
+		//计算反射光方向
+		Ray ray = new Ray
+		{
+			origin = hit.point,
+			direction = Vector2.Reflect(-direction, hit.normal)
+		};
 
-		//发射光线
-		isEmitting = true;
+		//生成一个lineRendererCarrier的实例
+		GameObject lineInstance = Instantiate(linePrototype, this.transform);
+		lineInstance.AddComponent<ReflectRay>();
+
+		//整合反射光属性
+		ReflectLight reflectLight = new ReflectLight
+		{
+			light = light,
+			ray = ray,
+			line = lineInstance
+		};
+
+		//将反射光添加进链表
+		reflectLights.Add(reflectLight);
 	}
 
-	protected override void EmitRay()
+	protected void EmitRay(RayLight light,Ray ray,LineRenderer lineRenderer)
 	{
-		/*方法完全重写,从而保证ray属性由OnLighting确定*/
-
 		bool flag = false;  //是否检测到挡光实体
+
 		//设置LineRenderer
 		lineRenderer.positionCount = 2;
 		lineRenderer.startColor = light.Color;
 		lineRenderer.endColor = light.Color;
 
-		hitArray = Physics2D.RaycastAll(ray.origin, ray.direction);
+		RaycastHit2D[] hitArray = Physics2D.RaycastAll(ray.origin, ray.direction);
 
 		for (int i = 0; i < hitArray.Length; i++)
 		{
