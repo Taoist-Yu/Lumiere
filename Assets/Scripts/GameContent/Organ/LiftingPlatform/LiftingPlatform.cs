@@ -5,6 +5,7 @@ using UnityEngine;
 public class LiftingPlatform : Organ {
 
 	GameObject platform;
+	LiftingPlatformEffect effect;
 
 	public float speed = 10.0f;
 	public float upperLimit = 3.0f;
@@ -18,6 +19,8 @@ public class LiftingPlatform : Organ {
 	{
 		base.Awake();
 		platform = transform.parent.Find("Platform").gameObject;
+		effect = transform.Find("Model").GetComponent<LiftingPlatformEffect>();
+		effect.rayLight = lightNeed;
 		originPos = platform.transform.position;
 	}
 	

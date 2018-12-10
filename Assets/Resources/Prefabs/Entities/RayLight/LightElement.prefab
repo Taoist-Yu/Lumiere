@@ -362,13 +362,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0789e9a264811f4fb8a6dda9c1f31bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scatteringMode: 0
+  scatteringMode: 1
   colliders:
   - {fileID: 1887672591005278}
   - {fileID: 1314156445652058}
   - {fileID: 1987736601375468}
   - {fileID: 1068532076572022}
   colliderRoot: {fileID: 1642218090362952}
+  south: 1
+  east: 1
+  north: 1
+  west: 1
 --- !u!198 &198108009739704836
 ParticleSystem:
   m_ObjectHideFlags: 1

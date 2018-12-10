@@ -19,10 +19,10 @@ public class Entity : GameBehaviour {
 	public GameObject colliderRoot;
 
 	[Header("四面碰撞体启用开关")]
-	public bool south;
-	public bool east;
-	public bool north;
-	public bool west;
+	public bool south = true;
+	public bool east = true;
+	public bool north = true;
+	public bool west = true;
 
 	protected override void GameBehavierInit()
 	{
