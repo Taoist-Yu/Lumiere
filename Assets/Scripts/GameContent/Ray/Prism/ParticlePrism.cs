@@ -114,14 +114,6 @@ public class ParticlePrism : GameBehaviour
 	{
 		playingParticle = playing;
 	}
-
-	protected override void OnLevelRotateEnd()
-	{
-		if(levelController.perspective==1|| levelController.perspective == 3)
-		{
-			Debug.Log(levelController.perspective);
-		}
-	}
 }
 
 public class CirclePosition
