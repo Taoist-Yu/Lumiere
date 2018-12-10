@@ -87,11 +87,11 @@ public class PlayerController : GameBehaviour
 			}
 			if (playerRd.velocity.y > 0.3 || playerRd.velocity.y < -0.3)
 			{
-				playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 8, v) * speed * 8;
+				playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 5, v) * speed * 5;
 			}
 			else
 			{
-				playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 3, v) * speed * 3;
+				playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 5, v) * speed * 5;
 			}
 		}
 		else
@@ -103,7 +103,7 @@ public class PlayerController : GameBehaviour
 	//跳跃
 	void PlayerJump()
 	{
-		if (GetInput.JumpStart && isJumping <= 1)
+		if (GetInput.JumpStart && isJumping <= 0)
 		{
 			playerRd.gravityScale = 1;
 			playerRd.velocity = Vector3.up * speed * 40 / 4;

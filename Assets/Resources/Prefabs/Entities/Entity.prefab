@@ -181,9 +181,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1388627365384350}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.92, z: 0}
+  m_LocalScale: {x: 30, y: 1, z: 30}
   m_Children:
   - {fileID: 4885597258199380}
   - {fileID: 4337403801498872}
@@ -380,3 +380,7 @@ MonoBehaviour:
   - {fileID: 1819193946262114}
   - {fileID: 1718661858737782}
   colliderRoot: {fileID: 1850792068545980}
+  south: 1
+  east: 1
+  north: 1
+  west: 1
