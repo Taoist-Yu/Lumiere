@@ -5,6 +5,10 @@ using UnityEngine;
 public class LightElementEffect : MonoBehaviour {
 
 	float timeVal = 0;
+	private ParticleSystem particleSys;
+	private ParticleSystem.Particle[] particleArr;
+	[SerializeField]
+	float size = 0.7f;
 
 	//漂浮功能相关
 	private struct Floating
@@ -24,6 +28,7 @@ public class LightElementEffect : MonoBehaviour {
 	void Start () {
 		floating.initPostion = transform.position;
 		timeVal = UnityEngine.Random.Range(0, 3);
+		initParticleEffect();
 	}
 	
 	// Update is called once per frame
@@ -41,6 +46,23 @@ public class LightElementEffect : MonoBehaviour {
 		floating.currentPostion.y += 0.2f*floating.deltaY;
 
 		transform.position = floating.currentPostion;
+	}
+
+	//粒子效果
+	void initParticleEffect()
+	{
+		particleArr = new ParticleSystem.Particle[1];
+		particleSys = this.GetComponent<ParticleSystem>();
+		var main = particleSys.main;
+		main.startColor = Color.white;
+		main.startSpeed = 0;
+		main.loop = false;
+		main.startSize = size;
+		main.maxParticles = 1;
+		particleSys.Emit(1);
+		particleSys.GetParticles(particleArr);
+		particleArr[0].position = Vector3.zero;
+		particleSys.SetParticles(particleArr, 1);
 	}
 
 }
