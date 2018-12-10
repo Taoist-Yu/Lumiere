@@ -18,6 +18,12 @@ public class Entity : GameBehaviour {
 	//管理碰撞体的根物体(一个空物体)
 	public GameObject colliderRoot;
 
+	[Header("四面碰撞体启用开关")]
+	public bool south;
+	public bool east;
+	public bool north;
+	public bool west;
+
 	protected override void GameBehavierInit()
 	{
 		base.GameBehavierInit();
@@ -27,6 +33,24 @@ public class Entity : GameBehaviour {
 		colliders[1] = transform.Find("Colliders/EastCollider").gameObject;
 		colliders[2] = transform.Find("Colliders/NorthCollider").gameObject;
 		colliders[3] = transform.Find("Colliders/WestCollider").gameObject;
+		
+		if(south == false)
+		{
+			Destroy(colliders[0].GetComponent<Collider2D>());
+		}
+		if(east == false)
+		{
+			Destroy(colliders[1].GetComponent<Collider2D>());
+		}
+		if(north == false)
+		{
+			Destroy(colliders[2].GetComponent<Collider2D>());
+		}
+		if(west == false)
+		{
+			Destroy(colliders[3].GetComponent<Collider2D>());
+		}
+
 	}
 
 	private void Awake()
