@@ -85,13 +85,15 @@ public class PlayerController : GameBehaviour
 			{
 				playerRenderer.transform.rotation = Quaternion.Euler(0, 0, 0);
 			}
-			if (playerRd.velocity.y > 0.3 || playerRd.velocity.y < -0.3)
+			if (Mathf.Abs(playerRd.velocity.y) > 0.3f)
 			{
-				playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 5, v) * speed * 5;
+				//playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 5, v) * speed * 5;
+				playerRd.transform.Translate(new Vector3(h * Time.deltaTime * 5, 0, 0));
 			}
 			else
 			{
-				playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 5, v) * speed * 5;
+				//playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 5, v) * speed * 5;
+				playerRd.transform.Translate(new Vector3(h * Time.deltaTime * 5, 0, 0));
 			}
 		}
 		else
