@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4222156504100852}
   m_Layer: 0
-  m_Name: Mirror
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,8 +190,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1600224767967510}
-  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalRotation: {x: -0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalPosition: {x: -4, y: -2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4162472953216554}
@@ -199,7 +199,7 @@ Transform:
   - {fileID: 4222156504100852}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!4 &4107641168666850
 Transform:
   m_ObjectHideFlags: 1
@@ -508,10 +508,10 @@ MonoBehaviour:
   scatteringMode: 0
   colliders: []
   colliderRoot: {fileID: 0}
-  south: 0
-  east: 0
-  north: 0
-  west: 0
+  south: 1
+  east: 1
+  north: 1
+  west: 1
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   linePrototype: {fileID: 1341467506231426}
 --- !u!120 &120040093691828774

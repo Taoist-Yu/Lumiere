@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* 定义了一些机关需要的属性
+ * 机关对玩家操作的响应会基础OperateInterface类
+ */
 public class Organ : Entity
 {
 	[Header("激活机关所需要的光")]
@@ -20,6 +23,18 @@ public class Organ : Entity
 	protected virtual void Awake()
 	{
 		GameBehavierInit();
+	}
+
+	public override void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
+	{
+		base.OnLighting(hit, direction, light);
+		if (isLightNeed == true)
+		{
+			if (lightNeed.lightColor != light.lightColor)
+				return;
+			if (lightNeed.lightLevel > light.lightLevel)
+				return;
+		}
 	}
 
 }
