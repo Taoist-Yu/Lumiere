@@ -21,6 +21,9 @@ public class Destination : Organ {
 	//终点开启进度
 	private float progress = 0;
 
+	//计时相关
+	float lightTimeVal = 0;		//随时间递减，光照时重置，当减为0证明当前无光照
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -43,8 +46,13 @@ public class Destination : Organ {
 
 	}
 	
-	// Update is called once per frame
+	// Update is called once per fram
 	void Update () {
+
+		//计时相关
+		lightTimeVal -= Time.deltaTime;
+		if (lightTimeVal < 0)
+			lightTimeVal = 0;
 
 		//progress达到1，通关
 		if(progress > 1)
@@ -58,14 +66,22 @@ public class Destination : Organ {
 			progress = 0.0f;
 
 		//重置受光相关变量
-		operatedAllowed = false;
+		if(lightTimeVal < 1e-6)
 		{
-			var module = fogParticle.emission;
-			module.rateOverTime = 50;
+			operatedAllowed = false;
+			{
+				var module = fogParticle.emission;
+				module.rateOverTime = 50;
+			}
+			{
+				var module = photosphereParticle.emission;
+				module.rateOverTime = 0;
+			}
 		}
 
+
 		//调试输出
-		Debug.Log(progress);
+//		Debug.Log(progress);
 
 	}
 
@@ -83,5 +99,11 @@ public class Destination : Organ {
 			var module = fogParticle.emission;
 			module.rateOverTime = 0;
 		}
+		{
+			var module = photosphereParticle.emission;
+			module.rateOverTime = 50;
+		}
+
+		lightTimeVal = 0.1f;
 	}
 }
