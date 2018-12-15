@@ -16,6 +16,7 @@ public class StartUI : MonoBehaviour {
 
 	public void OnStart()
 	{
+		GameGlobal.GameData.currentLevel = GameGlobal.GameData.maxLevel;
 		SceneManager.LoadScene(GameGlobal.GameData.maxLevel);
 	}
 

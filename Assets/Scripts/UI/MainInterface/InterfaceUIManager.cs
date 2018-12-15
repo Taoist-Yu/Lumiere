@@ -9,4 +9,16 @@ public class InterfaceUIManager : MonoBehaviour {
 	public GameObject LevelUI;
 	public GameObject OptionUI;
 
+	private void OnEnable()
+	{
+		InterfaceUIReset();
+	}
+
+	private void InterfaceUIReset()
+	{
+		StartUI.SetActive(true);
+		LevelUI.SetActive(false);
+		OptionUI.SetActive(false);
+	}
+
 }

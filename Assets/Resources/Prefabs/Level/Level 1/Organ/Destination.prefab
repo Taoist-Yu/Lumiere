@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 58721233435173360}
   m_Layer: 0
   m_Name: NorthCollider
-  m_TagString: Untagged
+  m_TagString: OperatedInterface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 58259530217911718}
   m_Layer: 0
   m_Name: SouthCollider
-  m_TagString: Untagged
+  m_TagString: OperatedInterface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4532051391086960}
   - component: {fileID: 114860637000194276}
+  - component: {fileID: 114757021661284974}
   m_Layer: 0
   m_Name: Destination
   m_TagString: Untagged
@@ -118,7 +119,7 @@ GameObject:
   - component: {fileID: 58500287991043536}
   m_Layer: 0
   m_Name: EastCollider
-  m_TagString: Untagged
+  m_TagString: OperatedInterface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +135,7 @@ GameObject:
   - component: {fileID: 58813816862151800}
   m_Layer: 0
   m_Name: WestCollider
-  m_TagString: Untagged
+  m_TagString: OperatedInterface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,7 +209,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773415181893400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.0340185, y: 1.4141645, z: 0}
+  m_LocalPosition: {x: 0.93, y: 2.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4464902357292946}
@@ -279,7 +280,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -294,7 +295,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -309,7 +310,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -324,7 +325,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -341,6 +342,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb602659b688143bb208d4e89a2cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114757021661284974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773415181893400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9c271dea66fe54c8b3b8549e70ab88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightNeed: 0
+  deltaLightQuantity: 0
 --- !u!114 &114826952882235954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -364,8 +378,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scatteringMode: 0
-  colliders: []
-  colliderRoot: {fileID: 0}
+  colliders:
+  - {fileID: 1705918244762352}
+  - {fileID: 1801297461744414}
+  - {fileID: 1222476960342272}
+  - {fileID: 1965173291444318}
+  colliderRoot: {fileID: 1340056374289312}
   south: 1
   east: 1
   north: 1
@@ -561,7 +579,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.33333334, g: 0.9137255, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5094,7 +5112,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
+      maxColor: {r: 0.33333334, g: 0.9137255, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5681,7 +5699,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9561,7 +9579,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1998372538258462}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []

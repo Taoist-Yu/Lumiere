@@ -8,5 +8,7 @@ namespace GameGlobal
 	{
 		//当前最新关卡
 		public static int maxLevel = 1;
+		//当前关卡
+		public static int currentLevel;
 	}
 }

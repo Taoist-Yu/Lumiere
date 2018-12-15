@@ -184,5 +184,16 @@ class GetInput
 				Input.GetKey(KeyCode.E);
 		}
 	}
+
+	//暂停UI
+	public static bool ESC
+	{
+		get
+		{
+			return
+				Input.GetKeyDown(KeyCode.Escape);
+		}
+	}
+
 }
 

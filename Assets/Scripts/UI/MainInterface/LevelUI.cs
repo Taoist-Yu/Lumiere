@@ -9,8 +9,6 @@ public class LevelUI : MonoBehaviour {
 	public GameObject UIManagerObject;
 	private InterfaceUIManager UIManager;
 
-	private int currentLevel;
-
 	private void Awake()
 	{
 		UIManager = UIManagerObject.GetComponent<InterfaceUIManager>();
@@ -18,26 +16,26 @@ public class LevelUI : MonoBehaviour {
 
 	private void OnEnable()
 	{
-		currentLevel = GameGlobal.GameData.maxLevel;
+		GameGlobal.GameData.currentLevel = GameGlobal.GameData.maxLevel;
 	}
 
 	public void OnNext()
 	{
 		//未完成
-		if (currentLevel < GameGlobal.GameData.maxLevel)
-			currentLevel++;
+		if (GameGlobal.GameData.currentLevel < GameGlobal.GameData.maxLevel)
+			GameGlobal.GameData.currentLevel++;
 	}
 
 	public void OnLast()
 	{
 		//未完成
-		if (currentLevel > 1)
-			currentLevel--;
+		if (GameGlobal.GameData.currentLevel > 1)
+			GameGlobal.GameData.currentLevel--;
 	}
 
 	public void OnStart()
 	{
-		SceneManager.LoadScene(currentLevel);
+		SceneManager.LoadScene(GameGlobal.GameData.currentLevel);
 	}
 
 	public void OnBack()

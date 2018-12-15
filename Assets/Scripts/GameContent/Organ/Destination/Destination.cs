@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Destination : Organ {
 
+	//关卡管理器实例
+	private LevelManager levelManager;
+
 	//粒子相关
 	//编辑器中赋值
 	public GameObject fog;
@@ -30,6 +33,8 @@ public class Destination : Organ {
 		//获取粒子系统实例
 		fogParticle = fog.GetComponent<ParticleSystem>();
 		photosphereParticle = photosphere.GetComponent<ParticleSystem>();
+		//获取关卡管理器
+		levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
 	}
 
 	// Use this for initialization
@@ -57,7 +62,7 @@ public class Destination : Organ {
 		//progress达到1，通关
 		if(progress > 1)
 		{
-
+			levelManager.LevelPassed();
 		}
 
 		//减少progress
@@ -79,9 +84,8 @@ public class Destination : Organ {
 			}
 		}
 
-
 		//调试输出
-//		Debug.Log(progress);
+		Debug.Log(progress);
 
 	}
 
