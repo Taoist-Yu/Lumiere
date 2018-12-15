@@ -6,11 +6,23 @@ using UnityEngine;
 class GetInput
 {
 
+	private static bool operateAllowed = false;
+	public static void OperateEnable()
+	{
+		operateAllowed = true;
+	}
+	public static void OperateDisable()
+	{
+		operateAllowed = false;
+	}
+
 	//场景左旋转
 	public static bool LeftRotate
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKeyDown(KeyCode.A);
 		}
@@ -21,6 +33,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKeyDown(KeyCode.D);
 		}
@@ -31,6 +45,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return 0;
 			return
 				Input.GetAxis("Horizontal");
 		}
@@ -42,6 +58,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow);
 		}
@@ -52,6 +70,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKeyDown(KeyCode.UpArrow);
 		}
@@ -62,6 +82,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow);
 		}
@@ -73,6 +95,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetButtonDown("Jump");
 		}
@@ -83,6 +107,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetButton("Jump");
 		}
@@ -92,6 +118,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKeyDown(KeyCode.F);
 		}
@@ -102,6 +130,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKeyDown(KeyCode.Q);
 		}
@@ -112,6 +142,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKeyDown(KeyCode.E);
 		}
@@ -122,6 +154,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKey(KeyCode.F);
 		}
@@ -132,6 +166,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKey(KeyCode.Q);
 		}
@@ -142,6 +178,8 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKey(KeyCode.E);
 		}

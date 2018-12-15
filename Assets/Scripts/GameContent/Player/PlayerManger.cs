@@ -30,7 +30,7 @@ public class PlayerManger : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 //		transform.SetPositionAndRotation(new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
-		if(player.transform.position.y < -20.0f)
+		if(player.transform.position.y < -30.0f)
 		{
 			Respawn();
 		}	
@@ -52,10 +52,10 @@ public class PlayerManger : MonoBehaviour {
 
 	void MoveCameraBegin(Vector3 startPos,Vector3 endPos)
 	{
-		playerController.enabled = false;
+		GetInput.OperateDisable();
 
-		startPos.z = -200;
-		endPos.z = -200;
+		endPos.z -= 200;
+		startPos.z = endPos.z;
 		this.startPos = startPos;
 		this.endPos = endPos;
 
@@ -66,7 +66,7 @@ public class PlayerManger : MonoBehaviour {
 	void MoveCameraEnd()
 	{
 		isCameraMoving = false;
-		playerController.enabled = true;
+		GetInput.OperateEnable();
 	}
 
 	void MoveCamera()

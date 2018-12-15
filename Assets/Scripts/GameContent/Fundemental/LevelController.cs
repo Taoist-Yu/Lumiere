@@ -66,6 +66,8 @@ public class LevelController : MonoBehaviour {
 	//开始场景旋转
 	void StartRotate()
 	{
+		//停止接受输入
+		GetInput.OperateDisable();
 		//数据初始化
 		isAnimating = true;
 		rotateValue = rotateOldValue = 0;
@@ -79,6 +81,8 @@ public class LevelController : MonoBehaviour {
 	//结束场景旋转
 	void EndRotate()
 	{
+		//开始接受输入
+		GetInput.OperateEnable();
 		//对最终数据取整
 		transform.rotation = rotateInitValue;
 		transform.Rotate(Vector3.up, 90.0f * rotateDirection);

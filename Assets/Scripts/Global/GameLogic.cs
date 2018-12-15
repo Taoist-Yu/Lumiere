@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GameGlobal
 {
@@ -40,9 +41,10 @@ namespace GameGlobal
 
 			//发布GameAwakeEvent
 			GameAwakeEvent();
+
 		}
 
-
+		//初始化是否完成
 		private static bool isInit = false;
 
 	}
