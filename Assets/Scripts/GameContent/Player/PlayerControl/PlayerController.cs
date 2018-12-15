@@ -76,7 +76,6 @@ public class PlayerController : GameBehaviour
 			if(Mathf.Abs(playerRd.velocity.y) < 0.3f)
 				anim.SetBool("IsWalking", true);
 			float h = GetInput.HorizonMove;
-			float v = Input.GetAxis("Vertical");
 			if (h > 0)
 			{
 				playerRenderer.transform.rotation = Quaternion.Euler(0, 180, 0);
