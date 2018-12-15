@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class ReflectEntity : Entity {
 
-	[Header("反射器模型的颜色属性")]
-	public Color color = Color.yellow;
-
-	//反射器模型的引用
-	protected MeshRenderer modelMeshRenderer;
-
 	//用于clone反射光的原型
 	public GameObject linePrototype;		
 
@@ -26,8 +20,6 @@ public class ReflectEntity : Entity {
 	{
 		GameBehavierInit();
 		reflectLights = new List<ReflectLight>();
-		modelMeshRenderer = transform.Find("Model").GetComponent<MeshRenderer>();
-		modelMeshRenderer.material.color = color;
 	}
 
 	// Use this for initialization
