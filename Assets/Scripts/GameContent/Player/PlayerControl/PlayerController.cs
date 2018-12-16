@@ -5,8 +5,14 @@ using UnityEngine;
 public class PlayerController : GameBehaviour
 {
 	[SerializeField]
-	[Range(0.1f, 1f)]
-	float speed = 1.0f;
+	[Range(0.1f, 30f)]
+	float jumpSpeed = 10.0f;
+	[SerializeField]
+	[Range(0.1f, 10f)]
+	float walkSpeed = 5f;
+	[SerializeField]
+	[Range(0.1f, 6f)]
+	float climbSpeed = 3f;
 	[SerializeField]
 	[Header("下降加速")]
 	float fallJumpMuti = 2.5f;//长按下降加速
@@ -86,13 +92,11 @@ public class PlayerController : GameBehaviour
 			}
 			if (Mathf.Abs(playerRd.velocity.y) > 0.3f)
 			{
-				//playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 5, v) * speed * 5;
-				playerRd.transform.Translate(new Vector3(h * Time.deltaTime * 5, 0, 0));
+				playerRd.transform.Translate(new Vector3(h * Time.deltaTime * walkSpeed, 0, 0));
 			}
 			else
 			{
-				//playerRd.velocity = new Vector3(h, playerRd.velocity.y / speed / 5, v) * speed * 5;
-				playerRd.transform.Translate(new Vector3(h * Time.deltaTime * 5, 0, 0));
+				playerRd.transform.Translate(new Vector3(h * Time.deltaTime * walkSpeed, 0, 0));
 			}
 		}
 		else
@@ -107,7 +111,7 @@ public class PlayerController : GameBehaviour
 		if (GetInput.JumpStart && isJumping <= 0)
 		{
 			playerRd.gravityScale = 1;
-			playerRd.velocity = Vector3.up * speed * 40 / 4;
+			playerRd.velocity = Vector3.up * jumpSpeed;
 			if (isJumping == 0)
 			{
 				anim.SetBool("IsJumping", true);
@@ -159,13 +163,13 @@ public class PlayerController : GameBehaviour
 			{
 				playerRd.gravityScale = 0;
 				//playerRd.AddForce(-1*Physics.gravity);
-				playerRd.velocity = new Vector3(0, speed * 3, 0);
+				playerRd.velocity = new Vector3(0, climbSpeed * 3, 0);
 			}
 			else
 			{
 				//playerRd.AddForce(Physics.gravity);
 				playerRd.gravityScale = 0;
-				playerRd.velocity = new Vector3(0, -speed * 3, 0);
+				playerRd.velocity = new Vector3(0, -climbSpeed * 3, 0);
 			}
 		}
 		if (GetInput.ClimbPause)
@@ -267,8 +271,8 @@ public class PlayerController : GameBehaviour
 		if (isRotating == false)
 			return;
 
-		transform.rotation = Quaternion.Euler(0, 0, 0);     //防止人物随场景旋转
-		playerRenderer.transform.localPosition = new Vector3(0, 0, -100);   //保持人物在屏幕前方
+//		transform.rotation = Quaternion.Euler(0, 0, 0);     //防止人物随场景旋转
+//		playerRenderer.transform.localPosition = new Vector3(0, 0, -100);   //保持人物在屏幕前方
 
 	}
 
