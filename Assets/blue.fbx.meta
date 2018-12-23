@@ -1,46 +1,40 @@
 fileFormatVersion: 2
-guid: 647c56b0c25c91c439882d33ccba8a02
+guid: f06edbfe0d35300498e83ec92c864ef3
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Camera
-    100004: Cube
-    100006: Cube.001
-    100008: Cube.002
-    100010: Cube.003
-    100012: Cube.004
-    100014: Lamp
+    100002: Cube
+    100004: Cube.001
+    100006: Cube.002
+    100008: Cube.003
+    100010: Cube.005
     400000: //RootNode
-    400002: Camera
-    400004: Cube
-    400006: Cube.001
-    400008: Cube.002
-    400010: Cube.003
-    400012: Cube.004
-    400014: Lamp
-    2000000: Camera
-    2100000: Material.005
-    2100002: Material.002
+    400002: Cube
+    400004: Cube.001
+    400006: Cube.002
+    400008: Cube.003
+    400010: Cube.005
+    2100000: Material.001
+    2100002: Material.003
     2100004: Material.004
-    2100006: Material.003
-    2100008: Material.001
+    2100006: Material.002
+    2100008: "\u6750\u8D28"
     2300000: Cube
     2300002: Cube.001
     2300004: Cube.002
     2300006: Cube.003
-    2300008: Cube.004
+    2300008: Cube.005
     3300000: Cube
     3300002: Cube.001
     3300004: Cube.002
     3300006: Cube.003
-    3300008: Cube.004
-    4300000: Cube.004
-    4300002: Cube.003
+    3300008: Cube.005
+    4300000: Cube
+    4300002: Cube.001
     4300004: Cube.002
-    4300006: Cube.001
-    4300008: Cube
-    10800000: Lamp
+    4300006: Cube.003
+    4300008: Cube.005
   externalObjects: {}
   materials:
     importMaterials: 1
