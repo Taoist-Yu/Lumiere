@@ -6,7 +6,7 @@ using UnityEngine;
 class GetInput
 {
 
-	private static bool operateAllowed = false;
+	private static bool operateAllowed = true;
 	public static void OperateEnable()
 	{
 		operateAllowed = true;
