@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//UI界面中的场景模型
 public class LevelModel : MonoBehaviour {
 
 	private float rotateSpeed = 45;
