@@ -35,11 +35,11 @@ public class tempController : MonoBehaviour {
 
 	void LaunchRaycast()
 	{
-		haveLeftFence = Physics.Raycast(new Ray(transform.position + new Vector3(0, -bottom, 0), new Vector3(-leftRange, 0, 0)), new Vector3(-leftRange, 0, 0).magnitude);
-		haveRightFence = Physics.Raycast(new Ray(transform.position + new Vector3(0, -bottom, 0), new Vector3(rightRange, 0, 0)), new Vector3(rightRange, 0, 0).magnitude);
-		haveBottomFence = Physics.Raycast(new Ray(transform.position, new Vector3(0, -bottomRange, 0)), new Vector3(0, -bottomRange, 0).magnitude);
-		haveBottomLeftFence = Physics.Raycast(new Ray(transform.position + new Vector3(-bottomEdge, 0, 0), new Vector3(0, -bottomRange, 0)), new Vector3(0, -bottomRange, 0).magnitude);
-		haveBottomRightFence = Physics.Raycast(new Ray(transform.position + new Vector3(bottomEdge, 0, 0), new Vector3(0, -bottomRange, 0)), new Vector3(0, -bottomRange, 0).magnitude);
+		haveLeftFence = Physics2D.Raycast(transform.position + new Vector3(0, -bottom, 0), new Vector3(-leftRange, 0, 0), new Vector3(-leftRange, 0, 0).magnitude);
+		haveRightFence = Physics2D.Raycast(transform.position + new Vector3(0, -bottom, 0), new Vector3(rightRange, 0, 0), new Vector3(rightRange, 0, 0).magnitude);
+		haveBottomFence = Physics2D.Raycast(transform.position, new Vector3(0, -bottomRange, 0), new Vector3(0, -bottomRange, 0).magnitude);
+		haveBottomLeftFence = Physics2D.Raycast(transform.position + new Vector3(-bottomEdge, 0, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, -bottomRange, 0).magnitude);
+		haveBottomRightFence = Physics2D.Raycast(transform.position + new Vector3(bottomEdge, 0, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, -bottomRange, 0).magnitude);
 		//Debug.Log("RightFence:" + haveRightFence + "   LeftFence:" + haveLeftFence + "   BottomFence:" + haveBottomFence);
 	}
 
@@ -48,8 +48,8 @@ public class tempController : MonoBehaviour {
 		if (haveBottomFence)
 		{
 			onGround = true;
-			RaycastHit hit = new RaycastHit();
-			Physics.Raycast(new Ray(transform.position, new Vector3(0, -bottomRange, 0)), out hit);
+			RaycastHit2D hit = new RaycastHit2D();
+			hit = Physics2D.Raycast(transform.position, new Vector3(0, -bottomRange, 0));
 			positionOfLand = hit.point.y;
 		}
 		else onGround = false;
