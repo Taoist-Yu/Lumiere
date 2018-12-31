@@ -271,8 +271,8 @@ public class PlayerController : GameBehaviour
 		if (isRotating == false)
 			return;
 
-//		transform.rotation = Quaternion.Euler(0, 0, 0);     //防止人物随场景旋转
-//		playerRenderer.transform.localPosition = new Vector3(0, 0, -100);   //保持人物在屏幕前方
+		transform.rotation = Quaternion.Euler(0, 0, 0);     //防止人物随场景旋转
+		playerRenderer.transform.localPosition = new Vector3(0, 0, -100);   //保持人物在屏幕前方
 
 	}
 
