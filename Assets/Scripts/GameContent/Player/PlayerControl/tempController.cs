@@ -141,9 +141,9 @@ public class tempController : MonoBehaviour
 	{
 		leftCastHit = Physics2D.RaycastAll(transform.position + new Vector3(0, -bottom, 0), new Vector3(-leftRange, 0, 0), new Vector3(-leftRange, 0, 0).magnitude);
 		rightCastHit = Physics2D.RaycastAll(transform.position + new Vector3(0, -bottom, 0), new Vector3(rightRange, 0, 0), new Vector3(rightRange, 0, 0).magnitude);
-		bottomCastHit = Physics2D.RaycastAll(transform.position, new Vector3(0, -bottomRange, 0), new Vector3(0, -bottomRange, 0).magnitude);
-		bottomLeftCastHit = Physics2D.RaycastAll(transform.position + new Vector3(-bottomEdge, 0, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, -bottomRange, 0).magnitude);
-		bottomRightCastHit = Physics2D.RaycastAll(transform.position + new Vector3(bottomEdge, 0, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, -bottomRange, 0).magnitude);
+		bottomCastHit = Physics2D.RaycastAll(transform.position + new Vector3(0, -bottom, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, bottom-bottomRange, 0).magnitude);
+		bottomLeftCastHit = Physics2D.RaycastAll(transform.position + new Vector3(-bottomEdge, -bottom, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, bottom-bottomRange, 0).magnitude);
+		bottomRightCastHit = Physics2D.RaycastAll(transform.position + new Vector3(bottomEdge, -bottom, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, bottom-bottomRange, 0).magnitude);
 		//Debug.Log("RightFence:" + haveRightFence + "   LeftFence:" + haveLeftFence + "   BottomFence:" + haveBottomFence);
 	}
 
@@ -189,6 +189,7 @@ public class tempController : MonoBehaviour
 			}
 			else
 			{
+				Debug.Log("positionOfLand" + positionOfLand);
 				transform.position = new Vector3(transform.position.x, positionOfLand + bottomRange, transform.position.z);
 				verticalVelocity = 0;
 				pressJumpCount = 0;
@@ -261,10 +262,11 @@ public class tempController : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
+		Gizmos.color = Color.red;
 		Gizmos.DrawLine(transform.position + new Vector3(0, -bottom, 0), transform.position + new Vector3(-leftRange, 0, 0) + new Vector3(0, -bottom, 0));
 		Gizmos.DrawLine(transform.position + new Vector3(0, -bottom, 0), transform.position + new Vector3(rightRange, 0, 0) + new Vector3(0, -bottom, 0));
-		Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -bottomRange, 0));
-		Gizmos.DrawLine(transform.position + new Vector3(-bottomEdge, 0, 0), transform.position + new Vector3(-bottomEdge, 0, 0) + new Vector3(0, -bottomRange, 0));
-		Gizmos.DrawLine(transform.position + new Vector3(bottomEdge, 0, 0), transform.position + new Vector3(bottomEdge, 0, 0) + new Vector3(0, -bottomRange, 0));
+		Gizmos.DrawLine(transform.position + new Vector3(0, -bottom, 0), transform.position + new Vector3(0, -bottomRange, 0));
+		Gizmos.DrawLine(transform.position + new Vector3(-bottomEdge, -bottom, 0), transform.position + new Vector3(-bottomEdge, 0, 0) + new Vector3(0, -bottomRange, 0));
+		Gizmos.DrawLine(transform.position + new Vector3(bottomEdge, -bottom, 0), transform.position + new Vector3(bottomEdge, 0, 0) + new Vector3(0, -bottomRange, 0));
 	}
 }
