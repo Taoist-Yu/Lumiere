@@ -53,9 +53,9 @@ public class Entity : GameBehaviour {
 
 	}
 
-	private void Awake()
+	protected override void Awake()
 	{
-		GameBehavierInit();
+		base.Awake();
 	}
 
 	private void Start()
@@ -66,20 +66,22 @@ public class Entity : GameBehaviour {
 	protected override void OnLevelRotateBegin()
 	{
 		base.OnLevelRotateBegin();
+		foreach (GameObject collider in colliders)
+		{
+			collider.SetActive(false);
+		}
 	}
 
 	protected override void OnLevelRotateEnd()
 	{
 		base.OnLevelRotateEnd();
-		foreach (GameObject collider in colliders)
-		{
-			collider.SetActive(false);
-		}
-		colliders[levelController.perspective].SetActive(true);
+
 		colliderRoot.transform.SetPositionAndRotation(
 			colliderRoot.transform.position,
 			Quaternion.Euler(0, 0, 0)
 		);
+
+		colliders[levelController.perspective].SetActive(true);
 	}
 
 	/*由光线类调用，不是事件函数

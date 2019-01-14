@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tempController : MonoBehaviour
+public class tempController : GameBehaviour
 {
 	int cot = 0;
 	RaycastHit2D[] leftCastHit, rightCastHit, bottomCastHit, bottomLeftCastHit, bottomRightCastHit;
@@ -109,6 +109,12 @@ public class tempController : MonoBehaviour
 	}
 	#endregion
 
+	/// <summary>
+	/// 游戏对象是否暂停。
+	/// 一种情况是，当场景转换的过程中，人物无法移动，也无法操作
+	/// </summary>
+	bool isPausing = false;
+
 	bool onGround = true;
 	int pressJumpCount;
 	[SerializeField]
@@ -131,10 +137,20 @@ public class tempController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		LaunchRaycast();
-		ChangeState();
-		PlayerWalk();
-		PlayerJump();
+		//基本移动
+		if (!isPausing)
+		{
+			LaunchRaycast();
+			ChangeState();
+			PlayerWalk();
+			PlayerJump();
+		}
+
+		//场景旋转
+		if (isLevelRotating)
+		{
+			OnLevelRotate();
+		}
 	}
 
 	void LaunchRaycast()
@@ -269,4 +285,32 @@ public class tempController : MonoBehaviour
 		Gizmos.DrawLine(transform.position + new Vector3(-bottomEdge, -bottom, 0), transform.position + new Vector3(-bottomEdge, 0, 0) + new Vector3(0, -bottomRange, 0));
 		Gizmos.DrawLine(transform.position + new Vector3(bottomEdge, -bottom, 0), transform.position + new Vector3(bottomEdge, 0, 0) + new Vector3(0, -bottomRange, 0));
 	}
+
+	#region 响应场景状态变化相关的代码
+
+	bool isLevelRotating = false;
+
+	protected override void OnLevelRotateBegin()
+	{
+		base.OnLevelRotateBegin();
+		isPausing = true;
+		isLevelRotating = true;
+	}
+
+	/// <summary>
+	/// 场景旋转过程中每帧调用
+	/// </summary>
+	protected void OnLevelRotate()
+	{
+		transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+	}
+
+	protected override void OnLevelRotateEnd()
+	{
+		base.OnLevelRotateEnd();
+		isPausing = false;
+		isLevelRotating = true;
+	}
+
+	#endregion
 }
