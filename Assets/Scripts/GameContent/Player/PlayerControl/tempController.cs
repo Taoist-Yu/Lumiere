@@ -133,7 +133,11 @@ public class tempController : GameBehaviour
 	[SerializeField]
 	[Range(5f, 20f)]
 	private float maxVelo = 10;
+	[SerializeField]
+	[Range(5f, 20f)]
+	private float velocityOnLighting = 10;
 	private float verticalVelocity = 0;
+
 
 	void FixedUpdate()
 	{
@@ -205,7 +209,6 @@ public class tempController : GameBehaviour
 			}
 			else
 			{
-				Debug.Log("positionOfLand" + positionOfLand);
 				transform.position = new Vector3(transform.position.x, positionOfLand + bottomRange, transform.position.z);
 				verticalVelocity = 0;
 				pressJumpCount = 0;
@@ -313,4 +316,15 @@ public class tempController : GameBehaviour
 	}
 
 	#endregion
+
+	#region 场景交互相关的代码
+
+	public void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
+	{
+		transform.Translate(-direction * Time.deltaTime * velocityOnLighting);
+		if (verticalVelocity < 0) verticalVelocity = 0;
+	}
+
+	#endregion
+
 }

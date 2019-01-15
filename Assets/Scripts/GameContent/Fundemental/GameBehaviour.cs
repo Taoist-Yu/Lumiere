@@ -33,8 +33,11 @@ public class GameBehaviour : MonoBehaviour {
 
 	private void OnDestroy()
 	{
-		levelController.LevelRotateBeginEvent -= OnLevelRotateBegin;
-		levelController.LevelRotateEndEvent -= OnLevelRotateEnd;
+		if(levelController != null)
+		{
+			levelController.LevelRotateBeginEvent -= OnLevelRotateBegin;
+			levelController.LevelRotateEndEvent -= OnLevelRotateEnd;
+		}
 	}
 
 }

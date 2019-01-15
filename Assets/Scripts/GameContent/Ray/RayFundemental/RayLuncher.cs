@@ -79,7 +79,7 @@ public class RayLuncher : Entity {
 		}*/
 	}
 
-	private void Awake()
+	protected override void Awake()
 	{
 		RayLuncherAwake();
 	}
@@ -106,7 +106,7 @@ public class RayLuncher : Entity {
 		lineRenderer.startColor = light.Color;
 		lineRenderer.endColor = light.Color;
 
-		hitArray = Physics2D.RaycastAll(ray.origin, ray.direction);
+		hitArray = Physics2D.RaycastAll(ray.origin, ray.direction,20);
 
 		for (int i = 0; i < hitArray.Length; i++)
 		{

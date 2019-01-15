@@ -56,6 +56,7 @@ public class Entity : GameBehaviour {
 	protected override void Awake()
 	{
 		base.Awake();
+		GameBehavierInit();
 	}
 
 	private void Start()

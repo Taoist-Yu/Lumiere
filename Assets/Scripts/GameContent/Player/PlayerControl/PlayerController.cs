@@ -30,9 +30,9 @@ public class PlayerController : GameBehaviour
 	GameObject playerRenderer;                  //玩家渲染器实例
 	OperateInterface operateInterface;          //获取场景可交互物体的操作接口
 
-	private void Awake()
+	protected override void Awake()
 	{
-		GameBehavierInit();
+		base.Awake();
 
 		playerRd = this.GetComponent<Rigidbody2D>();//获取刚体
 
