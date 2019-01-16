@@ -169,7 +169,7 @@ public class tempController : GameBehaviour
 
 	void ChangeState()
 	{
-		if (haveBottomFence)
+		if (haveBottomFence && verticalVelocity < 0)
 		{
 			onGround = true;
 			RaycastHit2D hit = bottomCastHit[bottomCastHit.Length - 1];

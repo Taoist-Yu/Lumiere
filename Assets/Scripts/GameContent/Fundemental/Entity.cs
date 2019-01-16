@@ -24,6 +24,9 @@ public class Entity : GameBehaviour {
 	public bool north = true;
 	public bool west = true;
 
+	[Header("是否做成触发器")]
+	public bool isTrigger = false;
+
 	protected override void GameBehavierInit()
 	{
 		base.GameBehavierInit();
@@ -49,6 +52,11 @@ public class Entity : GameBehaviour {
 		if(west == false)
 		{
 			Destroy(colliders[3].GetComponent<Collider2D>());
+		}
+
+		foreach (var m in colliders)
+		{
+			m.GetComponent<Collider2D>().isTrigger = isTrigger;
 		}
 
 	}

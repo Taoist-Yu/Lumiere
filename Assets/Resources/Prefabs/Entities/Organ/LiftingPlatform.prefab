@@ -294,7 +294,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360838227078246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.437414, y: 1.0260687, z: 0}
+  m_LocalPosition: {x: 3.11, y: 1.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4895567235515496}
@@ -736,6 +736,7 @@ MonoBehaviour:
   east: 1
   north: 1
   west: 1
+  isTrigger: 0
 --- !u!114 &114617569482705100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -754,9 +755,10 @@ MonoBehaviour:
   east: 1
   north: 1
   west: 1
+  isTrigger: 1
   lightColorNeed: 3
   lightLevelNeed: 2
-  isLightNeed: 0
+  isLightNeed: 1
   speed: 2
   upperLimit: 5
   direction: {x: 0, y: 1}
