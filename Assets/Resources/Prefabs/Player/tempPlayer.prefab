@@ -112,7 +112,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004754978904440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -20}
+  m_LocalPosition: {x: 0, y: 3, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4817593943309074}
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473104374567800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.83, z: 0.0203125}
+  m_LocalPosition: {x: 0, y: 6.74, z: 0.0203125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4807278350968558}
@@ -224,7 +224,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -249,10 +249,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 5
-  leftRange: 0.6
-  rightRange: 0.6
-  bottom: 0.7
-  bottomRange: 1
+  leftRange: 0.5
+  rightRange: 0.5
+  bottom: 0.45
+  bottomRange: 0.5
   bottomEdge: 0.3
   maxVelo: 10
   velocityOnLighting: 10
@@ -274,3 +274,4 @@ MonoBehaviour:
   east: 1
   north: 1
   west: 1
+  isTrigger: 0

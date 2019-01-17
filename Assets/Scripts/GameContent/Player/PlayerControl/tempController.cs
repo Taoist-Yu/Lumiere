@@ -7,7 +7,7 @@ public class tempController : GameBehaviour
 	int cot = 0;
 	RaycastHit2D[] leftCastHit, rightCastHit, bottomCastHit, bottomLeftCastHit, bottomRightCastHit;
 	#region 射线检测是否检测到了非触发器的碰撞体
-	bool haveLefeFence
+	bool haveLeftFence
 	{
 		get
 		{
@@ -21,7 +21,8 @@ public class tempController : GameBehaviour
 				foreach(RaycastHit2D hit in leftCastHit)
 				{
 					if (!hit.collider.isTrigger)
-						flag = true;
+							flag = true;
+					
 				}
 				return flag;
 			}
@@ -185,7 +186,7 @@ public class tempController : GameBehaviour
 		{
 			this.transform.Translate(new Vector3(walkSpeed * Time.fixedDeltaTime, 0, 0));
 		}
-		else if (h < 0 && !haveLefeFence)
+		else if (h < 0 && !haveLeftFence)
 		{
 			this.transform.Translate(new Vector3(-walkSpeed * Time.fixedDeltaTime, 0, 0));
 		}
