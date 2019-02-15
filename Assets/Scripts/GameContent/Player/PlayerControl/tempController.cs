@@ -18,11 +18,11 @@ public class tempController : GameBehaviour
 			else
 			{
 				bool flag = false;
-				foreach(RaycastHit2D hit in leftCastHit)
+				foreach (RaycastHit2D hit in leftCastHit)
 				{
 					if (!hit.collider.isTrigger)
-							flag = true;
-					
+						flag = true;
+
 				}
 				return flag;
 			}
@@ -151,6 +151,19 @@ public class tempController : GameBehaviour
 			PlayerJump();
 		}
 
+		//调整人物坐标与当前脚下的物体坐标一样，从而使转场的时候人物不至于下落
+		if (haveBottomFence)
+		{
+			transform.position = new Vector3(
+					transform.position.x,
+					transform.position.y,
+					bottomCastHit[bottomCastHit.Length - 1].collider.transform.position.z
+				);
+		}
+	}
+
+	private void Update()
+	{
 		//场景旋转
 		if (isLevelRotating)
 		{
@@ -162,9 +175,9 @@ public class tempController : GameBehaviour
 	{
 		leftCastHit = Physics2D.RaycastAll(transform.position + new Vector3(0, -bottom, 0), new Vector3(-leftRange, 0, 0), new Vector3(-leftRange, 0, 0).magnitude);
 		rightCastHit = Physics2D.RaycastAll(transform.position + new Vector3(0, -bottom, 0), new Vector3(rightRange, 0, 0), new Vector3(rightRange, 0, 0).magnitude);
-		bottomCastHit = Physics2D.RaycastAll(transform.position + new Vector3(0, -bottom, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, bottom-bottomRange, 0).magnitude);
-		bottomLeftCastHit = Physics2D.RaycastAll(transform.position + new Vector3(-bottomEdge, -bottom, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, bottom-bottomRange, 0).magnitude);
-		bottomRightCastHit = Physics2D.RaycastAll(transform.position + new Vector3(bottomEdge, -bottom, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, bottom-bottomRange, 0).magnitude);
+		bottomCastHit = Physics2D.RaycastAll(transform.position + new Vector3(0, -bottom, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, bottom - bottomRange, 0).magnitude);
+		bottomLeftCastHit = Physics2D.RaycastAll(transform.position + new Vector3(-bottomEdge, -bottom, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, bottom - bottomRange, 0).magnitude);
+		bottomRightCastHit = Physics2D.RaycastAll(transform.position + new Vector3(bottomEdge, -bottom, 0), new Vector3(0, -bottomRange, 0), new Vector3(0, bottom - bottomRange, 0).magnitude);
 		//Debug.Log("RightFence:" + haveRightFence + "   LeftFence:" + haveLeftFence + "   BottomFence:" + haveBottomFence);
 	}
 
@@ -195,7 +208,7 @@ public class tempController : GameBehaviour
 	void PlayerJump()
 	{
 		bool pressJump = Input.GetButtonDown("Jump");
-		if(pressJump == true)
+		if (pressJump == true)
 		{
 			Debug.Log(cot++);
 		}
@@ -299,6 +312,8 @@ public class tempController : GameBehaviour
 		base.OnLevelRotateBegin();
 		isPausing = true;
 		isLevelRotating = true;
+
+		transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 	}
 
 	/// <summary>
@@ -313,7 +328,9 @@ public class tempController : GameBehaviour
 	{
 		base.OnLevelRotateEnd();
 		isPausing = false;
-		isLevelRotating = true;
+		isLevelRotating = false;
+
+		transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 	}
 
 	#endregion
