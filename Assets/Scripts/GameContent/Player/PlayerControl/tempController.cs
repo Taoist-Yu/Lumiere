@@ -337,10 +337,129 @@ public class tempController : GameBehaviour
 
 	#region 场景交互相关的代码
 
+	OperateInterface operateInterface;          //获取场景可交互物体的操作接口
+
 	public void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
 	{
 		transform.Translate(-direction * Time.deltaTime * velocityOnLighting);
 		if (verticalVelocity < 0) verticalVelocity = 0;
+	}
+
+	//操作物体
+	void PlayerOperate()
+	{
+		if (operateInterface == null)
+			return;
+		if (GetInput.Operate0)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operate0(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
+			}
+		}
+		if (GetInput.Operate1)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operate1(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
+			}
+		}
+		if (GetInput.Operate2)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operate2(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
+			}
+		}
+	}
+
+	//持续操作物体
+	void PlayerOperating()
+	{
+		if (operateInterface == null)
+			return;
+		if (GetInput.Operating0)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operating0(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
+			}
+		}
+		if (GetInput.Operating1)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operating1(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
+			}
+		}
+		if (GetInput.Operating2)
+		{
+			if (PlayerParticleController.lightQuantity >= operateInterface.lightNeed)
+			{
+				operateInterface.Operating2(PlayerParticleController.lightQuantity);
+				if (operateInterface.deltaLightQuantity != 0)
+				{
+					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
+					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+				}
+			}
+		}
+	}
+
+	//获取操作实例
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		switch (collision.tag)
+		{
+			case "OperatedInterface":
+				operateInterface = collision.transform.parent.parent.GetComponent<OperateInterface>();
+				break;
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		switch (collision.tag)
+		{
+			case "OperatedInterface":
+				operateInterface = null;
+				break;
+		}
+	}
+
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		switch (collision.tag)
+		{
+			case "OperatedInterface":
+				operateInterface = collision.transform.parent.parent.GetComponent<OperateInterface>();
+				break;
+		}
 	}
 
 	#endregion
