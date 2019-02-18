@@ -153,8 +153,7 @@ public class tempController : GameBehaviour
 		{
 			LaunchRaycast();
 			ChangeState();
-			PlayerWalk();
-			PlayerJump();
+
 		}
 
 		//调整人物坐标与当前脚下的物体坐标一样，从而使转场的时候人物不至于下落
@@ -170,11 +169,22 @@ public class tempController : GameBehaviour
 
 	private void Update()
 	{
+		//人物移动
+		if (!isPausing)
+		{
+			PlayerWalk();
+			PlayerJump();
+		}
+
 		//场景旋转
 		if (isLevelRotating)
 		{
 			OnLevelRotate();
 		}
+
+		//操作物体
+		PlayerOperate();
+		PlayerOperating();
 	}
 
 	void LaunchRaycast()
@@ -203,11 +213,11 @@ public class tempController : GameBehaviour
 		float h = Input.GetAxisRaw("Horizontal");
 		if (h > 0 && !haveRightFence)
 		{
-			this.transform.Translate(new Vector3(walkSpeed * Time.fixedDeltaTime, 0, 0));
+			this.transform.Translate(new Vector3(walkSpeed * Time.deltaTime, 0, 0));
 		}
 		else if (h < 0 && !haveLeftFence)
 		{
-			this.transform.Translate(new Vector3(-walkSpeed * Time.fixedDeltaTime, 0, 0));
+			this.transform.Translate(new Vector3(-walkSpeed * Time.deltaTime, 0, 0));
 		}
 	}
 
@@ -216,7 +226,7 @@ public class tempController : GameBehaviour
 		bool pressJump = Input.GetButtonDown("Jump");
 		if (pressJump == true)
 		{
-			Debug.Log(cot++);
+			//Debug.Log(cot++);
 		}
 		//Debug.Log(pressJumpCount);
 		if (onGround)
@@ -261,14 +271,14 @@ public class tempController : GameBehaviour
 							if (verticalVelocity > 0)
 							{
 								TranslatePlayer(G);
-								verticalVelocity -= Time.fixedDeltaTime * G;
+								verticalVelocity -= Time.deltaTime * G;
 							}
 							else
 							{
 								if (!haveBottomLeftFence && !haveBottomRightFence)
 								{
 									TranslatePlayer(G);
-									verticalVelocity -= Time.fixedDeltaTime * G;
+									verticalVelocity -= Time.deltaTime * G;
 								}
 							}
 							break;
@@ -280,14 +290,14 @@ public class tempController : GameBehaviour
 				if (verticalVelocity > 0)
 				{
 					TranslatePlayer(G);
-					verticalVelocity -= Time.fixedDeltaTime * G;
+					verticalVelocity -= Time.deltaTime * G;
 				}
 				else
 				{
 					if (!haveBottomLeftFence && !haveBottomRightFence)
 					{
 						TranslatePlayer(G);
-						verticalVelocity -= Time.fixedDeltaTime * G;
+						verticalVelocity -= Time.deltaTime * G;
 					}
 				}
 			}
@@ -296,7 +306,7 @@ public class tempController : GameBehaviour
 
 	void TranslatePlayer(float G)
 	{
-		transform.Translate(new Vector3(0, verticalVelocity * Time.fixedDeltaTime - G * Time.fixedDeltaTime * Time.fixedDeltaTime / 2, 0));
+		transform.Translate(new Vector3(0, verticalVelocity * Time.deltaTime - G * Time.deltaTime * Time.deltaTime / 2, 0));
 	}
 
 	private void OnDrawGizmos()
@@ -444,6 +454,7 @@ public class tempController : GameBehaviour
 		{
 			case "OperatedInterface":
 				operateInterface = collision.transform.parent.parent.GetComponent<OperateInterface>();
+				Debug.Log(1);
 				break;
 		}
 	}

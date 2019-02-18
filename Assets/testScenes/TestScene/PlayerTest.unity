@@ -280,6 +280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5bcb233b1ee09d428ffa47a4ebf52ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  count: 5
+  size: 1
+  minRadius: 5
+  maxRadius: 12
+  maxSpeed: 1
+  minSpeed: 0.5
 --- !u!199 &305644523
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5341,11 +5347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c8d53b43ded44eaffc7f697f1cb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 10
-  walkSpeed: 5
-  climbSpeed: 3
-  fallJumpMuti: 2.5
-  lowJumpMuti: 2
 --- !u!1001 &983824968
 Prefab:
   m_ObjectHideFlags: 0
