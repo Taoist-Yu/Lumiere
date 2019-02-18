@@ -139,6 +139,12 @@ public class tempController : GameBehaviour
 	private float velocityOnLighting = 10;
 	private float verticalVelocity = 0;
 
+	GameObject playerParticle;
+
+	private void Start()
+	{
+		playerParticle = GameObject.Find("PlayerPS");
+	}
 
 	void FixedUpdate()
 	{
@@ -358,7 +364,7 @@ public class tempController : GameBehaviour
 				if (operateInterface.deltaLightQuantity != 0)
 				{
 					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
-					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle(PlayerParticleController.lightQuantity);
 				}
 			}
 		}
@@ -370,7 +376,7 @@ public class tempController : GameBehaviour
 				if (operateInterface.deltaLightQuantity != 0)
 				{
 					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
-					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle(PlayerParticleController.lightQuantity);
 				}
 			}
 		}
@@ -382,7 +388,7 @@ public class tempController : GameBehaviour
 				if (operateInterface.deltaLightQuantity != 0)
 				{
 					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
-					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle(PlayerParticleController.lightQuantity);
 				}
 			}
 		}
@@ -401,7 +407,7 @@ public class tempController : GameBehaviour
 				if (operateInterface.deltaLightQuantity != 0)
 				{
 					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
-					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle(PlayerParticleController.lightQuantity);
 				}
 			}
 		}
@@ -413,7 +419,7 @@ public class tempController : GameBehaviour
 				if (operateInterface.deltaLightQuantity != 0)
 				{
 					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
-					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle(PlayerParticleController.lightQuantity);
 				}
 			}
 		}
@@ -425,7 +431,7 @@ public class tempController : GameBehaviour
 				if (operateInterface.deltaLightQuantity != 0)
 				{
 					PlayerParticleController.lightQuantity += operateInterface.deltaLightQuantity;
-					PlayerParticleController.UpdateParticle(PlayerParticleController.lightQuantity);
+					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle(PlayerParticleController.lightQuantity);
 				}
 			}
 		}
