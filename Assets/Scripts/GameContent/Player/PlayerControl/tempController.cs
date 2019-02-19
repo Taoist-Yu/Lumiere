@@ -59,10 +59,35 @@ public class tempController : GameBehaviour
 			else
 			{
 				bool flag = false;
-				foreach (RaycastHit2D hit in bottomCastHit)
+				foreach (RaycastHit2D hit in leftCastHit)
 				{
 					if (!hit.collider.isTrigger)
-						flag = true;
+					{
+						if (hit.collider.tag != "ColorfulPlatform")
+							flag = true;
+						//若目标平台是有颜色需求的
+						else
+						{
+							RayLight playerLight = RayLight.GetLight(PlayerParticleController.lightQuantity);
+							RayLight.LightColor platformColor = hit.collider.transform.parent.parent.GetComponent<ColorfulPlatform>().platformColor;
+							//若颜色一样
+							if (playerLight.lightColor == platformColor)
+							{
+								flag = true;
+							}
+							//反之
+							else
+							{
+								if (playerLight.lightColor == RayLight.LightColor.white
+									&& playerLight.LightQuantity != 0)
+								{
+									flag = true;
+								}
+								else
+									flag = false;
+							}
+						}
+					}
 				}
 				return flag;
 			}
@@ -79,10 +104,35 @@ public class tempController : GameBehaviour
 			else
 			{
 				bool flag = false;
-				foreach (RaycastHit2D hit in bottomLeftCastHit)
+				foreach (RaycastHit2D hit in leftCastHit)
 				{
 					if (!hit.collider.isTrigger)
-						flag = true;
+					{
+						if (hit.collider.tag != "ColorfulPlatform")
+							flag = true;
+						//若目标平台是有颜色需求的
+						else
+						{
+							RayLight playerLight = RayLight.GetLight(PlayerParticleController.lightQuantity);
+							RayLight.LightColor platformColor = hit.collider.transform.parent.parent.GetComponent<ColorfulPlatform>().platformColor;
+							//若颜色一样
+							if (playerLight.lightColor == platformColor)
+							{
+								flag = true;
+							}
+							//反之
+							else 
+							{
+								if (playerLight.lightColor == RayLight.LightColor.white
+									&& playerLight.LightQuantity != 0)
+								{
+									flag = true;
+								}
+								else
+									flag = false;
+							}
+						}
+					}
 				}
 				return flag;
 			}
@@ -99,10 +149,35 @@ public class tempController : GameBehaviour
 			else
 			{
 				bool flag = false;
-				foreach (RaycastHit2D hit in bottomRightCastHit)
+				foreach (RaycastHit2D hit in leftCastHit)
 				{
 					if (!hit.collider.isTrigger)
-						flag = true;
+					{
+						if (hit.collider.tag != "ColorfulPlatform")
+							flag = true;
+						//若目标平台是有颜色需求的
+						else
+						{
+							RayLight playerLight = RayLight.GetLight(PlayerParticleController.lightQuantity);
+							RayLight.LightColor platformColor = hit.collider.transform.parent.parent.GetComponent<ColorfulPlatform>().platformColor;
+							//若颜色一样
+							if (playerLight.lightColor == platformColor)
+							{
+								flag = true;
+							}
+							else 
+							//反之
+							{
+								if (playerLight.lightColor == RayLight.LightColor.white
+									&& playerLight.LightQuantity != 0)
+								{
+									flag = true;
+								}
+								else
+									flag = false;
+							}
+						}
+					}
 				}
 				return flag;
 			}
@@ -153,7 +228,13 @@ public class tempController : GameBehaviour
 		{
 			LaunchRaycast();
 			ChangeState();
+		}
 
+		//人物移动
+		if (!isPausing)
+		{
+			PlayerWalk();
+			PlayerJump();
 		}
 
 		//调整人物坐标与当前脚下的物体坐标一样，从而使转场的时候人物不至于下落
@@ -169,13 +250,6 @@ public class tempController : GameBehaviour
 
 	private void Update()
 	{
-		//人物移动
-		if (!isPausing)
-		{
-			PlayerWalk();
-			PlayerJump();
-		}
-
 		//场景旋转
 		if (isLevelRotating)
 		{

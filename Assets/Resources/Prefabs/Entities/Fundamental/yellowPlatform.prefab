@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 61652236488702766}
   m_Layer: 0
   m_Name: NorthCollider
-  m_TagString: Untagged
+  m_TagString: ColorfulPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 61163127103617394}
   m_Layer: 0
   m_Name: WestCollider
-  m_TagString: Untagged
+  m_TagString: ColorfulPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 61011776367600854}
   m_Layer: 0
   m_Name: SouthCollider
-  m_TagString: Untagged
+  m_TagString: ColorfulPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,9 +183,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4127065111725860}
   - component: {fileID: 114228508859687628}
+  - component: {fileID: 114611066019800886}
   m_Layer: 0
   m_Name: yellowPlatform
-  m_TagString: Untagged
+  m_TagString: ColorfulPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,7 +253,7 @@ GameObject:
   - component: {fileID: 61209278563744140}
   m_Layer: 0
   m_Name: EastCollider
-  m_TagString: Untagged
+  m_TagString: ColorfulPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,7 +312,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1484154029847402}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -60.14895, y: 12.478384, z: 0.0203125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4119183843870008}
@@ -998,3 +999,15 @@ MonoBehaviour:
   north: 1
   west: 1
   isTrigger: 0
+--- !u!114 &114611066019800886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484154029847402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4c44118a609504c9ee8ab8b4395d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformColor: 3
