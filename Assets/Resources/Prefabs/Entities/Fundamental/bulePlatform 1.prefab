@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4262684571014800}
   - component: {fileID: 114649413494968718}
+  - component: {fileID: 114840230747939964}
   m_Layer: 0
   m_Name: bulePlatform 1
-  m_TagString: Untagged
+  m_TagString: ColorfulPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +122,7 @@ GameObject:
   - component: {fileID: 61687258675953382}
   m_Layer: 0
   m_Name: SouthCollider
-  m_TagString: Untagged
+  m_TagString: ColorfulPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,11 +153,11 @@ GameObject:
   - component: {fileID: 61055678825150566}
   m_Layer: 0
   m_Name: WestCollider
-  m_TagString: Untagged
+  m_TagString: ColorfulPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1640031408903882
 GameObject:
   m_ObjectHideFlags: 1
@@ -168,11 +169,11 @@ GameObject:
   - component: {fileID: 61137768919859898}
   m_Layer: 0
   m_Name: NorthCollider
-  m_TagString: Untagged
+  m_TagString: ColorfulPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1758751032950270
 GameObject:
   m_ObjectHideFlags: 1
@@ -201,11 +202,11 @@ GameObject:
   - component: {fileID: 61306588930975592}
   m_Layer: 0
   m_Name: EastCollider
-  m_TagString: Untagged
+  m_TagString: ColorfulPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4014940806015690
 Transform:
   m_ObjectHideFlags: 1
@@ -230,7 +231,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1064894221391318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.2, y: 4, z: 0}
+  m_LocalPosition: {x: -39.722916, y: 12.633524, z: 0.0203125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4014940806015690}
@@ -706,3 +707,15 @@ MonoBehaviour:
   north: 1
   west: 1
   isTrigger: 0
+--- !u!114 &114840230747939964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1064894221391318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4c44118a609504c9ee8ab8b4395d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformColor: 1
