@@ -121,7 +121,7 @@ public class tempController : GameBehaviour
 	[SerializeField]
 	[Range(0.1f, 10f)]
 	private float walkSpeed = 5f;
-	private int G = 10;
+	private int G = 12;
 
 	public float leftRange = 1.5f;
 	public float rightRange = 1.5f;
