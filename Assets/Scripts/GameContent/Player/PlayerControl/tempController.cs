@@ -333,8 +333,18 @@ public class tempController : GameBehaviour
 
 	public void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
 	{
-		transform.Translate(-direction * Time.deltaTime * velocityOnLighting);
-		if (verticalVelocity < 0) verticalVelocity = 0;
+		//判断人物是否能随光线移动
+		bool flag = false;
+		if(light.lightColor == RayLight.GetLight(PlayerParticleController.lightQuantity).lightColor)
+		{
+			flag = true;
+		}
+		//
+		if(true)
+		{
+			transform.Translate(-direction * Time.deltaTime * velocityOnLighting);
+			if (verticalVelocity < 0) verticalVelocity = 0;
+		}
 	}
 
 	//操作物体
