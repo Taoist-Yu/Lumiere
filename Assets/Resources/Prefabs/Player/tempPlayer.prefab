@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4777882846634150}
   m_Layer: 0
-  m_Name: Tigger
+  m_Name: LightTigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473104374567800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.99, y: 14.24, z: 0}
+  m_LocalPosition: {x: -3.91, y: 3.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4807278350968558}

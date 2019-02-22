@@ -335,12 +335,23 @@ public class tempController : GameBehaviour
 	{
 		//判断人物是否能随光线移动
 		bool flag = false;
-		if(light.lightColor == RayLight.GetLight(PlayerParticleController.lightQuantity).lightColor)
+		
+		if(PlayerParticleController.lightQuantity > 0)
 		{
-			flag = true;
+			RayLight.LightColor playerColor = RayLight.GetLight(PlayerParticleController.lightQuantity).lightColor;
+			RayLight.LightColor lightColor = light.lightColor;
+			if(playerColor == RayLight.LightColor.white)
+			{
+				flag = true;
+			}
+			else
+			{
+				if (playerColor == lightColor)
+					flag = true;
+			}
 		}
-		//
-		if(true)
+		//移动人物
+		if(flag)
 		{
 			transform.Translate(-direction * Time.deltaTime * velocityOnLighting);
 			if (verticalVelocity < 0) verticalVelocity = 0;
