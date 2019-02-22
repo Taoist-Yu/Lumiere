@@ -7,180 +7,82 @@ public class tempController : GameBehaviour
 	int cot = 0;
 	RaycastHit2D[] leftCastHit, rightCastHit, bottomCastHit, bottomLeftCastHit, bottomRightCastHit;
 	#region 射线检测是否检测到了非触发器的碰撞体
+
+	bool haveFence(RaycastHit2D[] hits)
+	{
+		if (hits == null)
+		{
+			return false;
+		}
+		else
+		{
+			bool flag = false;
+			foreach (RaycastHit2D hit in hits)
+			{
+				if (!hit.collider.isTrigger)
+				{
+					if (hit.collider.tag != "ColorfulPlatform")
+						flag = true;
+					//若目标平台是有颜色需求的
+					else
+					{
+						RayLight playerLight = RayLight.GetLight(PlayerParticleController.lightQuantity);
+						RayLight.LightColor platformColor = hit.collider.transform.parent.parent.GetComponent<ColorfulPlatform>().platformColor;
+						//若颜色一样
+						if (playerLight.lightColor == platformColor)
+						{
+							flag = true;
+						}
+						//反之
+						else
+						{
+							if (playerLight.lightColor == RayLight.LightColor.white
+								&& playerLight.LightQuantity != 0)
+							{
+								flag = true;
+							}
+							else
+								flag = false;
+						}
+					}
+				}
+			}
+			return flag;
+		}
+	}
 	bool haveLeftFence
 	{
 		get
 		{
-			if (leftCastHit == null)
-			{
-				return false;
-			}
-			else
-			{
-				bool flag = false;
-				foreach (RaycastHit2D hit in leftCastHit)
-				{
-					if (!hit.collider.isTrigger)
-						flag = true;
-
-				}
-				return flag;
-			}
+			return haveFence(leftCastHit);
 		}
 	}
 	bool haveRightFence
 	{
 		get
 		{
-			if (rightCastHit == null)
-			{
-				return false;
-			}
-			else
-			{
-				bool flag = false;
-				foreach (RaycastHit2D hit in rightCastHit)
-				{
-					if (!hit.collider.isTrigger)
-						flag = true;
-				}
-				return flag;
-			}
+			return haveFence(rightCastHit);
 		}
 	}
 	bool haveBottomFence
 	{
 		get
 		{
-			if (bottomCastHit == null)
-			{
-				return false;
-			}
-			else
-			{
-				bool flag = false;
-				foreach (RaycastHit2D hit in leftCastHit)
-				{
-					if (!hit.collider.isTrigger)
-					{
-						if (hit.collider.tag != "ColorfulPlatform")
-							flag = true;
-						//若目标平台是有颜色需求的
-						else
-						{
-							RayLight playerLight = RayLight.GetLight(PlayerParticleController.lightQuantity);
-							RayLight.LightColor platformColor = hit.collider.transform.parent.parent.GetComponent<ColorfulPlatform>().platformColor;
-							//若颜色一样
-							if (playerLight.lightColor == platformColor)
-							{
-								flag = true;
-							}
-							//反之
-							else
-							{
-								if (playerLight.lightColor == RayLight.LightColor.white
-									&& playerLight.LightQuantity != 0)
-								{
-									flag = true;
-								}
-								else
-									flag = false;
-							}
-						}
-					}
-				}
-				return flag;
-			}
+			return haveFence(bottomCastHit);
 		}
 	}
 	bool haveBottomLeftFence
 	{
 		get
 		{
-			if (bottomLeftCastHit == null)
-			{
-				return false;
-			}
-			else
-			{
-				bool flag = false;
-				foreach (RaycastHit2D hit in leftCastHit)
-				{
-					if (!hit.collider.isTrigger)
-					{
-						if (hit.collider.tag != "ColorfulPlatform")
-							flag = true;
-						//若目标平台是有颜色需求的
-						else
-						{
-							RayLight playerLight = RayLight.GetLight(PlayerParticleController.lightQuantity);
-							RayLight.LightColor platformColor = hit.collider.transform.parent.parent.GetComponent<ColorfulPlatform>().platformColor;
-							//若颜色一样
-							if (playerLight.lightColor == platformColor)
-							{
-								flag = true;
-							}
-							//反之
-							else 
-							{
-								if (playerLight.lightColor == RayLight.LightColor.white
-									&& playerLight.LightQuantity != 0)
-								{
-									flag = true;
-								}
-								else
-									flag = false;
-							}
-						}
-					}
-				}
-				return flag;
-			}
+			return haveFence(bottomLeftCastHit);
 		}
 	}
 	bool haveBottomRightFence
 	{
 		get
 		{
-			if (bottomRightCastHit == null)
-			{
-				return false;
-			}
-			else
-			{
-				bool flag = false;
-				foreach (RaycastHit2D hit in leftCastHit)
-				{
-					if (!hit.collider.isTrigger)
-					{
-						if (hit.collider.tag != "ColorfulPlatform")
-							flag = true;
-						//若目标平台是有颜色需求的
-						else
-						{
-							RayLight playerLight = RayLight.GetLight(PlayerParticleController.lightQuantity);
-							RayLight.LightColor platformColor = hit.collider.transform.parent.parent.GetComponent<ColorfulPlatform>().platformColor;
-							//若颜色一样
-							if (playerLight.lightColor == platformColor)
-							{
-								flag = true;
-							}
-							else 
-							//反之
-							{
-								if (playerLight.lightColor == RayLight.LightColor.white
-									&& playerLight.LightQuantity != 0)
-								{
-									flag = true;
-								}
-								else
-									flag = false;
-							}
-						}
-					}
-				}
-				return flag;
-			}
+			return haveFence(bottomRightCastHit);
 		}
 	}
 	#endregion
