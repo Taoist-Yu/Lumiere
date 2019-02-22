@@ -47,7 +47,8 @@ public class PlayerParticleController : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.G)) AddAParticle();
+		//if (Input.GetKeyDown(KeyCode.G)) AddAParticle();
+		//if (Input.GetKeyDown(KeyCode.L)) UpdateParticle(1);
 		for (int i = 0; i < count; i++)
 		{
 			circleList[i].position = Quaternion.AngleAxis(circleList[i].anglePerFrame, circleList[i].axis) * (circleList[i].position);
@@ -106,6 +107,56 @@ public class PlayerParticleController : MonoBehaviour
 
 	}
 
+	//删除一个粒子
+	void DeleteAParticle()
+	{
+		particleArr[count - 1].remainingLifetime = 0;
+		particleSys.SetParticles(particleArr, particleArr.Length);
+
+		particleArr = null; //内存释放
+
+		//添加粒子数量
+		count--;
+		lightQuantity -= 1;
+		particleArr = new ParticleSystem.Particle[count];
+		particleSys.maxParticles = count;
+		particleSys.GetParticles(particleArr);
+
+		circleList.RemoveAt(count);
+
+		//转换颜色并重新产生粒子
+		for (int i = 0; i < count; i++)
+		{
+			switch (lightQuantity % 5)
+			{
+				case 1:
+					particleArr[i].startColor = new Color(85f / 255f, 233f / 255f, 255f / 255f);
+					break;
+				case 2:
+					particleArr[i].startColor = new Color(166f / 255f, 255f / 255f, 165f / 255f);
+					break;
+				case 3:
+					particleArr[i].startColor = new Color(255f / 255f, 204f / 255f, 149f / 255f);
+					break;
+				case 4:
+					particleArr[i].startColor = new Color(255f / 255f, 133f / 255f, 132f / 255f);
+					break;
+				case 0:
+					particleArr[i].startColor = Color.white;
+					break;
+				default: break;
+			}
+			particleArr[i].remainingLifetime = 0;
+		}
+		particleSys.SetParticles(particleArr, particleArr.Length);
+		for (int i = 0; i < count; i++)
+		{
+			particleArr[i].remainingLifetime = 5;
+		}
+		particleSys.SetParticles(particleArr, particleArr.Length);
+
+	}
+
 	//产生一个随机粒子数据并添加到列表末尾
 	void RandomCircle()
 	{
@@ -127,9 +178,19 @@ public class PlayerParticleController : MonoBehaviour
 	{
 
 		int add = n - count;
-		for (int i = 0; i < add; i++)
+		if (add > 0)
 		{
-			AddAParticle();
+			for (int i = 0; i < add; i++)
+			{
+				AddAParticle();
+			}
+		}
+		else if (add < 0)
+		{
+			for(int i = add; i < 0; i++)
+			{
+				DeleteAParticle();
+			}
 		}
 	}
 }
