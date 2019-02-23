@@ -9,6 +9,7 @@ TagManager:
   - ParticlePrism
   - ColorforPlatform
   - ColorfulPlatform
+  - PlayerTrail
   layers:
   - Default
   - TransparentFX

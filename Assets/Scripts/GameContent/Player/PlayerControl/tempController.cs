@@ -117,10 +117,12 @@ public class tempController : GameBehaviour
 	private float verticalVelocity = 0;
 
 	GameObject playerParticle;
+	GameObject[] playerTrail;
 
 	private void Start()
 	{
 		playerParticle = GameObject.Find("PlayerPS");
+		playerTrail = GameObject.FindGameObjectsWithTag("PlayerTrail");
 	}
 
 	void FixedUpdate()
@@ -190,10 +192,19 @@ public class tempController : GameBehaviour
 		if (h > 0 && !haveRightFence)
 		{
 			this.transform.Translate(new Vector3(walkSpeed * Time.deltaTime, 0, 0));
+			for(int i = 0; i < playerTrail.Length; i++)
+			{
+
+				if (playerTrail[i].gameObject.transform.position.x - this.transform.position.x > 0) { playerTrail[i].gameObject.transform.position = new Vector3(2 * this.transform.position.x - playerTrail[i].gameObject.transform.position.x, playerTrail[i].gameObject.transform.position.y, playerTrail[i].gameObject.transform.position.z); }
+			}
 		}
 		else if (h < 0 && !haveLeftFence)
 		{
 			this.transform.Translate(new Vector3(-walkSpeed * Time.deltaTime, 0, 0));
+			for (int i = 0; i < playerTrail.Length; i++)
+			{
+				if (playerTrail[i].gameObject.transform.position.x - this.transform.position.x < 0) { playerTrail[i].gameObject.transform.position = new Vector3(2 * this.transform.position.x - playerTrail[i].gameObject.transform.position.x, playerTrail[i].gameObject.transform.position.y, playerTrail[i].gameObject.transform.position.z); }
+			}
 		}
 	}
 

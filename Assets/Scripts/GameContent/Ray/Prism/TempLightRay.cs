@@ -50,7 +50,7 @@ public class TempLightRay : RayLuncher {
 			if (hitArray[i].transform.parent.gameObject == colliderRoot)
 				continue;
 			//获得目标下的Entity脚本
-			Entity other = hitArray[i].transform.parent.parent.GetComponent<Entity>();
+			Entity other = hitArray[i].collider.transform.parent.parent.GetComponent<Entity>();
 			if (other != null)
 			{
 				//激活目标的受光函数
