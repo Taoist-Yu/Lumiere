@@ -87,7 +87,7 @@ public class tempController : GameBehaviour
 	}
 	#endregion
 
-#region 重生相关功能
+	#region 重生相关功能
 
 	Vector3 respawnPosition;
 	int heart = 0;
@@ -171,7 +171,8 @@ public class tempController : GameBehaviour
 		}
 	}
 
-#endregion
+	#endregion
+
 
 	/// <summary>
 	/// 游戏对象是否暂停。
@@ -253,8 +254,7 @@ public class tempController : GameBehaviour
 		//操作物体
 		if(!isPausing)
 		{
-			PlayerOperate();
-			PlayerOperating();
+			PlayerAllOperate();
 		}
 
 		//重生相关
@@ -439,6 +439,8 @@ public class tempController : GameBehaviour
 	#region 场景交互相关的代码
 
 	OperateInterface operateInterface;          //获取场景可交互物体的操作接口
+	public bool isPickMode = false;                 //拾取模式是否开启,在光球脚本中被访问
+	float lastTimeOfGettingLightElement = 0;	//为了放止在光球被销毁之前发生二次拾取
 
 	public void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
 	{
@@ -465,6 +467,14 @@ public class tempController : GameBehaviour
 			transform.Translate(-direction * Time.deltaTime * velocityOnLighting);
 			if (verticalVelocity < 0) verticalVelocity = 0;
 		}
+	}
+
+	//获取玩家所有操作
+	void PlayerAllOperate()
+	{
+		PlayerOperate();
+		PlayerOperating();
+		PlayerPickMode();
 	}
 
 	//操作物体
@@ -553,14 +563,35 @@ public class tempController : GameBehaviour
 		}
 	}
 
+	//拾取模式
+	void PlayerPickMode()
+	{
+		if(GetInput.PickMode)
+		{
+			isPickMode = !isPickMode;
+		}
+	}
+
 	//获取操作实例
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+
 		switch (collision.tag)
 		{
 			case "OperatedInterface":
 				operateInterface = collision.transform.parent.parent.GetComponent<OperateInterface>();
 				Debug.Log(1);
+				break;
+			case "LightElement":
+				//问题：不能在极短时间（<0.1s）内连续接光球
+				if(isPickMode && Time.time - lastTimeOfGettingLightElement > 0.1f)
+				{
+					lastTimeOfGettingLightElement = Time.time;
+					GameObject lightElement = collision.transform.parent.parent.gameObject;
+					PlayerParticleController.lightQuantity++;
+					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
+					Destroy(lightElement);
+				}
 				break;
 		}
 	}
