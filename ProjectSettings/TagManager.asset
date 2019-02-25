@@ -7,9 +7,9 @@ TagManager:
   - TempLight
   - OperatedInterface
   - ParticlePrism
-  - ColorforPlatform
   - ColorfulPlatform
   - PlayerTrail
+  - LightElement
   layers:
   - Default
   - TransparentFX

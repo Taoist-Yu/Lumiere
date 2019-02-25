@@ -52,7 +52,7 @@ public class PlayerParticleController : MonoBehaviour
 			lightQuantity++;
 			AddAParticle();
 		}
-		if (Input.GetKeyDown(KeyCode.L))
+		if (Input.GetKeyDown(KeyCode.H))
 		{
 			lightQuantity--;
 			DeleteAParticle();

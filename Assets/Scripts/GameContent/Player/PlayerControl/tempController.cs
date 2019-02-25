@@ -87,6 +87,93 @@ public class tempController : GameBehaviour
 	}
 	#endregion
 
+	#region 重生相关功能
+
+	Vector3 respawnPosition;
+	int heart = 0;
+	[Header("初始生命值")]
+	public int initHeart = 3;
+
+	//相机实例
+	GameObject playerCamera;
+
+	//更新重生点
+	void UpdateRespawnPosition()
+	{
+		if (haveBottomFence)
+		{
+			RaycastHit2D[] hits = bottomCastHit;
+			if (hits != null)
+				foreach (RaycastHit2D hit in hits)
+				{
+					if (!hit.collider.isTrigger)
+					{
+						if (hit.collider.tag != "ColorfulPlatform")
+						{
+							respawnPosition = transform.position;
+						}
+					}
+				}
+		}
+	}
+
+	//重生
+	void Respawn()
+	{
+		//判断人物是否死亡
+		if (transform.position.y > -20)
+			return;
+		//减少生命值，若无生命则无法复活
+		if (heart > 0)
+			heart--;
+		else
+		{
+			//死亡（未完成）
+			return;
+		}
+		//确定相机移动的起始点和终止点
+		startPos = playerCamera.transform.position;
+		endPos = respawnPosition + playerCamera.transform.localPosition;
+		//重置人物位置坐标
+		transform.position = respawnPosition;
+		//开始相机移动
+		CameraMoveBegin();
+	}
+
+	//相机移动
+	[Header("重生时相机移动快慢")]
+	public float CameraMoveSpeedScale = 1;
+	Vector3 startPos, endPos;
+	bool isCameraMoving = false;
+
+	void CameraMoveBegin()
+	{
+		isCameraMoving = true;
+		//相机移动期间暂停人物
+		isPausing = true;
+	}
+
+	void CameraMove()
+	{
+		if (!isCameraMoving)
+			return;
+		//相机朝终点移动
+		playerCamera.transform.position = Vector3.Lerp(startPos, endPos, Time.deltaTime * CameraMoveSpeedScale);
+		//将当前相机坐标计为下一次移动的起始坐标
+		startPos = playerCamera.transform.position;
+		//如果相机与终点距离足够近，将相机移动至终点并结束移动
+		if(Vector3.Distance(startPos,endPos) < 0.1f)
+		{
+			startPos = endPos;
+			playerCamera.transform.position = endPos;
+			isPausing = false;
+			isCameraMoving = false;
+		}
+	}
+
+	#endregion
+
+
 	/// <summary>
 	/// 游戏对象是否暂停。
 	/// 一种情况是，当场景转换的过程中，人物无法移动，也无法操作
@@ -122,11 +209,18 @@ public class tempController : GameBehaviour
 
 	private void Start()
 	{
+		playerCamera = GameObject.Find("Camera").gameObject;
 		playerParticle = GameObject.Find("PlayerPS");
 		playerTrail = GameObject.FindGameObjectsWithTag("PlayerTrail");
+		heart = initHeart;
 	}
 
 	void FixedUpdate()
+	{
+
+	}
+
+	private void Update()
 	{
 		//基本移动
 		if (!isPausing)
@@ -151,10 +245,7 @@ public class tempController : GameBehaviour
 					bottomCastHit[bottomCastHit.Length - 1].collider.transform.position.z
 				);
 		}
-	}
 
-	private void Update()
-	{
 		//场景旋转
 		if (isLevelRotating)
 		{
@@ -162,8 +253,15 @@ public class tempController : GameBehaviour
 		}
 
 		//操作物体
-		PlayerOperate();
-		PlayerOperating();
+		if(!isPausing)
+		{
+			PlayerAllOperate();
+		}
+
+		//重生相关
+		UpdateRespawnPosition();
+		Respawn();
+		CameraMove();
 	}
 
 	void LaunchRaycast()
@@ -336,6 +434,8 @@ public class tempController : GameBehaviour
 	#region 场景交互相关的代码
 
 	OperateInterface operateInterface;          //获取场景可交互物体的操作接口
+	public bool isPickMode = false;                 //拾取模式是否开启,在光球脚本中被访问
+	float lastTimeOfGettingLightElement = 0;	//为了放止在光球被销毁之前发生二次拾取
 
 	public void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
 	{
@@ -362,6 +462,14 @@ public class tempController : GameBehaviour
 			transform.Translate(-direction * Time.deltaTime * velocityOnLighting);
 			if (verticalVelocity < 0) verticalVelocity = 0;
 		}
+	}
+
+	//获取玩家所有操作
+	void PlayerAllOperate()
+	{
+		PlayerOperate();
+		PlayerOperating();
+		PlayerPickMode();
 	}
 
 	//操作物体
@@ -450,14 +558,35 @@ public class tempController : GameBehaviour
 		}
 	}
 
+	//拾取模式
+	void PlayerPickMode()
+	{
+		if(GetInput.PickMode)
+		{
+			isPickMode = !isPickMode;
+		}
+	}
+
 	//获取操作实例
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+
 		switch (collision.tag)
 		{
 			case "OperatedInterface":
 				operateInterface = collision.transform.parent.parent.GetComponent<OperateInterface>();
 				Debug.Log(1);
+				break;
+			case "LightElement":
+				//问题：不能在极短时间（<0.1s）内连续接光球
+				if(isPickMode && Time.time - lastTimeOfGettingLightElement > 0.1f)
+				{
+					lastTimeOfGettingLightElement = Time.time;
+					GameObject lightElement = collision.transform.parent.parent.gameObject;
+					PlayerParticleController.lightQuantity++;
+					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
+					Destroy(lightElement);
+				}
 				break;
 		}
 	}
