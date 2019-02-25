@@ -195,5 +195,14 @@ class GetInput
 		}
 	}
 
+	public static bool PickMode
+	{
+		get
+		{
+			return
+				Input.GetKeyDown(KeyCode.L);
+		}
+	}
+
 }
 
