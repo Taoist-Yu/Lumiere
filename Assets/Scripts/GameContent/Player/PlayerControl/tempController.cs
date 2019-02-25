@@ -95,6 +95,7 @@ public class tempController : GameBehaviour
 
 	bool onGround = true;
 	int pressJumpCount;
+	public int maxJumpCount = 2;
 	[SerializeField]
 	[Range(0.1f, 10f)]
 	private float walkSpeed = 5f;
@@ -235,41 +236,35 @@ public class tempController : GameBehaviour
 		{
 			if (pressJump)
 			{
-				switch (pressJumpCount)
+				if (pressJumpCount < maxJumpCount)
 				{
-					case 0:
-					case 1:
+					if (verticalVelocity >= 0)
+					{
+						verticalVelocity = maxVelo;
+						TranslatePlayer(G);
+					}
+					else
+					{
+						verticalVelocity = maxVelo;
+						TranslatePlayer(G);
+					}
+					pressJumpCount++;
+				}
+				else
+				{
+					if (verticalVelocity > 0)
+					{
+						TranslatePlayer(G);
+						verticalVelocity -= Time.deltaTime * G;
+					}
+					else
+					{
+						if (!haveBottomLeftFence && !haveBottomRightFence)
 						{
-							if (verticalVelocity >= 0)
-							{
-								verticalVelocity = maxVelo;
-								TranslatePlayer(G);
-							}
-							else
-							{
-								verticalVelocity = maxVelo;
-								TranslatePlayer(G);
-							}
-							pressJumpCount++;
-							break;
+							TranslatePlayer(G);
+							verticalVelocity -= Time.deltaTime * G;
 						}
-					case 2:
-						{
-							if (verticalVelocity > 0)
-							{
-								TranslatePlayer(G);
-								verticalVelocity -= Time.deltaTime * G;
-							}
-							else
-							{
-								if (!haveBottomLeftFence && !haveBottomRightFence)
-								{
-									TranslatePlayer(G);
-									verticalVelocity -= Time.deltaTime * G;
-								}
-							}
-							break;
-						}
+					}
 				}
 			}
 			else
