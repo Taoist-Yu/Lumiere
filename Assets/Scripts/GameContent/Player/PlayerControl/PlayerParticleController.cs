@@ -8,7 +8,7 @@ public class PlayerParticleController : MonoBehaviour
 	ParticleSystem.Particle[] particleArr;
 	List<CircleAttribute> circleList = new List<CircleAttribute>();
 
-	public int count = 5;
+	public int count = 1;
 	public float size = 1f; // 粒子大小
 	public float minRadius = 5.0f;
 	public float maxRadius = 12.0f;
