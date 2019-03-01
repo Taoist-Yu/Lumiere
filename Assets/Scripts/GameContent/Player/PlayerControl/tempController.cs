@@ -327,12 +327,6 @@ public class tempController : GameBehaviour
 			{
 				transform.position = new Vector3(transform.position.x, positionOfLand + bottomRange, transform.position.z);
 				verticalVelocity = 0;
-				//掉落后消耗粒子
-				if (maxJumpCount > 1)
-				{
-					PlayerParticleController.lightQuantity -= 5 * (pressJumpCount - 1);
-					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
-				}
 				//跳跃次数清零
 				pressJumpCount = 0;
 			}
@@ -342,7 +336,10 @@ public class tempController : GameBehaviour
 			if (pressJump)
 			{
 				//判断多段跳段数
-				maxJumpCount = PlayerParticleController.lightQuantity / 5 + 1;
+				if (pressJumpCount < 1)
+				{
+					maxJumpCount = PlayerParticleController.lightQuantity / 5 + 1;
+				}
 				if (pressJumpCount < maxJumpCount)
 				{
 					if (verticalVelocity >= 0)
@@ -356,6 +353,11 @@ public class tempController : GameBehaviour
 						TranslatePlayer(G);
 					}
 					pressJumpCount++;
+					if (PlayerParticleController.lightQuantity >= 5)
+					{
+						PlayerParticleController.lightQuantity -= 5;
+						playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
+					}
 				}
 				else
 				{
