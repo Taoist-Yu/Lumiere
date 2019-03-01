@@ -182,7 +182,7 @@ public class tempController : GameBehaviour
 
 	bool onGround = true;
 	int pressJumpCount;
-	int maxJumpCount = 2;
+	int maxJumpCount = 1;
 	[SerializeField]
 	[Range(0.1f, 10f)]
 	private float walkSpeed = 5f;
@@ -328,8 +328,11 @@ public class tempController : GameBehaviour
 				transform.position = new Vector3(transform.position.x, positionOfLand + bottomRange, transform.position.z);
 				verticalVelocity = 0;
 				//掉落后消耗粒子
-				PlayerParticleController.lightQuantity -= 5 * (pressJumpCount - 1);
-				playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
+				if (maxJumpCount > 1)
+				{
+					PlayerParticleController.lightQuantity -= 5 * (pressJumpCount - 1);
+					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
+				}
 				//跳跃次数清零
 				pressJumpCount = 0;
 			}
@@ -339,7 +342,7 @@ public class tempController : GameBehaviour
 			if (pressJump)
 			{
 				//判断多段跳段数
-				maxJumpCount = PlayerParticleController.lightQuantity % 5 + 1;
+				maxJumpCount = PlayerParticleController.lightQuantity / 5 + 1;
 				if (pressJumpCount < maxJumpCount)
 				{
 					if (verticalVelocity >= 0)

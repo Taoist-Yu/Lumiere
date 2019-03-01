@@ -902,7 +902,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHeart: 3
   CameraMoveSpeedScale: 1
-  maxJumpCount: 2
   walkSpeed: 5
   leftRange: 0.5
   rightRange: 0.5
@@ -942,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5bcb233b1ee09d428ffa47a4ebf52ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 1
+  count: 0
   size: 0.2
   minRadius: 0.3
   maxRadius: 0.5
@@ -960,7 +959,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
