@@ -8,31 +8,15 @@ public class PlayerParticleController : MonoBehaviour
 	ParticleSystem.Particle[] particleArr;
 	List<CircleAttribute> circleList = new List<CircleAttribute>();
 
-	public int count = 5;
+	int count = 0;
 	public float size = 1f; // 粒子大小
 	public float minRadius = 5.0f;
 	public float maxRadius = 12.0f;
 	public float maxSpeed = 1f;
 	public float minSpeed = 0.5f;
+	bool playing = false;
 
-	public static int lightQuantity = 1;
-
-	void Start()
-	{
-		particleArr = new ParticleSystem.Particle[count];
-
-		// 初始化粒子系统
-		particleSys = this.GetComponent<ParticleSystem>();
-		particleSys.startSpeed = 0;
-		particleSys.startColor = new Color(85f / 255f, 233f / 255f, 255f / 255f);
-		particleSys.startLifetime = 5;
-		particleSys.startSize = size;
-		particleSys.loop = false;
-		particleSys.maxParticles = count;
-		particleSys.Emit(count);
-		particleSys.GetParticles(particleArr);
-		RandomlyStart();
-	}
+	public static int lightQuantity = 0;
 
 	// 初始化各粒子位置
 	void RandomlyStart()
@@ -49,20 +33,31 @@ public class PlayerParticleController : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.G))
 		{
-			lightQuantity++;
-			AddAParticle();
+			if (!playing)
+			{
+				lightQuantity++;
+				UpdateParticle();
+			}
+			else
+			{
+				lightQuantity++;
+				AddAParticle();
+			}
 		}
 		if (Input.GetKeyDown(KeyCode.H))
 		{
 			lightQuantity--;
 			DeleteAParticle();
 		}
-		for (int i = 0; i < count; i++)
+		if (playing)
 		{
-			circleList[i].position = Quaternion.AngleAxis(circleList[i].anglePerFrame, circleList[i].axis) * (circleList[i].position);
-			particleArr[i].position = circleList[i].position;
+			for (int i = 0; i < count; i++)
+			{
+				circleList[i].position = Quaternion.AngleAxis(circleList[i].anglePerFrame, circleList[i].axis) * (circleList[i].position);
+				particleArr[i].position = circleList[i].position;
+			}
+			particleSys.SetParticles(particleArr, particleArr.Length);
 		}
-		particleSys.SetParticles(particleArr, particleArr.Length);
 	}
 
 	//产生一个粒子
@@ -182,20 +177,40 @@ public class PlayerParticleController : MonoBehaviour
 
 	public void UpdateParticle()
 	{
+		if(!playing)
+		{
+			playing=true;
+			count++;
+			particleArr = new ParticleSystem.Particle[count];
 
-		int change = lightQuantity - count;
-		if (change > 0)
-		{
-			for (int i = 0; i < change; i++)
-			{
-				AddAParticle();
-			}
+			// 初始化粒子系统
+			particleSys = this.GetComponent<ParticleSystem>();
+			particleSys.startSpeed = 0;
+			particleSys.startColor = new Color(85f / 255f, 233f / 255f, 255f / 255f);
+			particleSys.startLifetime = 5;
+			particleSys.startSize = size;
+			particleSys.loop = false;
+			particleSys.maxParticles = count;
+			particleSys.Emit(count);
+			particleSys.GetParticles(particleArr);
+			RandomlyStart();
 		}
-		else if (change < 0)
+		else
 		{
-			for(int i = change; i < 0; i++)
+			int change = lightQuantity - count;
+			if (change > 0)
 			{
-				DeleteAParticle();
+				for (int i = 0; i < change; i++)
+				{
+					AddAParticle();
+				}
+			}
+			else if (change < 0)
+			{
+				for (int i = change; i < 0; i++)
+				{
+					DeleteAParticle();
+				}
 			}
 		}
 	}

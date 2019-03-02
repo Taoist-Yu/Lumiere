@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4927844193564236}
   - component: {fileID: 212214339131526498}
   m_Layer: 0
-  m_Name: "\u672A\u6807\u9898-1"
+  m_Name: PlayerImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4370888862484882}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4104577074397118
 Transform:
@@ -245,8 +245,8 @@ Transform:
   - {fileID: 4927844193564236}
   - {fileID: 4691307191532658}
   - {fileID: 4104577074397118}
-  - {fileID: 4935275127883820}
   - {fileID: 4043497691184330}
+  - {fileID: 4935275127883820}
   - {fileID: 4625357977381296}
   m_Father: {fileID: 4817593943309074}
   m_RootOrder: 0
@@ -311,7 +311,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473104374567800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.91, y: 3.67, z: 0}
+  m_LocalPosition: {x: 0, y: 7.83, z: 0.0203125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4370888862484882}
@@ -344,7 +344,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4370888862484882}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20734236621838334
 Camera:
@@ -910,6 +910,7 @@ MonoBehaviour:
   bottomEdge: 0.3
   maxVelo: 10
   velocityOnLighting: 10
+  isPickMode: 0
 --- !u!114 &114973318783939132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -940,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5bcb233b1ee09d428ffa47a4ebf52ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 1
+  count: 0
   size: 0.2
   minRadius: 0.3
   maxRadius: 0.5
@@ -958,7 +959,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

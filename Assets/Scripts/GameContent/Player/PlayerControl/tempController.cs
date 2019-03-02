@@ -182,6 +182,7 @@ public class tempController : GameBehaviour
 
 	bool onGround = true;
 	int pressJumpCount;
+	int maxJumpCount = 1;
 	[SerializeField]
 	[Range(0.1f, 10f)]
 	private float walkSpeed = 5f;
@@ -326,6 +327,7 @@ public class tempController : GameBehaviour
 			{
 				transform.position = new Vector3(transform.position.x, positionOfLand + bottomRange, transform.position.z);
 				verticalVelocity = 0;
+				//跳跃次数清零
 				pressJumpCount = 0;
 			}
 		}
@@ -333,41 +335,45 @@ public class tempController : GameBehaviour
 		{
 			if (pressJump)
 			{
-				switch (pressJumpCount)
+				//判断多段跳段数
+				if (pressJumpCount < 1)
 				{
-					case 0:
-					case 1:
+					maxJumpCount = PlayerParticleController.lightQuantity / 5 + 1;
+				}
+				if (pressJumpCount < maxJumpCount)
+				{
+					if (verticalVelocity >= 0)
+					{
+						verticalVelocity = maxVelo;
+						TranslatePlayer(G);
+					}
+					else
+					{
+						verticalVelocity = maxVelo;
+						TranslatePlayer(G);
+					}
+					pressJumpCount++;
+					if (PlayerParticleController.lightQuantity >= 5)
+					{
+						PlayerParticleController.lightQuantity -= 5;
+						playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
+					}
+				}
+				else
+				{
+					if (verticalVelocity > 0)
+					{
+						TranslatePlayer(G);
+						verticalVelocity -= Time.deltaTime * G;
+					}
+					else
+					{
+						if (!haveBottomLeftFence && !haveBottomRightFence)
 						{
-							if (verticalVelocity >= 0)
-							{
-								verticalVelocity = maxVelo;
-								TranslatePlayer(G);
-							}
-							else
-							{
-								verticalVelocity = maxVelo;
-								TranslatePlayer(G);
-							}
-							pressJumpCount++;
-							break;
+							TranslatePlayer(G);
+							verticalVelocity -= Time.deltaTime * G;
 						}
-					case 2:
-						{
-							if (verticalVelocity > 0)
-							{
-								TranslatePlayer(G);
-								verticalVelocity -= Time.deltaTime * G;
-							}
-							else
-							{
-								if (!haveBottomLeftFence && !haveBottomRightFence)
-								{
-									TranslatePlayer(G);
-									verticalVelocity -= Time.deltaTime * G;
-								}
-							}
-							break;
-						}
+					}
 				}
 			}
 			else
