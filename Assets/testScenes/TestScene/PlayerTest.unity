@@ -253,7 +253,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &305644519
 GameObject:
@@ -314,7 +314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5bcb233b1ee09d428ffa47a4ebf52ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 5
   size: 1
   minRadius: 5
   maxRadius: 12
@@ -4962,7 +4961,7 @@ Prefab:
     - target: {fileID: 224104418115583498, guid: 7cf36875c01ce8d4f94140130a6aad8c,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0000076293945
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224104418115583498, guid: 7cf36875c01ce8d4f94140130a6aad8c,
         type: 2}
@@ -4972,12 +4971,12 @@ Prefab:
     - target: {fileID: 224104418115583498, guid: 7cf36875c01ce8d4f94140130a6aad8c,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 224104418115583498, guid: 7cf36875c01ce8d4f94140130a6aad8c,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 224104418115583498, guid: 7cf36875c01ce8d4f94140130a6aad8c,
         type: 2}
@@ -5367,7 +5366,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1442205048339930, guid: 90172c328bc532a4890978608352f2a9, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90172c328bc532a4890978608352f2a9, type: 2}
@@ -6153,7 +6152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1879885573
 Prefab:
