@@ -199,8 +199,21 @@ class GetInput
 	{
 		get
 		{
+			if (operateAllowed == false)
+				return false;
 			return
 				Input.GetKeyDown(KeyCode.L);
+		}
+	}
+
+	public static bool Continue
+	{
+		get
+		{
+			if (operateAllowed == false)
+				return false;
+			return
+				Input.GetKeyDown(KeyCode.Return);
 		}
 	}
 
