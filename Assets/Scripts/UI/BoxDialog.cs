@@ -23,6 +23,18 @@ public class BoxDialog : MonoBehaviour
 		showedText = transform.Find("Text").GetComponent<Text>();
 		//获取动画组件
 		ani = GetComponent<Animator>();
+		//暂时隐藏
+		gameObject.SetActive(false);
+	}
+
+	/// <summary>
+	/// 当对话框事件被触发时自动调用
+	/// 激活对话框，开始播放对话框动画
+	/// </summary>
+	public void ActivateEvent()
+	{
+		gameObject.SetActive(true);
+		ani.Play("Start");
 	}
 
 	private void Update()

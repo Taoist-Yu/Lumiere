@@ -34,7 +34,7 @@ public class ColorfulPlatform : MonoBehaviour {
 	/// </summary>
 	public void OnScene()
 	{
-		timeVal = 3;
+		timeVal = 1.5f;
 		anim.SetInteger("state", 1);
 	}
 

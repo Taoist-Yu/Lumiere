@@ -10,6 +10,7 @@ TagManager:
   - ColorfulPlatform
   - PlayerTrail
   - LightElement
+  - TriggerEvent
   layers:
   - Default
   - TransparentFX

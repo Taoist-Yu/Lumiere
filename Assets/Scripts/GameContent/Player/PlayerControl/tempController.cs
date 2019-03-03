@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class tempController : GameBehaviour
 {
-	int cot = 0;
 	RaycastHit2D[] leftCastHit, rightCastHit, bottomCastHit, bottomLeftCastHit, bottomRightCastHit;
 	#region 射线检测是否检测到了非触发器的碰撞体
 
@@ -95,13 +94,11 @@ public class tempController : GameBehaviour
 
 	#region 重生相关功能
 
-	Vector3 respawnPosition;
+	GameObject respawnPlatform;
+
 	int heart = 0;
 	[Header("初始生命值")]
 	public int initHeart = 3;
-
-	//相机实例
-	GameObject playerCamera;
 
 	//更新重生点
 	void UpdateRespawnPosition()
@@ -114,9 +111,9 @@ public class tempController : GameBehaviour
 				{
 					if (!hit.collider.isTrigger)
 					{
-						if (hit.collider.tag != "ColorfulPlatform")
+						if (hit.collider.tag == "Untagged")
 						{
-							respawnPosition = transform.position;
+							respawnPlatform = hit.collider.transform.parent.parent.gameObject;
 						}
 					}
 				}
@@ -138,43 +135,15 @@ public class tempController : GameBehaviour
 			return;
 		}
 		//确定相机移动的起始点和终止点
-		startPos = playerCamera.transform.position;
-		endPos = respawnPosition + playerCamera.transform.localPosition;
-		//重置人物位置坐标
+		Vector3 respawnPosition = respawnPlatform.transform.position + new Vector3(0, 2, 0);
+
+		Vector3 startPos = playerCamera.transform.position;
+		Vector3 endPos = respawnPosition + playerCamera.transform.localPosition;
+		//重置人物位置坐标及速度
 		transform.position = respawnPosition;
+		verticalVelocity = 0;
 		//开始相机移动
-		CameraMoveBegin();
-	}
-
-	//相机移动
-	[Header("重生时相机移动快慢")]
-	public float CameraMoveSpeedScale = 1;
-	Vector3 startPos, endPos;
-	bool isCameraMoving = false;
-
-	void CameraMoveBegin()
-	{
-		isCameraMoving = true;
-		//相机移动期间暂停人物
-		isPausing = true;
-	}
-
-	void CameraMove()
-	{
-		if (!isCameraMoving)
-			return;
-		//相机朝终点移动
-		playerCamera.transform.position = Vector3.Lerp(startPos, endPos, Time.deltaTime * CameraMoveSpeedScale);
-		//将当前相机坐标计为下一次移动的起始坐标
-		startPos = playerCamera.transform.position;
-		//如果相机与终点距离足够近，将相机移动至终点并结束移动
-		if(Vector3.Distance(startPos,endPos) < 0.1f)
-		{
-			startPos = endPos;
-			playerCamera.transform.position = endPos;
-			isPausing = false;
-			isCameraMoving = false;
-		}
+		playerCamera.CameraMove(startPos, endPos, false);
 	}
 
 	#endregion
@@ -184,7 +153,7 @@ public class tempController : GameBehaviour
 	/// 游戏对象是否暂停。
 	/// 一种情况是，当场景转换的过程中，人物无法移动，也无法操作
 	/// </summary>
-	bool isPausing = false;
+	public bool isPausing = false;
 
 	bool onGround = true;
 	int pressJumpCount;
@@ -212,10 +181,12 @@ public class tempController : GameBehaviour
 
 	GameObject playerParticle;
 	GameObject[] playerTrail;
+	PlayerCamera playerCamera;
 
 	private void Start()
 	{
-		playerCamera = GameObject.Find("Camera").gameObject;
+//		playerCamera = GameObject.Find("Camera").gameObject;
+		playerCamera = transform.Find("Camera").GetComponent<PlayerCamera>();
 		playerParticle = GameObject.Find("PlayerPS");
 		playerTrail = GameObject.FindGameObjectsWithTag("PlayerTrail");
 		heart = initHeart;
@@ -267,7 +238,6 @@ public class tempController : GameBehaviour
 		//重生相关
 		UpdateRespawnPosition();
 		Respawn();
-		CameraMove();
 	}
 
 	void LaunchRaycast()
@@ -604,6 +574,9 @@ public class tempController : GameBehaviour
 					playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
 					Destroy(lightElement);
 				}
+				break;
+			case "TriggerEvent":
+				collision.transform.parent.parent.GetComponent<TriggerEvent>().ActivateEvent();
 				break;
 		}
 	}
