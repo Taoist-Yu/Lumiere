@@ -12,7 +12,7 @@ public class RayLight
 		green = 2,
 		yellow = 3,
 		red = 4,
-		white = 5
+		white = 0
 	};
 	public LightColor lightColor;
 	public int lightLevel;

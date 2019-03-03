@@ -26,6 +26,9 @@ public class tempController : GameBehaviour
 					//若目标平台是有颜色需求的
 					else
 					{
+						//获取目标平台脚本控件
+						ColorfulPlatform platInstance = hit.collider.transform.parent.parent.GetComponent<ColorfulPlatform>();
+
 						RayLight playerLight = RayLight.GetLight(PlayerParticleController.lightQuantity);
 						RayLight.LightColor platformColor = hit.collider.transform.parent.parent.GetComponent<ColorfulPlatform>().platformColor;
 						//若颜色一样
@@ -42,7 +45,10 @@ public class tempController : GameBehaviour
 								flag = true;
 							}
 							else
+							{
 								flag = false;
+								platInstance.OnScene();
+							}		
 						}
 					}
 				}
