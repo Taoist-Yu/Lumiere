@@ -137,13 +137,13 @@ public class tempController : GameBehaviour
 		//确定相机移动的起始点和终止点
 		Vector3 respawnPosition = respawnPlatform.transform.position + new Vector3(0, 2, 0);
 
-		Vector3 startPos = playerCamera.transform.position;
-		Vector3 endPos = respawnPosition + playerCamera.transform.localPosition;
+		Vector3 startPos = PlayerCamera.instance.transform.position;
+		Vector3 endPos = respawnPosition + PlayerCamera.instance.transform.localPosition;
 		//重置人物位置坐标及速度
 		transform.position = respawnPosition;
 		verticalVelocity = 0;
 		//开始相机移动
-		playerCamera.CameraMove(startPos, endPos, false);
+		PlayerCamera.Move(startPos, endPos, false);
 	}
 
 	#endregion
@@ -181,12 +181,9 @@ public class tempController : GameBehaviour
 
 	GameObject playerParticle;
 	GameObject[] playerTrail;
-	PlayerCamera playerCamera;
 
 	private void Start()
 	{
-//		playerCamera = GameObject.Find("Camera").gameObject;
-		playerCamera = transform.Find("Camera").GetComponent<PlayerCamera>();
 		playerParticle = GameObject.Find("PlayerPS");
 		playerTrail = GameObject.FindGameObjectsWithTag("PlayerTrail");
 		heart = initHeart;

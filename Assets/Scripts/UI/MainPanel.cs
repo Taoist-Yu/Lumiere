@@ -51,6 +51,7 @@ public class PlayerDialog : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(1.1f);
 		Debug.Log("StartButtonClicked");
+		GameGlobal.GameData.currentLevel = level;
 		SceneManager.LoadScene(level);
 		
 	}

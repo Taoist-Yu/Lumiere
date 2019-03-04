@@ -34,7 +34,7 @@ public class BoxDialog : MonoBehaviour
 	public void ActivateEvent()
 	{
 		gameObject.SetActive(true);
-		ani.Play("Start");
+		ani.Play("Start", 0, 0f);
 	}
 
 	private void Update()

@@ -1,108 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CGPlayer : MonoBehaviour {
 
-	//CG对象数组，CG以精灵图的形式挂载到游戏对象上
-	public GameObject[] CGs;
-	public GameObject visualBarrier;
+	SpriteRenderer sr;
+	Animator anim;
+	float alpha = 0;
+	public const float speed = 0.2f;        //CG播放速度
 
-	private Animator animator;
-	private LevelManager levelManager;
-
-	private int currentCG;  //当前播放的CG
-	public float aniValue;  //从数值动画中获取的变量
-
-	private float timeVal;  //计时器变量
-
-	//CG播放的状态变量
-	private enum State
-	{
-		unplay,
-		play,
-		wait,
-		postPlay
-	};
-	State state = State.unplay;
+	Vector3 initPos;
 
 	private void Awake()
 	{
-		animator = GetComponent<Animator>();
-		levelManager = GetComponent<LevelManager>(); 
+		sr = GetComponent<SpriteRenderer>();
+		anim = GetComponent<Animator>();
 	}
 
-	private void OnEnable()
+	private void Start()
 	{
-		PlayCG(0);
+		initPos = transform.position;
+		sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
 	}
 
 	private void Update()
 	{
-		OnPlaying();
+		transform.position = initPos + new Vector3(0, Mathf.Sin(Time.time)/2, 0);
 	}
 
-	public void PlayCG(int number)
+	public void PlayCG()
 	{
-		currentCG = number;
-		PrePlayBegin();
+		anim.speed = speed;
+		anim.Play("Play");
 	}
 
-	void PrePlayBegin()
+	public void OnCGEnd()
 	{
-		CGs[currentCG].SetActive(true);
-		visualBarrier.SetActive(true);
-		state = State.play;
-		animator.Play("UsualValue");
+		StartCoroutine(LevelComplete());
 	}
 
-	void WaitBegin()
+	//通关
+	IEnumerator LevelComplete()
 	{
-		animator.Play("Wait");
-		timeVal =5;
-		state = State.wait;
-	}
-
-	void PostPlayBegin()
-	{
-		state = State.postPlay;
-		animator.Play("UsualValue");
-	}
-
-	void PlayEnd()
-	{
-		animator.Play("Wait");
-		state = State.unplay;
-		CGs[currentCG].SetActive(false);
-		visualBarrier.SetActive(false);
-		levelManager.OnCGPlayEnd();
-	}
-
-	void OnPlaying()
-	{
-		Color color = visualBarrier.GetComponent<SpriteRenderer>().color;
-		switch (state)
-		{
-			case State.unplay:
-				break;
-			case State.play:
-				color.a = (1 - aniValue);
-				visualBarrier.GetComponent<SpriteRenderer>().color = color;
-				if (aniValue >= 0.9f)
-					WaitBegin();
-				break;
-			case State.wait:
-				timeVal -= Time.deltaTime;
-				if (timeVal < 0)
-					PostPlayBegin();
-				break;
-			case State.postPlay:
-				color.a = aniValue;
-				visualBarrier.GetComponent<SpriteRenderer>().color = color;
-				if (aniValue >= 0.9f)
-					PlayEnd();
-				break;
-		}
+		yield return new WaitForSeconds(3);
+		GameObject.Find("FateMask").GetComponent<Animator>().Play("FateIn", 0, 0f);
+		yield return new WaitForSeconds(1.1f);
+		SceneManager.LoadScene(++GameGlobal.GameData.currentLevel);
 	}
 
 }
