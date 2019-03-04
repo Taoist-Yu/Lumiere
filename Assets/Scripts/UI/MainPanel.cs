@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayerDialog : MonoBehaviour {
+public class MainPanel : MonoBehaviour {
 
 	private Button btn_Start;
 	private Button btn_Setting;

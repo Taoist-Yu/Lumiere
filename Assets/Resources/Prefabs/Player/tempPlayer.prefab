@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4807278350968558}
   - component: {fileID: 20734236621838334}
   - component: {fileID: 81476506958532428}
+  - component: {fileID: 95841279344525994}
+  - component: {fileID: 114655035609154352}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -140,7 +142,7 @@ GameObject:
   - component: {fileID: 58933931738342550}
   m_Layer: 0
   m_Name: Trigger
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +174,7 @@ GameObject:
   - component: {fileID: 4777882846634150}
   m_Layer: 0
   m_Name: Tigger
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,7 +241,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697763984528664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -190}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4927844193564236}
@@ -485,6 +487,24 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004754978904440}
   m_Enabled: 1
+--- !u!95 &95841279344525994
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1004754978904440}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3dfad257c9e344544b1d6f6f295b1676, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!96 &96323309971885942
 TrailRenderer:
   serializedVersion: 2
@@ -900,9 +920,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5454a9c9f55ba4044b5b1543857ca80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHeart: 3
-  CameraMoveSpeedScale: 1
-  walkSpeed: 5
+  initHeart: 10
+  isPausing: 0
+  walkSpeed: 6
   leftRange: 0.5
   rightRange: 0.5
   bottom: 0.46
@@ -911,6 +931,18 @@ MonoBehaviour:
   maxVelo: 10
   velocityOnLighting: 10
   isPickMode: 0
+--- !u!114 &114655035609154352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1004754978904440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 203cade0519315249ac5fac984c2ce6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveRatio: 0
 --- !u!114 &114973318783939132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -941,7 +973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5bcb233b1ee09d428ffa47a4ebf52ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
   size: 0.2
   minRadius: 0.3
   maxRadius: 0.5

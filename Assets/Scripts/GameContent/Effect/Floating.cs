@@ -7,18 +7,18 @@ using UnityEngine;
 class Floating : MonoBehaviour
 {
 
-	Vector3 initPos;
+	float initY;
 
 	public float speed;
 	public float range;
 
 	private void Start()
 	{
-		initPos = transform.position;
+		initY = transform.position.y;
 	}
 
 	private void Update()
 	{
-		transform.position = initPos + new Vector3(0, range * Mathf.Sin(speed * Time.time), 0);
+		transform.position = new Vector3(transform.position.x, range * Mathf.Sin(speed * Time.time) + initY, transform.position.z);
 	}
 }

@@ -154,6 +154,8 @@ public class tempController : GameBehaviour
 	/// 一种情况是，当场景转换的过程中，人物无法移动，也无法操作
 	/// </summary>
 	public bool isPausing = false;
+	[Header("初始时光的数量")]
+	public int initLightQuantity = 0;
 
 	bool onGround = true;
 	int pressJumpCount;
@@ -187,6 +189,13 @@ public class tempController : GameBehaviour
 		playerParticle = GameObject.Find("PlayerPS");
 		playerTrail = GameObject.FindGameObjectsWithTag("PlayerTrail");
 		heart = initHeart;
+
+		PlayerParticleController.lightQuantity = initLightQuantity;
+		playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
+
+		//开局播放场景淡入效果
+		GameObject.Find("FateMask").GetComponent<Animator>().Play("FateOut", 0, 0f);
+
 	}
 
 	void FixedUpdate()

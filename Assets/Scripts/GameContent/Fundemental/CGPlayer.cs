@@ -10,8 +10,6 @@ public class CGPlayer : MonoBehaviour {
 	float alpha = 0;
 	public const float speed = 0.2f;        //CG播放速度
 
-	Vector3 initPos;
-
 	private void Awake()
 	{
 		sr = GetComponent<SpriteRenderer>();
@@ -20,13 +18,7 @@ public class CGPlayer : MonoBehaviour {
 
 	private void Start()
 	{
-		initPos = transform.position;
 		sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
-	}
-
-	private void Update()
-	{
-		transform.position = initPos + new Vector3(0, Mathf.Sin(Time.time)/2, 0);
 	}
 
 	public void PlayCG()

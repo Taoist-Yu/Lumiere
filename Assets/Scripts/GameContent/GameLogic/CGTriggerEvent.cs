@@ -16,6 +16,11 @@ class CGTriggerEvent : TriggerEvent
 	//CG脚本实例 
 	public CGPlayer cg;
 
+	private void Update()
+	{
+		transform.rotation = Quaternion.Euler(0, 0, 0);
+	}
+
 	//注册事件
 	protected override void RegisteEvents()
 	{
