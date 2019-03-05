@@ -902,6 +902,14 @@ Prefab:
       propertyPath: preEvents.Array.data[0]
       value: 
       objectReference: {fileID: 901906914}
+    - target: {fileID: 4947347861695030, guid: 0e2f53a5d3cc99047a453bdea7eddd70, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947347861695030, guid: 0e2f53a5d3cc99047a453bdea7eddd70, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2f53a5d3cc99047a453bdea7eddd70, type: 2}
   m_IsPrefabAsset: 0
@@ -1067,6 +1075,11 @@ Prefab:
         type: 2}
       propertyPath: initLightQuantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20734236621838334, guid: 05e203429e1ec5d42be936907ab977cc,
+        type: 2}
+      propertyPath: orthographic size
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05e203429e1ec5d42be936907ab977cc, type: 2}

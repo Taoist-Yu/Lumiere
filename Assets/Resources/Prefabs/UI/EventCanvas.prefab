@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114197690967723508}
   - component: {fileID: 95088581169081998}
   m_Layer: 5
-  m_Name: Dialog
+  m_Name: StartDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,9 +189,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content:
-  - "\u884C\u8D8A\u8FDC\u8D8A\u4E0D\u6562 \u56DE\u5934\u7EC6\u770B"
-  - "\u6015\u6CEA\u70B9\u4E0D\u4E89\u6C14 \u98DE\u6210\u96E8\u7EBF"
-  - "\u4E00\u7532\u5B50\u4E5F\u4E0D\u8FC7 \u7728\u773C\u516D\u5341\u5E74"
+  - "\u6211\u662F\uFF1F"
+  - "......\u597D\u50CF\uFF0C\u65F6\u95F4\u8FC7\u53BB\u5F88\u4E45\u4E86......."
+  - "\u8981\u60F3\u529E\u6CD5\u51FA\u53BB"
+  - "\u55EF\uFF1F\u201C\u51FA\u53BB\u201C\uFF1F"
+  - "\u2026\uFF08\u6C89\u601D\uFF09"
+  - "\u55EF\uFF0C\u90A3\u8FB9\u90A3\u4E2A\u5E73\u53F0\u597D\u50CF\u4E0D\u5927\u4E00\u6837"
+  - "\u5148\u5230\u90A3\u91CC\u770B\u770B"
+  - "\u4E0D\u8FC7\u76F8\u4F4D\u76F8\u5DEE\u592A\u5927\u4E86\u2026"
+  - "\u5F97\u4ECE\u53E6\u4E00\u4E2A\u65B9\u5411\u63A5\u8FD1\u770B\u770B"
+  - "\uFF08\u6309\u65B9\u5411\u952E\u79FB\u52A8\uFF0CAD\u5207\u6362\u89C2\u6D4B\u89D2\u5EA6\uFF09"
 --- !u!114 &114757491915150118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

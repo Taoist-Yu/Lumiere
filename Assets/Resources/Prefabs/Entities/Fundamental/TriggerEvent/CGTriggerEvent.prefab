@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 212839178656072474}
   - component: {fileID: 95295710844569894}
   - component: {fileID: 114502330303579278}
+  - component: {fileID: 114006214661403444}
   m_Layer: 0
   m_Name: CG
   m_TagString: Untagged
@@ -297,7 +298,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584215282929594}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.1, y: 10.6, z: -3.44}
+  m_LocalPosition: {x: 10.52, y: 9.58, z: -3.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4200302132287334}
@@ -435,7 +436,7 @@ Transform:
   m_GameObject: {fileID: 1857146678087368}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 30, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4242540764773216}
   m_RootOrder: 2
@@ -639,6 +640,19 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114006214661403444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857146678087368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b15dc67a842af444a6963db9a4449da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  range: 0.2
 --- !u!114 &114502330303579278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -696,7 +710,8 @@ MonoBehaviour:
   west: 1
   isTrigger: 1
   boxDialog: {fileID: 0}
-  preEvents: []
+  preEvents:
+  - {fileID: 0}
   moveTarget: {fileID: 1857146678087368}
   speed: 0.2
   isReturned: 0
