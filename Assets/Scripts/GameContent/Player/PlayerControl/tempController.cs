@@ -179,7 +179,7 @@ public class tempController : GameBehaviour
 	[SerializeField]
 	[Range(5f, 20f)]
 	private float velocityOnLighting = 10;
-	private float verticalVelocity = 0;
+	public float verticalVelocity = 0;
 
 	GameObject playerParticle;
 	GameObject[] playerTrail;
@@ -308,6 +308,10 @@ public class tempController : GameBehaviour
 			else
 			{
 				transform.position = new Vector3(transform.position.x, positionOfLand + bottomRange, transform.position.z);
+				if (verticalVelocity < -10)
+				{
+					GameObject.Find("PlayerRenderer").GetComponent<PlayerFloat>().GoUp();
+				}
 				verticalVelocity = 0;
 				//跳跃次数清零
 				pressJumpCount = 0;
@@ -322,9 +326,7 @@ public class tempController : GameBehaviour
 				if (pressJumpCount <= 1)
 				{
 
-					Debug.Log(maxJumpCount);
 					maxJumpCount = PlayerParticleController.lightQuantity / 5 + 1;
-					Debug.Log(maxJumpCount);
 				}
 				if (pressJumpCount < maxJumpCount)
 				{
