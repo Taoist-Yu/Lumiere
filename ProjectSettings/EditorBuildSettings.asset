@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/mainScenes/tutorial.1/move&change.unity
     guid: f36137a30f9c57646abad5a3c84ceb44
+  - enabled: 1
+    path: Assets/testScenes/TestScene/PlayerTest.unity
+    guid: 5aa7bc31095ec2247abf90eac82c0cd7
   m_configObjects: {}
