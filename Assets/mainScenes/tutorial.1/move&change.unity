@@ -902,6 +902,16 @@ Prefab:
       propertyPath: m_Name
       value: Destination
       objectReference: {fileID: 0}
+    - target: {fileID: 114908912192088332, guid: 0e2f53a5d3cc99047a453bdea7eddd70,
+        type: 2}
+      propertyPath: lightColorNeeded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908912192088332, guid: 0e2f53a5d3cc99047a453bdea7eddd70,
+        type: 2}
+      propertyPath: isLightColorNeeded
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2f53a5d3cc99047a453bdea7eddd70, type: 2}
   m_IsPrefabAsset: 0
