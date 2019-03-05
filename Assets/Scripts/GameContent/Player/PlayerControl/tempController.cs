@@ -308,6 +308,10 @@ public class tempController : GameBehaviour
 			else
 			{
 				transform.position = new Vector3(transform.position.x, positionOfLand + bottomRange, transform.position.z);
+				if (verticalVelocity < -10)
+				{
+					GameObject.Find("PlayerRenderer").GetComponent<PlayerFloat>().GoUp();
+				}
 				verticalVelocity = 0;
 				//跳跃次数清零
 				pressJumpCount = 0;
