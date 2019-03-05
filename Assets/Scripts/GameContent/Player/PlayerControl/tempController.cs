@@ -179,7 +179,7 @@ public class tempController : GameBehaviour
 	[SerializeField]
 	[Range(5f, 20f)]
 	private float velocityOnLighting = 10;
-	private float verticalVelocity = 0;
+	public float verticalVelocity = 0;
 
 	GameObject playerParticle;
 	GameObject[] playerTrail;
@@ -322,9 +322,7 @@ public class tempController : GameBehaviour
 				if (pressJumpCount <= 1)
 				{
 
-					Debug.Log(maxJumpCount);
 					maxJumpCount = PlayerParticleController.lightQuantity / 5 + 1;
-					Debug.Log(maxJumpCount);
 				}
 				if (pressJumpCount < maxJumpCount)
 				{
