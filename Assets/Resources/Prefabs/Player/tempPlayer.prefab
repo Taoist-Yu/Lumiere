@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4251417612587536}
-  - component: {fileID: 58933931738342550}
+  - component: {fileID: 70170229285779928}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Player
@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 4370888862484882}
   - component: {fileID: 33815412392335220}
   - component: {fileID: 23873544943932342}
+  - component: {fileID: 114270166642862296}
   m_Layer: 0
   m_Name: PlayerRenderer
   m_TagString: Untagged
@@ -465,8 +466,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!58 &58933931738342550
-CircleCollider2D:
+--- !u!70 &70170229285779928
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -477,9 +478,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 0.5}
+  m_Size: {x: 1, y: 2.5}
+  m_Direction: 0
 --- !u!81 &81476506958532428
 AudioListener:
   m_ObjectHideFlags: 1
@@ -909,6 +910,19 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &114270166642862296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697763984528664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b15dc67a842af444a6963db9a4449da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  range: 0.2
 --- !u!114 &114355208162437842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -926,8 +940,8 @@ MonoBehaviour:
   walkSpeed: 6
   leftRange: 0.5
   rightRange: 0.5
-  bottom: 0.46
-  bottomRange: 0.59
+  bottom: 0.66
+  bottomRange: 0.8
   bottomEdge: 0.3
   maxVelo: 10
   velocityOnLighting: 10

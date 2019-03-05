@@ -14,11 +14,11 @@ class Floating : MonoBehaviour
 
 	private void Start()
 	{
-		initY = transform.position.y;
+		initY = transform.localPosition.y;
 	}
 
 	private void Update()
 	{
-		transform.position = new Vector3(transform.position.x, range * Mathf.Sin(speed * Time.time) + initY, transform.position.z);
+		transform.localPosition = new Vector3(transform.localPosition.x, range * Mathf.Sin(speed * Time.time) + initY, transform.localPosition.z);
 	}
 }
