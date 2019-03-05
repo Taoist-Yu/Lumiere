@@ -315,12 +315,16 @@ public class tempController : GameBehaviour
 		}
 		else
 		{
+
 			if (pressJump)
 			{
 				//判断多段跳段数
-				if (pressJumpCount < 1)
+				if (pressJumpCount <= 1)
 				{
+
+					Debug.Log(maxJumpCount);
 					maxJumpCount = PlayerParticleController.lightQuantity / 5 + 1;
+					Debug.Log(maxJumpCount);
 				}
 				if (pressJumpCount < maxJumpCount)
 				{
@@ -335,7 +339,7 @@ public class tempController : GameBehaviour
 						TranslatePlayer(G);
 					}
 					pressJumpCount++;
-					if (PlayerParticleController.lightQuantity >= 5)
+					if (PlayerParticleController.lightQuantity >= 5  && pressJumpCount > 1)
 					{
 						PlayerParticleController.lightQuantity -= 5;
 						playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
