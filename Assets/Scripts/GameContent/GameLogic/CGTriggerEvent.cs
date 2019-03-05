@@ -41,12 +41,15 @@ class CGTriggerEvent : TriggerEvent
 
 	void OnCameraMoveStart()
 	{
+		//解绑玩家与相机
+		PlayerCamera.instance.transform.SetParent(null);
 		StartCoroutine(InvokePlayCG());
 	}
 
 	void OnCameraMoveEnd()
 	{
-
+		//防止由于玩家重生调用相机移动
+		GameObject.Find("tempPlayer").SetActive(false);
 	}
 
 	//延时播放CG

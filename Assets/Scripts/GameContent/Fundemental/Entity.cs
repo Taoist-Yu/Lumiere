@@ -85,10 +85,7 @@ public class Entity : GameBehaviour {
 	{
 		base.OnLevelRotateEnd();
 
-		colliderRoot.transform.SetPositionAndRotation(
-			colliderRoot.transform.position,
-			Quaternion.Euler(0, 0, 0)
-		);
+		colliderRoot.transform.rotation = Quaternion.Euler(0, 0, 0);
 
 		colliders[levelController.perspective].SetActive(true);
 	}
