@@ -7,7 +7,7 @@ public class PlayerFloat : MonoBehaviour {
 	GameObject Players;
 	float radian = -1.6f;
 	float perRadian = 0.02f;
-	float radius = 0.4f;
+	public float radius = 0.2f;
 	Vector3 oldPos;
 
 	// Use this for initialization
