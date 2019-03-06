@@ -16,6 +16,8 @@ class CGTriggerEvent : TriggerEvent
 	//CG脚本实例 
 	public CGPlayer cg;
 
+	public AudioSource victoryAudio; 
+
 	private void Update()
 	{
 		transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -33,6 +35,10 @@ class CGTriggerEvent : TriggerEvent
 	{
 		if(moveTarget != null)
 		{
+			//播放音效
+			if (victoryAudio != null)
+				victoryAudio.Play();
+			//
 			Vector3 startPos = PlayerCamera.instance.transform.position;
 			Vector3 endPos = moveTarget.transform.position + new Vector3(0, 0, PlayerCamera.instance.transform.position.z);
 			PlayerCamera.Move(startPos, endPos, isReturned, speed, OnCameraMoveStart, OnCameraMoveEnd);

@@ -10,5 +10,8 @@ namespace GameGlobal
 		public static int maxLevel = 1;
 		//当前关卡
 		public static int currentLevel;
+
+		//游戏是否暂停
+		public static bool isPausing;
 	}
 }

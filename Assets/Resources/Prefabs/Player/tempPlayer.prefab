@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4370888862484882}
   - component: {fileID: 33815412392335220}
   - component: {fileID: 23873544943932342}
-  - component: {fileID: 114683460319375398}
+  - component: {fileID: 114270166642862296}
   m_Layer: 0
   m_Name: PlayerRenderer
   m_TagString: Untagged
@@ -910,6 +910,19 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &114270166642862296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697763984528664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b15dc67a842af444a6963db9a4449da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  range: 0.2
 --- !u!114 &114355208162437842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -946,17 +959,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveRatio: 0
---- !u!114 &114683460319375398
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1697763984528664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c4abcc2bf7d52b41a687b84407c11db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114973318783939132
 MonoBehaviour:
   m_ObjectHideFlags: 1

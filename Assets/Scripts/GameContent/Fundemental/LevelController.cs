@@ -24,6 +24,8 @@ public class LevelController : MonoBehaviour {
 	//当前朝向(当前是哪个面面向玩家)
 	public int perspective = 0;
 
+	//音效
+	public AudioSource rotateAudio;
 
 	private void Awake()
 	{
@@ -66,6 +68,9 @@ public class LevelController : MonoBehaviour {
 	//开始场景旋转
 	void StartRotate()
 	{
+		//播放音效
+		if(rotateAudio != null)
+			rotateAudio.Play();
 		//停止接受输入
 		GetInput.OperateDisable();
 		//数据初始化

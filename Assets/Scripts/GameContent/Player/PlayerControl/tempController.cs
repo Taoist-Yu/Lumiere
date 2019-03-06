@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class tempController : GameBehaviour
 {
@@ -184,6 +185,9 @@ public class tempController : GameBehaviour
 	GameObject playerParticle;
 	GameObject[] playerTrail;
 
+	public AudioSource rotateAudio;
+	private GameObject GamingSetting;
+
 	private void Start()
 	{
 		playerParticle = GameObject.Find("PlayerPS");
@@ -192,6 +196,9 @@ public class tempController : GameBehaviour
 
 		PlayerParticleController.lightQuantity = initLightQuantity;
 		playerParticle.GetComponent<PlayerParticleController>().UpdateParticle();
+
+		GamingSetting = GameObject.Find("UI/GamingSetting");
+		GamingSetting.SetActive(false);
 
 		//开局播放场景淡入效果
 		GameObject.Find("FateMask").GetComponent<Animator>().Play("FateOut", 0, 0f);
@@ -205,6 +212,9 @@ public class tempController : GameBehaviour
 
 	private void Update()
 	{
+		if (GameGlobal.GameData.isPausing)
+			return;
+
 		//基本移动
 		if (!isPausing)
 		{
@@ -244,6 +254,10 @@ public class tempController : GameBehaviour
 		//重生相关
 		UpdateRespawnPosition();
 		Respawn();
+
+		//UI相关
+		ResetHUD();
+		EnterSettingUI();
 	}
 
 	void LaunchRaycast()
@@ -438,6 +452,8 @@ public class tempController : GameBehaviour
 
 	public void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
 	{
+		if (isPausing || GameGlobal.GameData.isPausing)
+			return;
 		//判断人物是否能随光线移动
 		bool flag = false;
 		
@@ -610,6 +626,55 @@ public class tempController : GameBehaviour
 			case "OperatedInterface":
 				operateInterface = collision.transform.parent.parent.GetComponent<OperateInterface>();
 				break;
+		}
+	}
+
+	#endregion
+
+	#region UI相关
+
+	void ResetHUD()
+	{
+		GameObject hud = GameObject.Find("UI/HUDCanvas");
+
+		//检查场景是否搭载了HUD组件
+		if (hud == null)
+		{
+			Debug.LogError("场景中缺少HUD组件");
+			return;
+		}
+
+		//获取HUD组件
+		Image lq_image = hud.transform.Find("LightQuantity/Image").GetComponent<Image>();	
+		Text lq_text = hud.transform.Find("LightQuantity/Text").GetComponent<Text>();
+		Text pick_text = hud.transform.Find("PickMode/Text").GetComponent<Text>();
+
+		//设置HUD光数
+		Color currentColor = RayLight.GetLight(PlayerParticleController.lightQuantity).Color;
+		lq_image.color = currentColor;
+		lq_text.color = currentColor;
+		lq_text.text = PlayerParticleController.lightQuantity.ToString();
+
+		//设置拾取模式的显示
+		if(isPickMode)
+		{
+			pick_text.color = Color.green;
+			pick_text.text = "拾取模式";
+		}
+		else
+		{
+			pick_text.color = Color.red;
+			pick_text.text = "锁定模式";
+		}
+
+	}
+
+	void EnterSettingUI()
+	{
+		if(GetInput.ESC)
+		{
+			GamingSetting.SetActive(true);
+			GameGlobal.GameData.isPausing = true;
 		}
 	}
 

@@ -10,6 +10,8 @@ public class MainPanel : MonoBehaviour {
 	private Button btn_Setting;
 	private Animator FateInOut;
 
+	public AudioSource bottonClickSource;
+
 	// Use this for initialization
 	void Start () {
 		InitButton();
@@ -31,6 +33,8 @@ public class MainPanel : MonoBehaviour {
 
 	void OnStartButtonClicked()
 	{
+		bottonClickSource.Play();
+
 		FateInOut.Play("FateIn");       //纯色遮罩淡入，屏幕渐黑
 		GameStart(1, true);
 		StartCoroutine(GameStart(1, true));
@@ -39,7 +43,7 @@ public class MainPanel : MonoBehaviour {
 	void OnSettingButtonClicked()
 	{
 		Debug.Log("SettingButtonClicked");
-		
+		bottonClickSource.Play();
 	}
 
 	/// <summary>
