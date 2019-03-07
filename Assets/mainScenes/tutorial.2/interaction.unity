@@ -2546,7 +2546,7 @@ MonoBehaviour:
   isLightNeed: 1
   speed: 2
   upperLimit: 4
-  direction: {x: 0, y: 0}
+  anti_direction: 0
 --- !u!1 &1233287577
 GameObject:
   m_ObjectHideFlags: 0
@@ -3418,8 +3418,8 @@ MonoBehaviour:
   lightLevelNeed: 1
   isLightNeed: 1
   speed: 2
-  upperLimit: -5
-  direction: {x: 0, y: 0}
+  upperLimit: 5
+  anti_direction: 1
 --- !u!1001 &1454623236
 Prefab:
   m_ObjectHideFlags: 0
