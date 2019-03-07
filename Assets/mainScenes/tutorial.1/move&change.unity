@@ -902,6 +902,11 @@ Prefab:
       propertyPath: victoryAudio
       value: 
       objectReference: {fileID: 733216274}
+    - target: {fileID: 114908912192088332, guid: 0e2f53a5d3cc99047a453bdea7eddd70,
+        type: 2}
+      propertyPath: boxDialog
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2f53a5d3cc99047a453bdea7eddd70, type: 2}
   m_IsPrefabAsset: 0
@@ -1093,7 +1098,7 @@ Prefab:
         type: 2}
       propertyPath: boxDialog
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1274928473}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81932eed5da8cc548859777a060675a3, type: 2}
   m_IsPrefabAsset: 0
@@ -1221,6 +1226,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45fb8ee3d4776904ea4394dabd52230f, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1274928473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+    type: 2}
+  m_PrefabInternal: {fileID: 950995141}
+  m_Script: {fileID: 11500000, guid: 29bf1e2aeeac0ec4393a4dfe15169cd4, type: 3}
 --- !u!1 &1310088002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1365,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4655729954390418, guid: ea49ca3535c6b074db3d249efb895742, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.45
+      value: -10.86
       objectReference: {fileID: 0}
     - target: {fileID: 4655729954390418, guid: ea49ca3535c6b074db3d249efb895742, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1416,7 +1427,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4063889524282084, guid: 25e8c1b446afc5c4881132fd15cd1f86, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.86
+      value: -10.95
       objectReference: {fileID: 0}
     - target: {fileID: 4063889524282084, guid: 25e8c1b446afc5c4881132fd15cd1f86, type: 2}
       propertyPath: m_LocalPosition.y
