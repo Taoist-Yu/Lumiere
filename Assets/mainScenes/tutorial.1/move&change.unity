@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31628427, g: 0.6354917, b: 0.7247677, a: 1}
+  m_IndirectSpecularColor: {r: 0.40846205, g: 0.6170101, b: 0.7400771, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -982,22 +982,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6c4b603ccd40d541974f90bf9606fa9, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &959179526 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1697763984528664, guid: 05e203429e1ec5d42be936907ab977cc,
-    type: 2}
-  m_PrefabInternal: {fileID: 1167682123}
---- !u!114 &959179528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 959179526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c4abcc2bf7d52b41a687b84407c11db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1097657896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,8 +1111,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114270166642862296, guid: 05e203429e1ec5d42be936907ab977cc, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05e203429e1ec5d42be936907ab977cc, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &1167682124 stripped
@@ -1177,7 +1160,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1605570976316818, guid: 45fb8ee3d4776904ea4394dabd52230f, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198192807461069156, guid: 45fb8ee3d4776904ea4394dabd52230f,
         type: 2}
@@ -1203,6 +1186,11 @@ Prefab:
         type: 2}
       propertyPath: ShapeModule.m_Scale.z
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 198192807461069156, guid: 45fb8ee3d4776904ea4394dabd52230f,
+        type: 2}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45fb8ee3d4776904ea4394dabd52230f, type: 2}
