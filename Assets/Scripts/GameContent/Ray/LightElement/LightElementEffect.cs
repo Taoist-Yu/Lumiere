@@ -19,14 +19,14 @@ public class LightElementEffect : MonoBehaviour {
 	};
 	Floating floating = new Floating
 	{
-		initY = default(Vector3),
+		initY = default(float),
 		currentPostion = default(Vector3),
 		deltaY = 0
 	};
 
 	// Use this for initialization
 	void Start () {
-		floating.initY = transform.position;
+		floating.initY = transform.position.y;
 		timeVal = UnityEngine.Random.Range(0, 3);
 		initParticleEffect();
 	}
