@@ -969,35 +969,6 @@ Prefab:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 223139579649205974, guid: a6c4b603ccd40d541974f90bf9606fa9,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114394400380938142, guid: a6c4b603ccd40d541974f90bf9606fa9,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114394400380938142, guid: a6c4b603ccd40d541974f90bf9606fa9,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114394400380938142, guid: a6c4b603ccd40d541974f90bf9606fa9,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114394400380938142, guid: a6c4b603ccd40d541974f90bf9606fa9,
-        type: 2}
-      propertyPath: m_Text
-      value: "\u9501\u5B9A\u6A21\u5F0F"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119803601492324, guid: a6c4b603ccd40d541974f90bf9606fa9, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6c4b603ccd40d541974f90bf9606fa9, type: 2}
   m_IsPrefabAsset: 0

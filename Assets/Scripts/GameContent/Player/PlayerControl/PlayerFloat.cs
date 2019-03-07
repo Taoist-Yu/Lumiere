@@ -18,27 +18,40 @@ public class PlayerFloat : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
 	{
-		if (down && transform.localPosition.y < -0.1)
+		if (down && radian > 4.71f)
 		{
-			radian = -1.6f;
 			perRadian = 0.02f;
 			radius = 0.4f;
 			down = false;
 		}
 		radian += perRadian; 
 		float dy = Mathf.Cos(radian) * radius;
-		transform.Translate(new Vector3(0, dy, 0) * Time.deltaTime);
+
+		Vector3 targetPosition;
+		if (dy > 0)
+		{
+			targetPosition = new Vector3(0, 2*radius, 0);
+		}
+		else targetPosition = new Vector3(0, 0, 0);
+
+		if(transform.localPosition.y > 2 * radius)
+		{
+			transform.localPosition = new Vector3(0, 0.79f, 0);
+		}
+		else if(transform.localPosition.y < 0)
+		{
+			transform.localPosition = new Vector3(0, 0.01f, 0);
+		}
+		transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, Mathf.Abs(dy) * Time.fixedDeltaTime);
 	}
 
 	public void GoUp()
 	{
-		radian = 3f;
+		radian = 3.12f;
 		perRadian = 0.1f;
 		radius = 2f;
-		float dy = Mathf.Cos(radian) * radius;
-		transform.Translate(new Vector3(0, dy, 0) * Time.deltaTime);
 		down = true;
 	}
 }

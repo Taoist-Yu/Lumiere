@@ -13,20 +13,20 @@ public class LightElementEffect : MonoBehaviour {
 	//漂浮功能相关
 	private struct Floating
 	{
-		public Vector3 initPostion;		//初始Postion
+		public float initY;		//初始Postion
 		public Vector3 currentPostion;     //当前的Postion
 		public float deltaY;
 	};
 	Floating floating = new Floating
 	{
-		initPostion = default(Vector3),
+		initY = default(Vector3),
 		currentPostion = default(Vector3),
 		deltaY = 0
 	};
 
 	// Use this for initialization
 	void Start () {
-		floating.initPostion = transform.position;
+		floating.initY = transform.position;
 		timeVal = UnityEngine.Random.Range(0, 3);
 		initParticleEffect();
 	}
@@ -42,7 +42,7 @@ public class LightElementEffect : MonoBehaviour {
 	{
 		floating.deltaY = Mathf.Sin(timeVal);
 
-		floating.currentPostion = floating.initPostion;
+		floating.currentPostion.y = floating.initY;
 		floating.currentPostion.y += 0.2f*floating.deltaY;
 
 		transform.position = floating.currentPostion;

@@ -202,6 +202,8 @@ public class tempController : GameBehaviour
 
 		//开局播放场景淡入效果
 		GameObject.Find("FateMask").GetComponent<Animator>().Play("FateOut", 0, 0f);
+		//开始游戏
+		GameGlobal.GameData.isPausing = false;
 
 	}
 
@@ -322,8 +324,9 @@ public class tempController : GameBehaviour
 			else
 			{
 				transform.position = new Vector3(transform.position.x, positionOfLand + bottomRange, transform.position.z);
-				if (verticalVelocity < -20)
+				if (verticalVelocity < -14)
 				{
+
 					GameObject.Find("PlayerRenderer").GetComponent<PlayerFloat>().GoUp();
 				}
 				verticalVelocity = 0;
@@ -648,6 +651,7 @@ public class tempController : GameBehaviour
 		Image lq_image = hud.transform.Find("LightQuantity/Image").GetComponent<Image>();	
 		Text lq_text = hud.transform.Find("LightQuantity/Text").GetComponent<Text>();
 		Text pick_text = hud.transform.Find("PickMode/Text").GetComponent<Text>();
+		Text pick_point = hud.transform.Find("PickMode/Point").GetComponent<Text>();
 
 		//设置HUD光数
 		Color currentColor = RayLight.GetLight(PlayerParticleController.lightQuantity).Color;
@@ -658,13 +662,13 @@ public class tempController : GameBehaviour
 		//设置拾取模式的显示
 		if(isPickMode)
 		{
-			pick_text.color = Color.green;
-			pick_text.text = "拾取模式";
+			pick_point.color = Color.green;
+			pick_text.text = "  拾取模式";
 		}
 		else
 		{
-			pick_text.color = Color.red;
-			pick_text.text = "锁定模式";
+			pick_point.color = Color.red;
+			pick_text.text = "  锁定模式";
 		}
 
 	}
