@@ -202,6 +202,8 @@ public class tempController : GameBehaviour
 
 		//开局播放场景淡入效果
 		GameObject.Find("FateMask").GetComponent<Animator>().Play("FateOut", 0, 0f);
+		//开始游戏
+		GameGlobal.GameData.isPausing = false;
 
 	}
 

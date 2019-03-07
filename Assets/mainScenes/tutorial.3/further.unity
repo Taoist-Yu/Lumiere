@@ -1512,6 +1512,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4876747646443454, guid: a6c4b603ccd40d541974f90bf9606fa9, type: 2}
       propertyPath: m_LocalPosition.x
       value: 4.642014
@@ -1547,6 +1552,56 @@ Prefab:
     - target: {fileID: 1119803601492324, guid: a6c4b603ccd40d541974f90bf9606fa9, type: 2}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.data[1]
+      value: "\u63D0\u793A\uFF1A\u5F53\u5149\u7403\u6570\u76EE\u8FBE\u52305\u4E2A\u4EE5\u4E0A\uFF0C\u53EF\u4EE55\u4E2A\u5149\u7403\u8FDB\u884C\u591A\u6BB5\u8DF3\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.data[2]
+      value: "\u8FD9\u788E\u7247\uFF0C\u8BF4\u4E0D\u5B9A\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.data[3]
+      value: "\u82E5\u5149\u7EBF\u4E0E\u8EAB\u4E0A\u7684\u5149\u7403\u989C\u8272\u76F8\u540C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.data[4]
+      value: "\u6211\u662F\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.data[5]
+      value: "\u6211\u662F\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.data[6]
+      value: "\u6211\u662F\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.data[7]
+      value: "\u6211\u662F\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.data[8]
+      value: "\u6211\u662F\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.data[9]
+      value: "\u6211\u662F\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140713176647904, guid: a6c4b603ccd40d541974f90bf9606fa9,
+        type: 2}
+      propertyPath: content.Array.data[0]
+      value: "\u597D\u50CF\uFF0C\u55EF\uFF0C\u5E94\u8BE5\u6CA1\u95EE\u9898"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6c4b603ccd40d541974f90bf9606fa9, type: 2}
@@ -2743,7 +2798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1166772284}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PlayerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4759,6 +4814,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4743125290222074, guid: 9ce68b8c00dd403458602716b94662bd, type: 2}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82591280582544916, guid: 9ce68b8c00dd403458602716b94662bd,
+        type: 2}
+      propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
