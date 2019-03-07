@@ -104,7 +104,7 @@ public class RayLuncher : Entity {
 		//设置LineRenderer
 		lineRenderer.positionCount = 2;
 		lineRenderer.startColor = light.Color;
-		lineRenderer.endColor = light.Color;
+		lineRenderer.endColor = new Color(light.Color.r, light.Color.g, light.Color.b, 0.0f);
 
 		hitArray = Physics2D.RaycastAll(ray.origin, ray.direction,20);
 
