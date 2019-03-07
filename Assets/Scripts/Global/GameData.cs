@@ -13,5 +13,8 @@ namespace GameGlobal
 
 		//游戏是否暂停
 		public static bool isPausing;
+
+		//是否通关
+		public static bool isVictory = false;
 	}
 }

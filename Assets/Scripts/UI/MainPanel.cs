@@ -16,6 +16,14 @@ public class MainPanel : MonoBehaviour {
 	void Start () {
 		InitButton();
 		FateInOut = transform.parent.Find("FateMask").GetComponent<Animator>();
+		if(GameGlobal.GameData.isVictory == true)
+		{
+			transform.Find("Underground/Cover").gameObject.SetActive(false);
+		}
+		else
+		{
+			transform.Find("Underground/VictoryCover").gameObject.SetActive(false);
+		}
 	}
 	
 	// Update is called once per frame

@@ -38,7 +38,13 @@ public class CGPlayer : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		GameObject.Find("FateMask").GetComponent<Animator>().Play("FateIn", 0, 0f);
 		yield return new WaitForSeconds(1.1f);
-		SceneManager.LoadScene(++GameGlobal.GameData.currentLevel);
+		if(GameGlobal.GameData.currentLevel < GameGlobal.GameData.maxLevel)
+			SceneManager.LoadScene(++GameGlobal.GameData.currentLevel);
+		else
+		{
+			GameGlobal.GameData.isVictory = true;
+			SceneManager.LoadScene(GameGlobal.GameData.currentLevel = 0);
+		}
 	}
 
 }
