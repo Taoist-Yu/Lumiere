@@ -308,7 +308,7 @@ public class tempController : GameBehaviour
 			else
 			{
 				transform.position = new Vector3(transform.position.x, positionOfLand + bottomRange, transform.position.z);
-				if (verticalVelocity < -10)
+				if (verticalVelocity < -20)
 				{
 					GameObject.Find("PlayerRenderer").GetComponent<PlayerFloat>().GoUp();
 				}
