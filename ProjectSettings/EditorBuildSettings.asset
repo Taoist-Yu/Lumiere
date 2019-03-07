@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/mainScenes/tutorial.1/move&change.unity
     guid: f36137a30f9c57646abad5a3c84ceb44
   - enabled: 1
-    path: Assets/testScenes/TestScene/PlayerTest.unity
-    guid: 5aa7bc31095ec2247abf90eac82c0cd7
+    path: Assets/mainScenes/tutorial.2/interaction.unity
+    guid: e1911c58d08a9404f99536b3322d432e
+  - enabled: 1
+    path: Assets/mainScenes/tutorial.3/further.unity
+    guid: 71830e860aa59604facd3ba690154515
   m_configObjects: {}
