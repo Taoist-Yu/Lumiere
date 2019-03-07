@@ -9,11 +9,11 @@ public class LiftingPlatform : Organ {
 
 	public float speed = 10.0f;
 	public float upperLimit = 3.0f;
-//	[Header("位移方向")]
-//	public Vector2 direction;				
+	[Header("是否")]
+	public bool anti_direction = false;				
 
 	private float displacement = 0;             //当前升降台的位移
-	private float originY;					//初始位置
+	private float originY;						//初始位置
 
 	protected override void Awake()
 	{
@@ -30,7 +30,10 @@ public class LiftingPlatform : Organ {
 		if (displacement < 0) displacement = 0;
 
 		Vector3 pos = platform.transform.position;
-		pos.y = originY + displacement;
+		if (anti_direction == true)
+			pos.y = originY - displacement;
+		else
+			pos.y = originY + displacement;
 		platform.transform.position = pos;
 	}
 
