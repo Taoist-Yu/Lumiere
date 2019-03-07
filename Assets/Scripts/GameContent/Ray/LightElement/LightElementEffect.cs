@@ -42,7 +42,8 @@ public class LightElementEffect : MonoBehaviour {
 	{
 		floating.deltaY = Mathf.Sin(timeVal);
 
-		floating.currentPostion.y = floating.initY;
+        floating.currentPostion = transform.position;
+        floating.currentPostion.y = floating.initY;
 		floating.currentPostion.y += 0.2f*floating.deltaY;
 
 		transform.position = floating.currentPostion;
