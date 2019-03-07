@@ -2958,6 +2958,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28efbe74271472046b2be934871956b5, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1344273223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114822288238577578, guid: 81932eed5da8cc548859777a060675a3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1875866451}
+  m_Script: {fileID: 11500000, guid: 0153812c37cd98c49ac35a43e989f37d, type: 3}
 --- !u!4 &1344477480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4674541981744138, guid: 28efbe74271472046b2be934871956b5,
@@ -3597,6 +3603,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 479359042}
     m_Modifications:
+    - target: {fileID: 114908912192088332, guid: 0e2f53a5d3cc99047a453bdea7eddd70,
+        type: 2}
+      propertyPath: preEvents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4242540764773216, guid: 0e2f53a5d3cc99047a453bdea7eddd70, type: 2}
       propertyPath: m_LocalPosition.x
       value: 8.6
@@ -3644,6 +3655,16 @@ Prefab:
       propertyPath: victoryAudio
       value: 
       objectReference: {fileID: 22733675}
+    - target: {fileID: 114908912192088332, guid: 0e2f53a5d3cc99047a453bdea7eddd70,
+        type: 2}
+      propertyPath: preEvents.Array.data[1]
+      value: 
+      objectReference: {fileID: 1344273223}
+    - target: {fileID: 114908912192088332, guid: 0e2f53a5d3cc99047a453bdea7eddd70,
+        type: 2}
+      propertyPath: preEvents.Array.data[0]
+      value: 
+      objectReference: {fileID: 1344273223}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2f53a5d3cc99047a453bdea7eddd70, type: 2}
   m_IsPrefabAsset: 0
