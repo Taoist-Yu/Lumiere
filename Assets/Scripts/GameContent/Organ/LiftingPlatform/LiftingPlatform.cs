@@ -9,11 +9,11 @@ public class LiftingPlatform : Organ {
 
 	public float speed = 10.0f;
 	public float upperLimit = 3.0f;
-	[Header("位移方向")]
-	public Vector2 direction;				
+//	[Header("位移方向")]
+//	public Vector2 direction;				
 
 	private float displacement = 0;             //当前升降台的位移
-	private Vector3 originPos;					//初始位置
+	private float originY;					//初始位置
 
 	protected override void Awake()
 	{
@@ -21,14 +21,17 @@ public class LiftingPlatform : Organ {
 		platform = transform.parent.Find("Platform").gameObject;
 		effect = transform.Find("Model").GetComponent<LiftingPlatformEffect>();
 		effect.rayLight = lightNeed;
-		originPos = platform.transform.position;
+		originY = platform.transform.position.y;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		displacement -= Time.deltaTime * speed;
 		if (displacement < 0) displacement = 0;
-		platform.transform.position = originPos + displacement * (Vector3)direction;
+
+		Vector3 pos = platform.transform.position;
+		pos.y = originY + displacement;
+		platform.transform.position = pos;
 	}
 
 	public override void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
