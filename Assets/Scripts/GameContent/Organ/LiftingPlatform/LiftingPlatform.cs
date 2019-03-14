@@ -40,6 +40,13 @@ public class LiftingPlatform : Organ {
 	public override void OnLighting(RaycastHit2D hit, Vector3 direction, RayLight light)
 	{
 		base.OnLighting(hit, direction, light);
+		if (isLightNeed == true)
+		{
+			if (lightNeed.lightColor != light.lightColor)
+				return;
+			if (lightNeed.lightLevel > light.lightLevel)
+				return;
+		}
 		displacement += 2 * Time.deltaTime * speed;
 		if (displacement > upperLimit) displacement = upperLimit;
 	}
