@@ -1127,6 +1127,11 @@ Prefab:
       propertyPath: upperLimit
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114780206758945818, guid: 736002094d98c8d44815fd94fb788efc,
+        type: 2}
+      propertyPath: isTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 736002094d98c8d44815fd94fb788efc, type: 2}
   m_IsPrefabAsset: 0
